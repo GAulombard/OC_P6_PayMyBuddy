@@ -1,1 +1,1 @@
-"# Pay My Buddy" 
+## Pay My Buddy

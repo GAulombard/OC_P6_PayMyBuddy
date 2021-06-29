@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.openclassrooms.paymybuddy","c":"PayMyBuddyApplication","l":"main(String[])","url":"main(java.lang.String[])"},{"p":"com.openclassrooms.paymybuddy","c":"PayMyBuddyApplication","l":"PayMyBuddyApplication()","url":"%3Cinit%3E()"}]
