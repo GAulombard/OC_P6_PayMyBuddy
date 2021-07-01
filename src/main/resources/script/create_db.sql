@@ -8,7 +8,7 @@ CREATE TABLE user (
                 last_name VARCHAR(50) NOT NULL,
                 email VARCHAR(50) NOT NULL,
                 password VARCHAR(100) NOT NULL,
-                phone INT,
+                phone INT NOT NULL,
                 address VARCHAR(50) NOT NULL,
                 zip INT NOT NULL,
                 city VARCHAR(100) NOT NULL,

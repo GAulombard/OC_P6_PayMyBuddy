@@ -2,7 +2,6 @@
 
 <html lang="en" xmlns:th="http://wwww.thymeleaf.org">
 
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,6 +9,7 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Pay My Buddy</title>
 </head>
+
 
 <body>
 <div class="bg-light">
@@ -53,13 +53,15 @@
     </div>
 </div>
 
+
 <!-- SECTION -->
 <div class="container">
     <div class="row">
         <div class="col-12 col-lg-12">
             <div class="card my-3 shadow">
                 <div class="card-body">
-                    <h5 class="card-title">Titre</h5>
+                    <h5 class="card-title">Welcome</h5>
+                    <img th:src="@{src/main/resources/templates/pictures/paymybuddy_ban.png}"/>
                     <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur
                         quidem iste facilis iure doloribus quas repudiandae, corrupti deleniti nostrum odit earum
                         voluptatibus vitae molestiae, at aspernatur odio enim assumenda necessitatibus.</p>
@@ -68,6 +70,7 @@
         </div>
     </div>
 </div>
+
 <!-- FOOTER -->
 <div class="bg-light">
     <div class="container">
@@ -82,6 +85,7 @@
         </div>
     </div>
 </div>
+
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
