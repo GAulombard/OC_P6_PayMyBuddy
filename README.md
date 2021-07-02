@@ -1,12 +1,12 @@
 # Pay My Buddy
 ![PayMyBuddy Ban](src/main/resources/templates/pictures/paymybuddy_ban.png)
 
-##Description
+## Description
 
-##Getting Started
+## Getting Started
 
-##How it works
-###Technologies
-###UML diagram
-###MPD diagram
-###Endpoints
+## How it works
+### Technologies
+### UML diagram
+### MPD diagram
+### Endpoints
