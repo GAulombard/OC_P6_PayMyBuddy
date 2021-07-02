@@ -1,8 +1,10 @@
 package com.openclassrooms.paymybuddy.controller;
 
 import com.openclassrooms.paymybuddy.model.BankAccount;
+import com.openclassrooms.paymybuddy.model.Transaction;
 import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.service.BankAccountService;
+import com.openclassrooms.paymybuddy.service.TransactionService;
 import com.openclassrooms.paymybuddy.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +25,8 @@ public class adminController {
     private UserService userService;
     @Autowired
     private BankAccountService bankAccountService;
+    @Autowired
+    private TransactionService transactionService;
 
     @GetMapping("/admin/users")
     @Transactional
@@ -38,7 +42,7 @@ public class adminController {
 
     @GetMapping("/admin/accounts")
     @Transactional
-    public ModelAndView getAllAccounts() {
+    public ModelAndView getAllBankAccounts() {
         LOGGER.info("HTTP GET request received at /admin/accounts");
         Map<String, Object> model = new HashMap<String,Object>();
         Iterable<BankAccount> result = bankAccountService.getAccounts();
@@ -46,5 +50,16 @@ public class adminController {
         model.put("accounts",result);
 
         return new ModelAndView("adminDashboard_Accounts",model);
+    }
+
+    @GetMapping("/admin/transactions")
+    public ModelAndView getAllTransactions() {
+        LOGGER.info("HTTP GET request received at /admin/transactions");
+        Map<String, Object> model = new HashMap<String,Object>();
+        Iterable<Transaction> result = transactionService.getTransactions();
+
+        model.put("transactions",result);
+
+        return new ModelAndView("adminDashboard_Transactions",model);
     }
 }
