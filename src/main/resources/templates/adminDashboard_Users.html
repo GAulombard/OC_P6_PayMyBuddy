@@ -55,9 +55,9 @@
 
 
 <!-- SECTION -->
-<div class="container">
+<div class="d-flex p-2 container-fluid">
     <div class="row">
-        <div class="col-12 col-lg-12">
+        <div class=" col-12 col-lg-12">
             <div class="card my-3 shadow">
                 <div class="card-body">
                     <h2 class="mt-4">Users</h2>
@@ -70,10 +70,12 @@
                             <th class="text-left">email</th>
                             <th class="text-left">password</th>
                             <th class="text-left">phone</th>
-                            <th class="text-left">address</th>
+                            <th class="text-left fluid">address</th>
                             <th class="text-left">zip</th>
                             <th class="text-left">city</th>
                             <th class="text-left">is_admin</th>
+                            <th class="text-left">accounts</th>
+                            <th class="text-left">contacts</th>
                             <th class="text-left"></th>
                         </tr>
                         </thead>
@@ -89,6 +91,8 @@
                             <td th:text="${users.zip}"></td>
                             <td th:text="${users.city}"></td>
                             <td th:text="${users.isAdmin}"></td>
+                            <td th:text="${users.accountList}"></td>
+<!--                            <td th:text="${users.contactList}"></td>-->
                         </tr>
                         </tbody>
                     </table>

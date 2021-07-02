@@ -1,6 +1,9 @@
 package com.openclassrooms.paymybuddy.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -37,6 +40,43 @@ public class User {
 
     @Column(name = "is_admin")
     private boolean isAdmin;
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
+            @JoinColumn(name = "user_id")
+    private List<BankAccount> accountList = new ArrayList<>();
+
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.ALL,
+            }
+    )
+    @JoinTable(
+            name = "contact",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "contact_user_id")
+    )
+    private List<User> contactList = new ArrayList<>();
+
+    public List<User> getContactList() {
+        return contactList;
+    }
+
+    public void setContactList(List<User> contactList) {
+        this.contactList = contactList;
+    }
+
+    public List<BankAccount> getAccountList() {
+        return accountList;
+    }
+
+    public void setAccountList(List<BankAccount> accountList) {
+        this.accountList = accountList;
+    }
 
     public int getUserID() {
         return userID;
