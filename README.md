@@ -1,5 +1,5 @@
 # Pay My Buddy
-![PayMyBuddy Ban](src/main/resources/templates/pictures/paymybuddy_ban.png)
+![PayMyBuddy Ban](src/main/resources/static/images/paymybuddy_ban.png)
 
 ## Description
 

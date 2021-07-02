@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
     <title>Pay My Buddy</title>
 </head>
 
@@ -55,7 +56,7 @@
 
 
 <!-- SECTION -->
-<div class="d-flex p-2 container-fluid">
+<div class="d-flex p-2 container-fluid justify-content-center">
     <div class="row">
         <div class=" col-12 col-lg-12">
             <div class="card my-3 shadow">
@@ -80,19 +81,27 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="users: ${users}">
-                            <td th:text="${users.userID}"></td>
-                            <td th:text="${users.firstName}"></td>
-                            <td th:text="${users.lastName}"></td>
-                            <td th:text="${users.email}"></td>
-                            <td th:text="${users.password}"></td>
-                            <td th:text="${users.phone}"></td>
-                            <td th:text="${users.address}"></td>
-                            <td th:text="${users.zip}"></td>
-                            <td th:text="${users.city}"></td>
-                            <td th:text="${users.isAdmin}"></td>
-                            <td th:text="${users.accountList}"></td>
-<!--                            <td th:text="${users.contactList}"></td>-->
+                        <tr th:each="user: ${users}">
+                            <td th:text="${user.userID}"></td>
+                            <td th:text="${user.firstName}"></td>
+                            <td th:text="${user.lastName}"></td>
+                            <td th:text="${user.email}" width="150"></td>
+                            <td th:text="${user.password}"></td>
+                            <td th:text="${user.phone}"></td>
+                            <td th:text="${user.address}"width="200"></td>
+                            <td th:text="${user.zip}"></td>
+                            <td th:text="${user.city}"></td>
+                            <td th:text="${user.isAdmin}"></td>
+                            <td width="50">
+                                <th:block th:each="account: ${user.accountList}">
+                                    <th:block th:text="${account.iban}"></th:block>
+                                </th:block>
+                            </td>
+                            <td width="150">
+                                <th:block th:each="contact: ${user.contactList}">
+                                    <th:block th:text="${contact.firstName+' '+contact.lastName}"></th:block>
+                                </th:block>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -108,9 +117,9 @@
         <div class="row">
             <div class="col">
                 <ul class="list-inline text-center">
-                    <li class="list-inline-item"><a href="#" class="text-dark">A propos</a></li>
+                    <li class="list-inline-item"><a href="#" class="text-dark">About</a></li>
                     <li class="list-inline-item text-dark">&middot;</li>
-                    <li class="list-inline-item"><a href="#" class="text-dark">Conditions d'utilisations</a></li>
+                    <li class="list-inline-item"><a href="#" class="text-dark">Terms of use</a></li>
                 </ul>
             </div>
         </div>

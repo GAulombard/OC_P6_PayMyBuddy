@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
     <title>Pay My Buddy</title>
 </head>
 
@@ -18,7 +19,8 @@
             <nav class="col navbar navbar-expand-lg bg-light navbar-light">
                 <div class="d-flex flex-grow-1">
                     <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
-                    <a class="btn btn-success btn-block btn-lg text-white" href="/index" role="button">Pay My Buddy</a>
+                    <a class="btn btn-success btn-block btn-lg text-white" href="./index.html" th:href="@{/index}"
+                       role="button">Pay My Buddy</a>
                     <div class="w-100 text-right">
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarContent">
@@ -55,16 +57,20 @@
 
 
 <!-- SECTION -->
-<div class="container">
+<div class="container justify-content-center">
     <div class="row">
         <div class="col-12 col-lg-12">
             <div class="card my-3 shadow">
                 <div class="card-body">
                     <h5 class="card-title">Welcome</h5>
-                    <img class="img-fluid" th:src="@{pictures/paymybuddy_ban.png}" alt="Media picture"/>
-                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur
+                    <img class="img-fluid" th:src="@{/images/paymybuddy_ban.png}" alt="Media picture"/>
+                    <p class="card-text"><br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur
                         quidem iste facilis iure doloribus quas repudiandae, corrupti deleniti nostrum odit earum
-                        voluptatibus vitae molestiae, at aspernatur odio enim assumenda necessitatibus.</p>
+                        voluptatibus vitae molestiae, at aspernatur odio enim assumenda necessitatibus.</p><br>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-primary btn-lg text-white" href="./login.html" th:href="@{/login}"
+                           role="button">Log-in</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,9 +83,9 @@
         <div class="row">
             <div class="col">
                 <ul class="list-inline text-center">
-                    <li class="list-inline-item"><a href="#" class="text-dark">A propos</a></li>
+                    <li class="list-inline-item"><a href="#" class="text-dark">About</a></li>
                     <li class="list-inline-item text-dark">&middot;</li>
-                    <li class="list-inline-item"><a href="#" class="text-dark">Conditions d'utilisations</a></li>
+                    <li class="list-inline-item"><a href="#" class="text-dark">Terms of use</a></li>
                 </ul>
             </div>
         </div>

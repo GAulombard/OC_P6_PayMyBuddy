@@ -28,6 +28,23 @@ public class adminController {
     @Autowired
     private TransactionService transactionService;
 
+
+    @GetMapping("/admin")
+    @Transactional
+    public ModelAndView getFullDashboard() {
+        LOGGER.info("HTTP GET request received at /admin");
+        Map<String, Object> model = new HashMap<String,Object>();
+        Iterable<User> users = userService.getUsers();
+        Iterable<BankAccount> accounts = bankAccountService.getAccounts();
+        Iterable<Transaction> transactions = transactionService.getTransactions();
+
+        model.put("users",users);
+        model.put("accounts",accounts);
+        model.put("transaction",transactions);
+
+        return new ModelAndView("admin/adminDashboard_Users",model);
+    }
+
     @GetMapping("/admin/users")
     @Transactional
     public ModelAndView getAllUsers() {
@@ -37,7 +54,7 @@ public class adminController {
 
         model.put("users",result);
 
-        return new ModelAndView("adminDashboard_Users",model);
+        return new ModelAndView("admin/adminDashboard_Users",model);
     }
 
     @GetMapping("/admin/accounts")
@@ -49,7 +66,7 @@ public class adminController {
 
         model.put("accounts",result);
 
-        return new ModelAndView("adminDashboard_Accounts",model);
+        return new ModelAndView("admin/adminDashboard_Accounts",model);
     }
 
     @GetMapping("/admin/transactions")
@@ -60,6 +77,6 @@ public class adminController {
 
         model.put("transactions",result);
 
-        return new ModelAndView("adminDashboard_Transactions",model);
+        return new ModelAndView("admin/adminDashboard_Transactions",model);
     }
 }
