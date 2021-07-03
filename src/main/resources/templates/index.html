@@ -19,7 +19,7 @@
             <nav class="col navbar navbar-expand-lg bg-light navbar-light">
                 <div class="d-flex flex-grow-1">
                     <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
-                    <a class="btn btn-success btn-block btn-lg text-white" href="./index.html" th:href="@{/index}"
+                    <a class="btn btn-success btn-block btn-lg text-white" href="./" th:href="@{/}"
                        role="button">Pay My Buddy</a>
                     <div class="w-100 text-right">
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -31,7 +31,7 @@
                 <div id="navbarContent" class="collapse navbar-collapse flex-grow-1 text-right">
                     <ul class="navbar-nav ml-auto flex-nowrap">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="">Home</a>
+                            <a class="nav-link text-dark" th:href="@{/home}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="#">Profile</a>
@@ -57,7 +57,7 @@
 
 
 <!-- SECTION -->
-<div class="container justify-content-center">
+<div class="container">
     <div class="row">
         <div class="col-12 col-lg-12">
             <div class="card my-3 shadow">
@@ -68,7 +68,7 @@
                         quidem iste facilis iure doloribus quas repudiandae, corrupti deleniti nostrum odit earum
                         voluptatibus vitae molestiae, at aspernatur odio enim assumenda necessitatibus.</p><br>
                     <div class="d-flex justify-content-center">
-                        <a class="btn btn-primary btn-lg text-white" href="./login.html" th:href="@{/login}"
+                        <a class="btn btn-primary btn-lg text-white" href="/login"
                            role="button">Log-in</a>
                     </div>
                 </div>

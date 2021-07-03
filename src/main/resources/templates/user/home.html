@@ -2,15 +2,15 @@
 
 <html lang="en" xmlns:th="http://wwww.thymeleaf.org">
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
     <title>Pay My Buddy</title>
 </head>
-
 
 <body>
 <div class="bg-light">
@@ -54,63 +54,21 @@
     </div>
 </div>
 
-
 <!-- SECTION -->
-<div class="d-flex p-2 container-fluid justify-content-center">
+<div class="container">
     <div class="row">
-        <div class=" col-12 col-lg-12">
+        <div class="col-12 col-lg-12">
             <div class="card my-3 shadow">
                 <div class="card-body">
-                    <h2 class="mt-4">Users</h2>
-                    <table class="table">
-                        <thead class="thead-light">
-                        <tr>
-                            <th class="text-left">user_id</th>
-                            <th class="text-left">first_name</th>
-                            <th class="text-left">last_name</th>
-                            <th class="text-left">email</th>
-                            <th class="text-left">password</th>
-                            <th class="text-left">phone</th>
-                            <th class="text-left fluid">address</th>
-                            <th class="text-left">zip</th>
-                            <th class="text-left">city</th>
-                            <th class="text-left">user_role</th>
-                            <th class="text-left">accounts</th>
-                            <th class="text-left">contacts</th>
-                            <th class="text-left"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="user: ${users}">
-                            <td th:text="${user.userID}"></td>
-                            <td th:text="${user.firstName}"></td>
-                            <td th:text="${user.lastName}"></td>
-                            <td th:text="${user.email}" width="150"></td>
-                            <td th:text="${user.password}"></td>
-                            <td th:text="${user.phone}"></td>
-                            <td th:text="${user.address}"width="200"></td>
-                            <td th:text="${user.zip}"></td>
-                            <td th:text="${user.city}"></td>
-                            <td th:text="${user.userRole}"></td>
-                            <td width="50">
-                                <th:block th:each="account: ${user.accountList}">
-                                    <th:block th:text="${account.iban}"></th:block>
-                                </th:block>
-                            </td>
-                            <td width="150">
-                                <th:block th:each="contact: ${user.contactList}">
-                                    <th:block th:text="${contact.firstName+' '+contact.lastName}"></th:block>
-                                </th:block>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <h5 class="card-title">Titre</h5>
+                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur
+                        quidem iste facilis iure doloribus quas repudiandae, corrupti deleniti nostrum odit earum
+                        voluptatibus vitae molestiae, at aspernatur odio enim assumenda necessitatibus.</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <!-- FOOTER -->
 <div class="bg-light">
     <div class="container">
@@ -125,7 +83,6 @@
         </div>
     </div>
 </div>
-
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

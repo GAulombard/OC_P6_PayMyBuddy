@@ -59,12 +59,24 @@
   <div class="row">
     <div class="col-12 col-lg-12">
       <div class="card my-3 shadow">
-        <div class="card-body">
-          <h5 class="card-title">Titre</h5>
-          <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur
-            quidem iste facilis iure doloribus quas repudiandae, corrupti deleniti nostrum odit earum
-            voluptatibus vitae molestiae, at aspernatur odio enim assumenda necessitatibus.</p>
-        </div>
+        <h5 class="card-title">Log-in</h5>
+        <div class="card-body d-flex justify-content-center">
+          <form>
+            <div class="form-group ">
+              <label for="InputEmail">Email address</label>
+              <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="InputPassword">Password</label>
+              <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="Check">
+              <label class="form-check-label" for="Check">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
       </div>
     </div>
   </div>

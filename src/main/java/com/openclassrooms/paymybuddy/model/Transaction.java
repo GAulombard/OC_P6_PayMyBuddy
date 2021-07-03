@@ -21,9 +21,6 @@ public class Transaction {
     @Column(name = "date")
     private LocalDate date;
 
-    @Column(name = "fee")
-    private double fee;
-
     public int getReference() {
         return reference;
     }
@@ -56,11 +53,4 @@ public class Transaction {
         this.date = date;
     }
 
-    public double getFee() {
-        return fee;
-    }
-
-    public void setFee(double fee) {
-        this.fee = fee;
-    }
 }

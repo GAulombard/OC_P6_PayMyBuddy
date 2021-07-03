@@ -18,9 +18,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-public class adminController {
+public class AdminController {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(adminController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(AdminController.class);
     @Autowired
     private UserService userService;
     @Autowired

@@ -38,15 +38,15 @@ public class User {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "is_admin")
-    private boolean isAdmin;
+    @Column(name = "user_role")
+    private String userRole;
 
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.EAGER
     )
-            @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id")
     private List<BankAccount> accountList = new ArrayList<>();
 
     @ManyToMany(
@@ -150,11 +150,11 @@ public class User {
         this.city = city;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public String getUserRole() {
+        return userRole;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 }

@@ -1,6 +1,11 @@
 CREATE DATABASE paymybuddy;
 
+
+
 USE paymybuddy;
+
+
+
 
 CREATE TABLE user (
                 user_id INT AUTO_INCREMENT NOT NULL,
@@ -8,11 +13,11 @@ CREATE TABLE user (
                 last_name VARCHAR(50) NOT NULL,
                 email VARCHAR(50) NOT NULL,
                 password VARCHAR(100) NOT NULL,
-                phone INT NOT NULL,
+                phone INT,
                 address VARCHAR(50) NOT NULL,
                 zip INT NOT NULL,
                 city VARCHAR(100) NOT NULL,
-                is_admin BOOLEAN DEFAULT FALSE NOT NULL,
+                user_role VARCHAR(50) DEFAULT "USER" NOT NULL,
                 PRIMARY KEY (user_id)
 );
 
@@ -22,9 +27,10 @@ CREATE UNIQUE INDEX user_idx
  ( email );
 
 CREATE TABLE contact (
-                user_id INT NOT NULL,
+                id INT AUTO_INCREMENT NOT NULL,
                 contact_user_id INT NOT NULL,
-                PRIMARY KEY (user_id, contact_user_id)
+                user_id INT NOT NULL,
+                PRIMARY KEY (id)
 );
 
 
@@ -43,10 +49,20 @@ CREATE TABLE transaction (
                 amount DOUBLE PRECISION NOT NULL,
                 message VARCHAR(200) NOT NULL,
                 date DATETIME NOT NULL,
-                fee DOUBLE PRECISION NOT NULL,
                 creditor VARCHAR(27) NOT NULL,
                 debtor VARCHAR(27) NOT NULL,
                 PRIMARY KEY (reference)
+);
+
+
+CREATE TABLE fee (
+                fee_id INT AUTO_INCREMENT NOT NULL,
+                iban_account VARCHAR(27) NOT NULL,
+                reference_transaction INT NOT NULL,
+                date DATETIME NOT NULL,
+                amount DOUBLE PRECISION NOT NULL,
+                rate100 DOUBLE PRECISION NOT NULL,
+                PRIMARY KEY (fee_id, iban_account, reference_transaction)
 );
 
 
@@ -77,5 +93,17 @@ ON UPDATE NO ACTION;
 ALTER TABLE transaction ADD CONSTRAINT bank_account_transaction_fk1
 FOREIGN KEY (debtor)
 REFERENCES bank_account (iban)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE fee ADD CONSTRAINT bank_account_fee_fk
+FOREIGN KEY (iban_account)
+REFERENCES bank_account (iban)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE fee ADD CONSTRAINT transaction_fee_fk
+FOREIGN KEY (reference_transaction)
+REFERENCES transaction (reference)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
