@@ -36,15 +36,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests(authorize -> {
-                    authorize.antMatchers("/","/index","/login","/signup","/error/403","/error/404")
+                    authorize.antMatchers("/","/index","/login","/signup","/error/403","/error/404","/signup/save")
                             .permitAll();
                 })
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                //.loginPage("/login.html")
-                //.defaultSuccessUrl("/", true)
+                .loginPage("/login")
                 .successHandler(AuthenticationSuccessHandler()) // customise success authentication handler
                 .and()
                 .httpBasic()
