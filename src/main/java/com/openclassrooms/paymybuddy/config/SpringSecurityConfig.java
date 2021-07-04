@@ -1,18 +1,22 @@
 package com.openclassrooms.paymybuddy.config;
 
+import com.openclassrooms.paymybuddy.security.UserAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true,jsr250Enabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -20,29 +24,35 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       /* auth.inMemoryAuthentication()
-                .withUser("user").password(passwordEncoder().encode("user")).roles("USER")
-                .and()
-                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN", "USER");*/
         auth.userDetailsService(userDetailsService);
     }
 
     @Override
-    public void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeRequests(authorize -> {
-                    authorize.antMatchers("/","/index","/login","/signup")
+                    authorize.antMatchers("/","/index","/login","/signup","/error/403","/error/404")
                             .permitAll();
                 })
                 .authorizeRequests()
-                .antMatchers("/admin","/admin/*").hasRole("ADMIN")
-                .antMatchers("/user","/user/*").hasAnyRole("USER","ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/", true);
-                //.loginPage("/login.html");
+                //.loginPage("/login.html")
+                //.defaultSuccessUrl("/", true)
+                .successHandler(AuthenticationSuccessHandler()) // customise success handler
+                .and()
+                .httpBasic()
+                .and()
+                .csrf()
+                .disable()
+                .exceptionHandling()
+                .accessDeniedPage("/error/403")
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                ;
 
     }
 
@@ -51,6 +61,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public AuthenticationSuccessHandler AuthenticationSuccessHandler() {
+        return new UserAuthenticationSuccessHandler();
+    }
 
 }
 

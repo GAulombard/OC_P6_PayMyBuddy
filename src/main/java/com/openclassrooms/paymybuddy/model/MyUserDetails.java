@@ -69,7 +69,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return firstName+lastName;
+        return "Logged as: "+firstName+" "+lastName;
     }
 
     @Override

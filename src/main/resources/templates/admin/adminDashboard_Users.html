@@ -1,6 +1,7 @@
 <!doctype html>
 
-<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org" class="h-100"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="utf-8">
@@ -16,41 +17,7 @@
 <div class="bg-light">
     <div class="container">
         <div class="row">
-            <nav class="col navbar navbar-expand-lg bg-light navbar-light">
-                <div class="d-flex flex-grow-1">
-                    <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
-                    <a class="btn btn-success btn-block btn-lg text-white" href="/"
-                       role="button">Pay My Buddy</a>
-                    <div class="w-100 text-right">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#navbarContent">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-                </div>
-                <div id="navbarContent" class="collapse navbar-collapse flex-grow-1 text-right">
-                    <ul class="navbar-nav ml-auto flex-nowrap">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/user/home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/user/profile">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/user/transfer">Transfer</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/user/contact">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/user/logoff">Log off</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/signup">Sign-Up</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <div th:replace="fragments/nav"></div>
         </div>
     </div>
 </div>
@@ -62,7 +29,7 @@
         <div class=" col-12 col-lg-12">
             <div class="card my-3 shadow">
                 <div class="card-body">
-                    <h2 class="mt-4">Users</h2>
+                    <h2 class="mt-4">Users<!--<th:block th:text="${user}"></th:block>--></h2>
                     <table class="table">
                         <thead class="thead-light">
                         <tr>
@@ -70,7 +37,7 @@
                             <th class="text-left">first_name</th>
                             <th class="text-left">last_name</th>
                             <th class="text-left">email</th>
-                            <th class="text-left">password</th>
+                            <!--<th class="text-left">password</th>-->
                             <th class="text-left">phone</th>
                             <th class="text-left fluid">address</th>
                             <th class="text-left">zip</th>
@@ -87,7 +54,7 @@
                             <td th:text="${user.firstName}"></td>
                             <td th:text="${user.lastName}"></td>
                             <td th:text="${user.email}" width="150"></td>
-                            <td th:text="${user.password}"></td>
+                            <!--<td th:text="${user.password}"></td>-->
                             <td th:text="${user.phone}"></td>
                             <td th:text="${user.address}"width="200"></td>
                             <td th:text="${user.zip}"></td>

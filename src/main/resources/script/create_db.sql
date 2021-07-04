@@ -17,7 +17,7 @@ CREATE TABLE user (
                 address VARCHAR(50) NOT NULL,
                 zip INT NOT NULL,
                 city VARCHAR(100) NOT NULL,
-                user_role VARCHAR(50) DEFAULT "USER" NOT NULL,
+                user_role VARCHAR(50) DEFAULT "ROLE_USER" NOT NULL,
                 PRIMARY KEY (user_id)
 );
 

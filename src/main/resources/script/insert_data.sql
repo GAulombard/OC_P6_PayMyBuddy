@@ -1,5 +1,5 @@
 ﻿INSERT INTO user (first_name,last_name,email,password,phone,address,zip,city,user_role)
-    VALUES ("Geoffrey","Aulombard","g.aulomb@jetmail.fr","$2y$10$d1CWMBxRNJcbznet9mzO8.dJuBRUMJmQYctlswcorLNDlw/CGlSCy",0674558612,"2 rue de ville",45000,"Orlyans","ADMIN");
+    VALUES ("Geoffrey","Aulombard","g.aulomb@jetmail.fr","$2y$10$d1CWMBxRNJcbznet9mzO8.dJuBRUMJmQYctlswcorLNDlw/CGlSCy",0674558612,"2 rue de ville",45000,"Orlyans","ROLE_ADMIN");
 INSERT INTO user (first_name,last_name,email,password,phone,address,zip,city)
     VALUES ("Jean","Bombeurre","j.bombeurre@jetmail.fr","$2y$10$d1CWMBxRNJcbznet9mzO8.dJuBRUMJmQYctlswcorLNDlw/CGlSCy",0679458612,"4 rue des snacks",75000,"Poris");
 INSERT INTO user (first_name,last_name,email,password,phone,address,zip,city)

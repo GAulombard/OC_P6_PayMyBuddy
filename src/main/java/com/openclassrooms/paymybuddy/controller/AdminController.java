@@ -9,10 +9,15 @@ import com.openclassrooms.paymybuddy.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +33,7 @@ public class AdminController {
     @Autowired
     private TransactionService transactionService;
 
-
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
     @Transactional
     public ModelAndView getFullDashboard() {
@@ -42,21 +47,23 @@ public class AdminController {
         model.put("accounts",accounts);
         model.put("transaction",transactions);
 
-        return new ModelAndView("admin/adminDashboard_Users",model);
+        return new ModelAndView("admin/adminFullDashboard",model);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/users")
     @Transactional
-    public ModelAndView getAllUsers() {
-        LOGGER.info("HTTP GET request received at /admin/users");
-        Map<String, Object> model = new HashMap<String,Object>();
+    public String getAllUsers(@AuthenticationPrincipal User user, Model model) {
+        LOGGER.info("HTTP GET request received at /admin/users by: ");
         Iterable<User> result = userService.getUsers();
 
-        model.put("users",result);
+        model.addAttribute("users",result);
+        //model.addAttribute("email",user.getEmail());
 
-        return new ModelAndView("admin/adminDashboard_Users",model);
+        return "admin/adminDashboard_Users";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/accounts")
     @Transactional
     public ModelAndView getAllBankAccounts() {
@@ -69,6 +76,7 @@ public class AdminController {
         return new ModelAndView("admin/adminDashboard_Accounts",model);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/transactions")
     public ModelAndView getAllTransactions() {
         LOGGER.info("HTTP GET request received at /admin/transactions");

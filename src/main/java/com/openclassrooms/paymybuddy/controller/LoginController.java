@@ -14,6 +14,7 @@ public class LoginController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
+
     @GetMapping("/login")
     public ModelAndView getLoginPage(){
         LOGGER.info("HTTP GET request received at /login");
