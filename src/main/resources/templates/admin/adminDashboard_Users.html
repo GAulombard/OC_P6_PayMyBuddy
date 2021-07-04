@@ -14,13 +14,9 @@
 
 
 <body>
-<div class="bg-light">
-    <div class="container">
-        <div class="row">
+
             <div th:replace="fragments/nav"></div>
-        </div>
-    </div>
-</div>
+
 
 
 <!-- SECTION -->
@@ -56,7 +52,7 @@
                             <td th:text="${user.email}" width="150"></td>
                             <!--<td th:text="${user.password}"></td>-->
                             <td th:text="${user.phone}"></td>
-                            <td th:text="${user.address}"width="200"></td>
+                            <td th:text="${user.address}"width="250"></td>
                             <td th:text="${user.zip}"></td>
                             <td th:text="${user.city}"></td>
                             <td th:text="${user.userRole}"></td>

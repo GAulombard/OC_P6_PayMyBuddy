@@ -1,10 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org" class="h-100"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <title>Pay My Buddy</title>
 </head>
+
+
 <body>
 
+<div th:replace="fragments/nav"></div>
+
+
+
+<!-- SECTION -->
+<div class="d-flex p-2 container-fluid justify-content-center">
+    <div class="row">
+        <div class=" col-12 col-lg-12">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <h2 class="mt-4">Users<!--<th:block th:text="${user}"></th:block>--></h2>
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="text-left">user_id</th>
+                            <th class="text-left">first_name</th>
+                            <th class="text-left">last_name</th>
+                            <th class="text-left">email</th>
+                            <!--<th class="text-left">password</th>-->
+                            <th class="text-left">phone</th>
+                            <th class="text-left fluid">address</th>
+                            <th class="text-left">zip</th>
+                            <th class="text-left">city</th>
+                            <th class="text-left">user_role</th>
+                            <th class="text-left">accounts</th>
+                            <th class="text-left">contacts</th>
+                            <th class="text-left"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="user: ${users}">
+                            <td th:text="${user.userID}"></td>
+                            <td th:text="${user.firstName}"></td>
+                            <td th:text="${user.lastName}"></td>
+                            <td th:text="${user.email}" width="150"></td>
+                            <!--<td th:text="${user.password}"></td>-->
+                            <td th:text="${user.phone}"></td>
+                            <td th:text="${user.address}"width="250"></td>
+                            <td th:text="${user.zip}"></td>
+                            <td th:text="${user.city}"></td>
+                            <td th:text="${user.userRole}"></td>
+                            <td width="50">
+                                <th:block th:each="account: ${user.accountList}">
+                                    <th:block th:text="${account.iban}"></th:block>
+                                </th:block>
+                            </td>
+                            <td width="150">
+                                <th:block th:each="contact: ${user.contactList}">
+                                    <th:block th:text="${contact.firstName+' '+contact.lastName}"></th:block>
+                                </th:block>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item"><a href="#" class="text-dark">About</a></li>
+                    <li class="list-inline-item text-dark">&middot;</li>
+                    <li class="list-inline-item"><a href="#" class="text-dark">Terms of use</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
 </body>
+
 </html>

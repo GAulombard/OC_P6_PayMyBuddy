@@ -1,6 +1,7 @@
 package com.openclassrooms.paymybuddy.controller;
 
 import com.openclassrooms.paymybuddy.PayMyBuddyApplication;
+import com.openclassrooms.paymybuddy.model.MyUserDetails;
 import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.service.UserService;
 import org.slf4j.Logger;
@@ -19,12 +20,33 @@ public class UserController {
     private final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
     private UserService userService;
 
-    //@PreAuthorize("hasRole('USER')")
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/home")
-    public String getHome(@AuthenticationPrincipal User user, Model model) {
-        LOGGER.info("HTTP GET request received at /user/home by: ");
+    public String getHome(@AuthenticationPrincipal MyUserDetails user, Model model) {
+        LOGGER.info("HTTP GET request received at /user/home by: "+user.getEmail());
         return "user/home";
+    }
+
+    @RolesAllowed({"USER","ADMIN"})
+    @GetMapping("/user/contact")
+    public String getContact(@AuthenticationPrincipal MyUserDetails user, Model model) {
+        LOGGER.info("HTTP GET request received at /user/contact by: "+user.getEmail());
+        return "user/contact";
+    }
+
+    @RolesAllowed({"USER","ADMIN"})
+    @GetMapping("/user/profile")
+    public String getProfile(@AuthenticationPrincipal MyUserDetails user, Model model) {
+        LOGGER.info("HTTP GET request received at /user/profile by: "+user.getEmail());
+        model.addAttribute("user",user);
+        return "user/profile";
+    }
+
+    @RolesAllowed({"USER","ADMIN"})
+    @GetMapping("/user/transfer")
+    public String getTransfer(@AuthenticationPrincipal MyUserDetails user, Model model) {
+        LOGGER.info("HTTP GET request received at /user/transfer by: "+user.getEmail());
+        return "user/transfer";
     }
 
 }

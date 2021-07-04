@@ -1,9 +1,8 @@
 package com.openclassrooms.paymybuddy.controller;
 
-import com.openclassrooms.paymybuddy.model.BankAccount;
-import com.openclassrooms.paymybuddy.model.Transaction;
-import com.openclassrooms.paymybuddy.model.User;
+import com.openclassrooms.paymybuddy.model.*;
 import com.openclassrooms.paymybuddy.service.BankAccountService;
+import com.openclassrooms.paymybuddy.service.FeeService;
 import com.openclassrooms.paymybuddy.service.TransactionService;
 import com.openclassrooms.paymybuddy.service.UserService;
 import org.slf4j.Logger;
@@ -19,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +32,9 @@ public class AdminController {
     private BankAccountService bankAccountService;
     @Autowired
     private TransactionService transactionService;
+
+    @Autowired
+    private FeeService feeService;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
@@ -53,12 +56,11 @@ public class AdminController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/users")
     @Transactional
-    public String getAllUsers(@AuthenticationPrincipal User user, Model model) {
-        LOGGER.info("HTTP GET request received at /admin/users by: ");
+    public String getAllUsers(@AuthenticationPrincipal MyUserDetails user, Model model) {
+        LOGGER.info("HTTP GET request received at /admin/users by: "+user.getEmail());
         Iterable<User> result = userService.getUsers();
 
         model.addAttribute("users",result);
-        //model.addAttribute("email",user.getEmail());
 
         return "admin/adminDashboard_Users";
     }
@@ -86,5 +88,17 @@ public class AdminController {
         model.put("transactions",result);
 
         return new ModelAndView("admin/adminDashboard_Transactions",model);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/fees")
+    @Transactional
+    public String getAllFees(@AuthenticationPrincipal MyUserDetails user, Model model) {
+        LOGGER.info("HTTP GET request received at /admin/fees by: "+user.getEmail());
+        Iterable<Fee> result = feeService.getFees();
+
+        model.addAttribute("fees",result);
+
+        return "admin/adminDashboard_Fees";
     }
 }

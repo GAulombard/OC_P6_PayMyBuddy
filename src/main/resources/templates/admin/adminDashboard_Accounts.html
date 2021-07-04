@@ -14,13 +14,9 @@
 
 
 <body>
-<div class="bg-light">
-  <div class="container">
-    <div class="row">
+
       <div th:replace="fragments/nav"></div>
-    </div>
-  </div>
-</div>
+
 
 
 <!-- SECTION -->
@@ -36,7 +32,7 @@
               <th class="text-left">iban</th>
               <th class="text-left">bank_establishment</th>
               <th class="text-left">bic</th>
-              <th class="text-left">balance_(€)</th>
+              <th class="text-left">balance</th>
               <th class="text-left">user_id</th>
               <th class="text-left"></th>
             </tr>
@@ -46,7 +42,7 @@
               <td th:text="${accounts.iban}"></td>
               <td th:text="${accounts.bankEstablishment}"></td>
               <td th:text="${accounts.bic}"></td>
-              <td th:text="${accounts.balance}"></td>
+              <td th:text="${accounts.balance}+ €"></td>
               <td th:text="${accounts.accountOwner}"></td>
             </tr>
             </tbody>

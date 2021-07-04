@@ -1,6 +1,7 @@
 package com.openclassrooms.paymybuddy.config;
 
 import com.openclassrooms.paymybuddy.security.UserAuthenticationSuccessHandler;
+import com.openclassrooms.paymybuddy.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +20,11 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @EnableGlobalMethodSecurity(prePostEnabled = true,jsr250Enabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /*@Autowired
+    UserDetailsService userDetailsService;*/
+
     @Autowired
-    UserDetailsService userDetailsService;
+    MyUserDetailsService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -41,7 +45,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 //.loginPage("/login.html")
                 //.defaultSuccessUrl("/", true)
-                .successHandler(AuthenticationSuccessHandler()) // customise success handler
+                .successHandler(AuthenticationSuccessHandler()) // customise success authentication handler
                 .and()
                 .httpBasic()
                 .and()
@@ -51,6 +55,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedPage("/error/403")
                 .and()
                 .logout()
+                .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 ;
 

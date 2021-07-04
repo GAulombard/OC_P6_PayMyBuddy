@@ -1,41 +1,76 @@
-<nav class="col navbar navbar-expand-lg bg-light navbar-light">
-  <div class="d-flex flex-grow-1">
-    <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
-    <a class="btn btn-success btn-block btn-lg text-white" href="/"
-       role="button">Pay My Buddy</a>
-    <div class="w-100 text-right">
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-              data-target="#navbarContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<div class="bg-light">
+    <div class="container">
+        <div class="row">
+            <nav class="col navbar navbar-expand-lg bg-light navbar-light">
+                <div class="d-flex flex-grow-1">
+                    <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
+                    <a class="btn btn-success btn-block btn-lg text-white" href="/"
+                       role="button">Pay My Buddy</a>
+                    <div class="w-100 text-right">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarContent">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+                <div id="navbarContent" class="collapse navbar-collapse flex-grow-1 text-right">
+                    <ul class="navbar-nav ml-auto flex-nowrap">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/user/home" sec:authorize="isAuthenticated()">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/user/profile"
+                               sec:authorize="isAuthenticated()">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/user/transfer" sec:authorize="isAuthenticated()">Transfer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/user/contact"
+                               sec:authorize="isAuthenticated()">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/logout" sec:authorize="isAuthenticated()">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/signup" sec:authorize="isAnonymous()">Sign-Up</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </div>
-  </div>
-  <div id="navbarContent" class="collapse navbar-collapse flex-grow-1 text-right">
-    <ul class="navbar-nav ml-auto flex-nowrap">
-      <li class="nav-item">
-        <a class="nav-link text-dark" href="/user/home" sec:authorize="isAuthenticated()">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-dark" href="/user/profile" sec:authorize="isAuthenticated()">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-dark" href="/user/transfer" sec:authorize="isAuthenticated()">Transfer</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-dark" href="/user/contact" sec:authorize="isAuthenticated()">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-dark" href="/user/logoff" sec:authorize="isAuthenticated()">Log off</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-dark" href="/signup" sec:authorize="isAnonymous()">Sign-Up</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-dark" href="#" sec:authorize="isAuthenticated()">
-        <span sec:authentication="name"sec:authorize="isAuthenticated()"></span>
-        <span sec:authentication="principal.authorities"sec:authorize="isAuthenticated()"></span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
+</div>
+<div class="container" sec:authorize="isAuthenticated()">
+    <div class="row">
+        <nav class="col navbar navbar-expand-lg bg-white navbar-white">
+            <div id="navbarAdmin" class="flex-grow-1 text-left">
+                <ul class="navbar-nav ml-auto flex-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/admin" sec:authorize="hasRole('ADMIN')">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/admin/users"
+                           sec:authorize="hasRole('ADMIN')">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/admin/accounts"
+                           sec:authorize="hasRole('ADMIN')">Accounts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/admin/transactions"
+                           sec:authorize="hasRole('ADMIN')">Transactions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/admin/fees"
+                           sec:authorize="hasRole('ADMIN')">Fees</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="flex-grow1 text-right">
+            <span sec:authentication="name" sec:authorize="isAuthenticated()"></span>
+            <span sec:authentication="principal.authorities" sec:authorize="isAuthenticated()"></span>
+        </div>
+    </div>
+</div>
