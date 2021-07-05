@@ -63,7 +63,7 @@
                             </td>
                             <td width="150">
                                 <th:block th:each="contact: ${user.contactList}">
-                                    <th:block th:text="${contact.firstName+' '+contact.lastName}"></th:block>
+                                    <th:block th:text="${contact}"></th:block>
                                 </th:block>
                             </td>
                         </tr>

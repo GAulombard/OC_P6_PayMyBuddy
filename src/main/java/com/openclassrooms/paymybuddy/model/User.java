@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -49,7 +50,7 @@ public class User {
     @JoinColumn(name = "user_id")
     private List<BankAccount> accountList = new ArrayList<>();
 
-    @ManyToMany(
+/*    @OneToMany(
             fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.ALL,
@@ -59,14 +60,15 @@ public class User {
             name = "contact",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "contact_user_id")
-    )
-    private List<User> contactList = new ArrayList<>();
+    )*/
+    @OneToMany(mappedBy = "userId")
+    private List<Contact> contactList;
 
-    public List<User> getContactList() {
+    public List<Contact> getContactList() {
         return contactList;
     }
 
-    public void setContactList(List<User> contactList) {
+    public void setContactList(List<Contact> contactList) {
         this.contactList = contactList;
     }
 
