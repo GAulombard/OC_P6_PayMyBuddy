@@ -13041,3 +13041,208 @@ org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property o
 2021-07-05 09:04:34.265  INFO 7012 --- [http-nio-80-exec-5] c.o.p.controller.AnonymousController     : HTTP GET request received at /index
 2021-07-05 09:04:34.582  INFO 7012 --- [http-nio-80-exec-7] c.o.p.controller.LoginController         : HTTP GET request received at /login
 2021-07-05 09:04:34.594  INFO 7012 --- [http-nio-80-exec-8] c.o.p.controller.LoginController         : HTTP GET request received at /login
+2021-07-05 10:38:57.939  INFO 11080 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Starting PayMyBuddyApplication using Java 11.0.11 on DESKTOP-2K67CMT with PID 11080 (D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy\target\classes started by Hodor-Fixe in D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy)
+2021-07-05 10:38:57.955  INFO 11080 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : No active profile set, falling back to default profiles: default
+2021-07-05 10:38:58.734  INFO 11080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-05 10:38:58.786  INFO 11080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 4 JPA repository interfaces.
+2021-07-05 10:38:59.392  INFO 11080 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1e0fdb2f' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-05 10:38:59.413  INFO 11080 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-05 10:38:59.665  INFO 11080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2021-07-05 10:38:59.677  INFO 11080 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-05 10:38:59.677  INFO 11080 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2021-07-05 10:38:59.784  INFO 11080 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-05 10:38:59.785  INFO 11080 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1776 ms
+2021-07-05 10:38:59.991  INFO 11080 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-05 10:39:00.242  INFO 11080 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-05 10:39:00.282  INFO 11080 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-05 10:39:00.327  INFO 11080 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-05 10:39:00.450  INFO 11080 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-05 10:39:00.659  INFO 11080 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-07-05 10:39:01.274  INFO 11080 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-05 10:39:01.294  INFO 11080 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-05 10:39:01.347  WARN 11080 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-05 10:39:01.880  INFO 11080 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6fe77a97, org.springframework.security.web.context.SecurityContextPersistenceFilter@4f629aa4, org.springframework.security.web.header.HeaderWriterFilter@1ac71b87, org.springframework.security.web.authentication.logout.LogoutFilter@65f36591, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6addfa22, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@64c37088, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@f348e10, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@24d097c8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5cea47a1, org.springframework.security.web.session.SessionManagementFilter@3986b9e9, org.springframework.security.web.access.ExceptionTranslationFilter@2aa65672, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4529048e]
+2021-07-05 10:39:02.090  INFO 11080 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-07-05 10:39:02.416  INFO 11080 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 5 endpoint(s) beneath base path '/actuator'
+2021-07-05 10:39:02.481  INFO 11080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2021-07-05 10:39:02.495  INFO 11080 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Started PayMyBuddyApplication in 5.246 seconds (JVM running for 5.997)
+2021-07-05 10:39:02.986  INFO 11080 --- [RMI TCP Connection(3)-192.168.1.17] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-05 10:39:02.987  INFO 11080 --- [RMI TCP Connection(3)-192.168.1.17] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-05 10:39:02.989  INFO 11080 --- [RMI TCP Connection(3)-192.168.1.17] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-07-05 10:39:03.701  INFO 11080 --- [http-nio-80-exec-2] c.o.p.controller.LoginController         : HTTP GET request received at /login
+2021-07-05 10:39:04.074  INFO 11080 --- [http-nio-80-exec-4] c.o.p.controller.LoginController         : HTTP GET request received at /login
+2021-07-05 10:39:08.297  INFO 11080 --- [http-nio-80-exec-5] c.o.p.service.MyUserDetailsService       : Process to authentication
+2021-07-05 10:39:08.465  INFO 11080 --- [http-nio-80-exec-5] c.o.p.service.MyUserDetailsService       : User: g.aulomb@jetmail.fr authentication success.
+2021-07-05 10:39:08.563  INFO 11080 --- [http-nio-80-exec-5] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 10:39:08.580  INFO 11080 --- [http-nio-80-exec-6] c.o.p.controller.AdminController         : HTTP GET request received at /admin
+2021-07-05 10:39:08.581  INFO 11080 --- [http-nio-80-exec-6] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-05 10:39:08.605  INFO 11080 --- [http-nio-80-exec-6] c.o.p.service.BankAccountService         : Process to get all accounts
+2021-07-05 10:39:08.623  INFO 11080 --- [http-nio-80-exec-6] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-05 10:39:08.650  INFO 11080 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 10:39:36.065  INFO 11080 --- [http-nio-80-exec-8] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 10:40:18.859  INFO 11080 --- [http-nio-80-exec-10] c.o.p.controller.AnonymousController     : HTTP GET request received at /index
+2021-07-05 10:40:18.867  INFO 11080 --- [http-nio-80-exec-10] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 10:40:23.503  INFO 11080 --- [http-nio-80-exec-3] c.o.p.controller.AdminController         : HTTP GET request received at /admin
+2021-07-05 10:40:23.504  INFO 11080 --- [http-nio-80-exec-3] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-05 10:40:23.533  INFO 11080 --- [http-nio-80-exec-3] c.o.p.service.BankAccountService         : Process to get all accounts
+2021-07-05 10:40:23.540  INFO 11080 --- [http-nio-80-exec-3] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-05 10:40:23.553  INFO 11080 --- [http-nio-80-exec-3] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 10:41:41.464  INFO 5688 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Starting PayMyBuddyApplication using Java 11.0.11 on DESKTOP-2K67CMT with PID 5688 (D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy\target\classes started by Hodor-Fixe in D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy)
+2021-07-05 10:41:41.492  INFO 5688 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : No active profile set, falling back to default profiles: default
+2021-07-05 10:41:42.074  INFO 5688 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-05 10:41:42.130  INFO 5688 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 4 JPA repository interfaces.
+2021-07-05 10:41:42.638  INFO 5688 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@2525a5b8' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-05 10:41:42.646  INFO 5688 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-05 10:41:42.916  INFO 5688 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2021-07-05 10:41:42.925  INFO 5688 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-05 10:41:42.926  INFO 5688 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2021-07-05 10:41:43.018  INFO 5688 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-05 10:41:43.019  INFO 5688 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1478 ms
+2021-07-05 10:41:43.219  INFO 5688 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-05 10:41:43.498  INFO 5688 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-05 10:41:43.540  INFO 5688 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-05 10:41:43.585  INFO 5688 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-05 10:41:43.706  INFO 5688 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-05 10:41:43.826  INFO 5688 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-07-05 10:41:44.406  INFO 5688 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-05 10:41:44.416  INFO 5688 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-05 10:41:44.465  WARN 5688 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-05 10:41:45.033  INFO 5688 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6addfa22, org.springframework.security.web.context.SecurityContextPersistenceFilter@3e0b1f03, org.springframework.security.web.header.HeaderWriterFilter@33622388, org.springframework.security.web.authentication.logout.LogoutFilter@48928b57, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@45b2d17b, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1fb61db4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@51d9479c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6094ad4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@74b521c, org.springframework.security.web.session.SessionManagementFilter@6e664075, org.springframework.security.web.access.ExceptionTranslationFilter@255d4d7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@458704ee]
+2021-07-05 10:41:45.259  INFO 5688 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-07-05 10:41:45.563  INFO 5688 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 5 endpoint(s) beneath base path '/actuator'
+2021-07-05 10:41:45.627  INFO 5688 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2021-07-05 10:41:45.641  INFO 5688 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Started PayMyBuddyApplication in 4.69 seconds (JVM running for 5.463)
+2021-07-05 10:41:46.019  INFO 5688 --- [RMI TCP Connection(2)-192.168.1.17] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-05 10:41:46.021  INFO 5688 --- [RMI TCP Connection(2)-192.168.1.17] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-05 10:41:46.024  INFO 5688 --- [RMI TCP Connection(2)-192.168.1.17] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-07-05 10:41:57.920  INFO 5688 --- [http-nio-80-exec-2] c.o.p.controller.LoginController         : HTTP GET request received at /login
+2021-07-05 10:41:58.354  INFO 5688 --- [http-nio-80-exec-4] c.o.p.controller.LoginController         : HTTP GET request received at /login
+2021-07-05 10:42:01.557  INFO 5688 --- [http-nio-80-exec-5] c.o.p.service.MyUserDetailsService       : Process to authentication
+2021-07-05 10:42:01.759  INFO 5688 --- [http-nio-80-exec-5] c.o.p.service.MyUserDetailsService       : User: g.aulomb@jetmail.fr authentication success.
+2021-07-05 10:42:01.863  INFO 5688 --- [http-nio-80-exec-5] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 10:42:01.880  INFO 5688 --- [http-nio-80-exec-6] c.o.p.controller.AdminController         : HTTP GET request received at /admin
+2021-07-05 10:42:01.880  INFO 5688 --- [http-nio-80-exec-6] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-05 10:42:01.905  INFO 5688 --- [http-nio-80-exec-6] c.o.p.service.BankAccountService         : Process to get all accounts
+2021-07-05 10:42:01.925  INFO 5688 --- [http-nio-80-exec-6] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-05 10:42:01.954  INFO 5688 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 10:43:59.869  INFO 7764 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Starting PayMyBuddyApplication using Java 11.0.11 on DESKTOP-2K67CMT with PID 7764 (D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy\target\classes started by Hodor-Fixe in D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy)
+2021-07-05 10:43:59.896  INFO 7764 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : No active profile set, falling back to default profiles: default
+2021-07-05 10:44:00.776  INFO 7764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-05 10:44:00.848  INFO 7764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 4 JPA repository interfaces.
+2021-07-05 10:44:01.496  INFO 7764 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@3458eca5' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-05 10:44:01.504  INFO 7764 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-05 10:44:01.781  INFO 7764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2021-07-05 10:44:01.790  INFO 7764 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-05 10:44:01.791  INFO 7764 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2021-07-05 10:44:01.896  INFO 7764 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-05 10:44:01.897  INFO 7764 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1956 ms
+2021-07-05 10:44:02.146  INFO 7764 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-05 10:44:02.436  INFO 7764 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-05 10:44:02.483  INFO 7764 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-05 10:44:02.532  INFO 7764 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-05 10:44:02.663  INFO 7764 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-05 10:44:02.787  INFO 7764 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-07-05 10:44:03.566  INFO 7764 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-05 10:44:03.578  INFO 7764 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-05 10:44:03.638  WARN 7764 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-05 10:44:04.336  INFO 7764 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@215404a1, org.springframework.security.web.context.SecurityContextPersistenceFilter@64cec4d0, org.springframework.security.web.header.HeaderWriterFilter@4f629aa4, org.springframework.security.web.authentication.logout.LogoutFilter@6693818c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2e5c245d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2d527346, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@45e9db77, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@48928b57, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@391b03b, org.springframework.security.web.session.SessionManagementFilter@f348e10, org.springframework.security.web.access.ExceptionTranslationFilter@1ac71b87, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3220833f]
+2021-07-05 10:44:04.607  INFO 7764 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-07-05 10:44:04.984  INFO 7764 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 5 endpoint(s) beneath base path '/actuator'
+2021-07-05 10:44:05.059  INFO 7764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2021-07-05 10:44:05.075  INFO 7764 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Started PayMyBuddyApplication in 5.836 seconds (JVM running for 6.669)
+2021-07-05 10:44:05.421  INFO 7764 --- [RMI TCP Connection(3)-192.168.1.17] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-05 10:44:05.423  INFO 7764 --- [RMI TCP Connection(3)-192.168.1.17] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-05 10:44:05.425  INFO 7764 --- [RMI TCP Connection(3)-192.168.1.17] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-07-05 10:44:16.488  INFO 7452 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Starting PayMyBuddyApplication using Java 11.0.11 on DESKTOP-2K67CMT with PID 7452 (D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy\target\classes started by Hodor-Fixe in D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy)
+2021-07-05 10:44:16.515  INFO 7452 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : No active profile set, falling back to default profiles: default
+2021-07-05 10:44:17.075  INFO 7452 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-05 10:44:17.157  INFO 7452 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 4 JPA repository interfaces.
+2021-07-05 10:44:17.618  INFO 7452 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1e0fdb2f' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-05 10:44:17.624  INFO 7452 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-05 10:44:17.845  INFO 7452 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2021-07-05 10:44:17.854  INFO 7452 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-05 10:44:17.855  INFO 7452 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2021-07-05 10:44:17.950  INFO 7452 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-05 10:44:17.951  INFO 7452 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1391 ms
+2021-07-05 10:44:18.132  INFO 7452 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-05 10:44:18.367  INFO 7452 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-05 10:44:18.404  INFO 7452 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-05 10:44:18.456  INFO 7452 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-05 10:44:18.622  INFO 7452 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-05 10:44:18.724  INFO 7452 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-07-05 10:44:19.318  INFO 7452 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-05 10:44:19.335  INFO 7452 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-05 10:44:19.384  WARN 7452 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-05 10:44:19.985  INFO 7452 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6fe77a97, org.springframework.security.web.context.SecurityContextPersistenceFilter@4f629aa4, org.springframework.security.web.header.HeaderWriterFilter@1ac71b87, org.springframework.security.web.authentication.logout.LogoutFilter@65f36591, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6addfa22, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@64c37088, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@f348e10, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@24d097c8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5cea47a1, org.springframework.security.web.session.SessionManagementFilter@3986b9e9, org.springframework.security.web.access.ExceptionTranslationFilter@2aa65672, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4529048e]
+2021-07-05 10:44:20.198  INFO 7452 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-07-05 10:44:20.559  INFO 7452 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 5 endpoint(s) beneath base path '/actuator'
+2021-07-05 10:44:20.624  INFO 7452 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2021-07-05 10:44:20.639  INFO 7452 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Started PayMyBuddyApplication in 4.619 seconds (JVM running for 5.488)
+2021-07-05 10:44:20.752  INFO 7452 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-05 10:44:20.753  INFO 7452 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-05 10:44:20.756  INFO 7452 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-07-05 10:44:20.853  INFO 7452 --- [http-nio-80-exec-2] c.o.p.controller.LoginController         : HTTP GET request received at /login
+2021-07-05 10:44:21.326  INFO 7452 --- [http-nio-80-exec-4] c.o.p.controller.LoginController         : HTTP GET request received at /login
+2021-07-05 10:44:24.864  INFO 7452 --- [http-nio-80-exec-5] c.o.p.service.MyUserDetailsService       : Process to authentication
+2021-07-05 10:44:25.048  INFO 7452 --- [http-nio-80-exec-5] c.o.p.service.MyUserDetailsService       : User: g.aulomb@jetmail.fr authentication success.
+2021-07-05 10:44:25.144  INFO 7452 --- [http-nio-80-exec-5] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 10:44:25.239  INFO 7452 --- [http-nio-80-exec-6] c.o.p.controller.AdminController         : HTTP GET request received at /admin
+2021-07-05 10:44:25.240  INFO 7452 --- [http-nio-80-exec-6] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-05 10:44:25.264  INFO 7452 --- [http-nio-80-exec-6] c.o.p.service.BankAccountService         : Process to get all accounts
+2021-07-05 10:44:25.283  INFO 7452 --- [http-nio-80-exec-6] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-05 10:44:25.313  INFO 7452 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 12:07:08.987  INFO 3596 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Starting PayMyBuddyApplication using Java 11.0.11 on DESKTOP-2K67CMT with PID 3596 (D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy\target\classes started by Hodor-Fixe in D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy)
+2021-07-05 12:07:09.028  INFO 3596 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : No active profile set, falling back to default profiles: default
+2021-07-05 12:07:09.738  INFO 3596 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-05 12:07:09.797  INFO 3596 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 4 JPA repository interfaces.
+2021-07-05 12:07:10.341  INFO 3596 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@3458eca5' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-05 12:07:10.357  INFO 3596 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-05 12:07:10.582  INFO 3596 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2021-07-05 12:07:10.590  INFO 3596 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-05 12:07:10.591  INFO 3596 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2021-07-05 12:07:10.686  INFO 3596 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-05 12:07:10.687  INFO 3596 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1592 ms
+2021-07-05 12:07:10.884  INFO 3596 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-05 12:07:11.155  INFO 3596 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-05 12:07:11.193  INFO 3596 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-05 12:07:11.231  INFO 3596 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-05 12:07:11.334  INFO 3596 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-05 12:07:11.429  INFO 3596 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-07-05 12:07:11.977  INFO 3596 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-05 12:07:12.005  INFO 3596 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-05 12:07:12.062  WARN 3596 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-05 12:07:12.649  INFO 3596 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@215404a1, org.springframework.security.web.context.SecurityContextPersistenceFilter@64cec4d0, org.springframework.security.web.header.HeaderWriterFilter@4f629aa4, org.springframework.security.web.authentication.logout.LogoutFilter@6693818c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2e5c245d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2d527346, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@45e9db77, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@48928b57, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@391b03b, org.springframework.security.web.session.SessionManagementFilter@f348e10, org.springframework.security.web.access.ExceptionTranslationFilter@1ac71b87, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3220833f]
+2021-07-05 12:07:12.857  INFO 3596 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-07-05 12:07:13.216  INFO 3596 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 5 endpoint(s) beneath base path '/actuator'
+2021-07-05 12:07:13.286  INFO 3596 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2021-07-05 12:07:13.301  INFO 3596 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Started PayMyBuddyApplication in 4.715 seconds (JVM running for 5.585)
+2021-07-05 12:07:13.720  INFO 3596 --- [RMI TCP Connection(2)-192.168.1.17] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-05 12:07:13.723  INFO 3596 --- [RMI TCP Connection(2)-192.168.1.17] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-05 12:07:13.726  INFO 3596 --- [RMI TCP Connection(2)-192.168.1.17] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2021-07-05 12:07:13.956  INFO 3596 --- [http-nio-80-exec-1] c.o.p.controller.LoginController         : HTTP GET request received at /login
+2021-07-05 12:07:14.531  INFO 3596 --- [http-nio-80-exec-4] c.o.p.controller.LoginController         : HTTP GET request received at /login
+2021-07-05 12:07:18.867  INFO 3596 --- [http-nio-80-exec-5] c.o.p.service.MyUserDetailsService       : Process to authentication
+2021-07-05 12:07:19.049  INFO 3596 --- [http-nio-80-exec-5] c.o.p.service.MyUserDetailsService       : User: g.aulomb@jetmail.fr authentication success.
+2021-07-05 12:07:19.154  INFO 3596 --- [http-nio-80-exec-5] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 12:07:19.175  INFO 3596 --- [http-nio-80-exec-6] c.o.p.controller.AdminController         : HTTP GET request received at /admin
+2021-07-05 12:07:19.182  INFO 3596 --- [http-nio-80-exec-6] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-05 12:07:19.203  INFO 3596 --- [http-nio-80-exec-6] c.o.p.service.BankAccountService         : Process to get all accounts
+2021-07-05 12:07:19.221  INFO 3596 --- [http-nio-80-exec-6] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-05 12:07:19.252  INFO 3596 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 12:07:24.207  INFO 3596 --- [http-nio-80-exec-8] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
+2021-07-05 12:07:24.208  INFO 3596 --- [http-nio-80-exec-8] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-05 12:07:24.258  INFO 3596 --- [http-nio-80-exec-8] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 12:07:28.763  INFO 3596 --- [http-nio-80-exec-10] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts
+2021-07-05 12:07:28.764  INFO 3596 --- [http-nio-80-exec-10] c.o.p.service.BankAccountService         : Process to get all accounts
+2021-07-05 12:07:28.780  INFO 3596 --- [http-nio-80-exec-10] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 12:07:30.277  INFO 3596 --- [http-nio-80-exec-1] c.o.p.controller.AdminController         : HTTP GET request received at /admin/transactions
+2021-07-05 12:07:30.278  INFO 3596 --- [http-nio-80-exec-1] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-05 12:07:30.302  INFO 3596 --- [http-nio-80-exec-1] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 12:07:31.739  INFO 3596 --- [http-nio-80-exec-4] c.o.p.controller.AdminController         : HTTP GET request received at /admin/fees by: g.aulomb@jetmail.fr
+2021-07-05 12:07:31.740  INFO 3596 --- [http-nio-80-exec-4] c.o.paymybuddy.service.FeeService        : Process to get all fees
+2021-07-05 12:07:31.766  INFO 3596 --- [http-nio-80-exec-4] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-05 12:07:33.397  INFO 3596 --- [http-nio-80-exec-6] c.o.p.controller.AdminController         : HTTP GET request received at /admin
+2021-07-05 12:07:33.398  INFO 3596 --- [http-nio-80-exec-6] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-05 12:07:33.411  INFO 3596 --- [http-nio-80-exec-6] c.o.p.service.BankAccountService         : Process to get all accounts
+2021-07-05 12:07:33.414  INFO 3596 --- [http-nio-80-exec-6] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-05 12:07:33.421  INFO 3596 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]

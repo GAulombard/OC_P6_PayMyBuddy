@@ -27,7 +27,7 @@ This is a Spring Boot Application, working with:
 
 - Spring Web
 - Spring Security
-- Spring JPA
+- Spring DATA JPA
 - MySQL
 - Thymeleaf
 

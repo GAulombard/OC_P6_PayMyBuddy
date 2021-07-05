@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,9 +18,9 @@ public class LoginController {
 
     @PreAuthorize("isAnonymous()")
     @GetMapping("/login")
-    public ModelAndView getLoginPage(){
+    public String getLoginPage(Model model){
         LOGGER.info("HTTP GET request received at /login");
-        Map<String, Object> model = new HashMap<String,Object>();
-        return new ModelAndView("login",model);
+
+        return "login";
     }
 }

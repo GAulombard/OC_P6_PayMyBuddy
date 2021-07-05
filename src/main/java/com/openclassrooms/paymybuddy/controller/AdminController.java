@@ -39,18 +39,18 @@ public class AdminController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
     @Transactional
-    public ModelAndView getFullDashboard() {
+    public String getFullDashboard(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /admin");
-        Map<String, Object> model = new HashMap<String,Object>();
+
         Iterable<User> users = userService.getUsers();
         Iterable<BankAccount> accounts = bankAccountService.getAccounts();
         Iterable<Transaction> transactions = transactionService.getTransactions();
 
-        model.put("users",users);
-        model.put("accounts",accounts);
-        model.put("transaction",transactions);
+        model.addAttribute("users",users);
+        model.addAttribute("accounts",accounts);
+        model.addAttribute("transaction",transactions);
 
-        return new ModelAndView("admin/adminFullDashboard",model);
+        return "admin/adminFullDashboard";
     }
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -68,26 +68,26 @@ public class AdminController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/accounts")
     @Transactional
-    public ModelAndView getAllBankAccounts() {
+    public String getAllBankAccounts(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /admin/accounts");
-        Map<String, Object> model = new HashMap<String,Object>();
+
         Iterable<BankAccount> result = bankAccountService.getAccounts();
 
-        model.put("accounts",result);
+        model.addAttribute("accounts",result);
 
-        return new ModelAndView("admin/adminDashboard_Accounts",model);
+        return "admin/adminDashboard_Accounts";
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/transactions")
-    public ModelAndView getAllTransactions() {
+    public String getAllTransactions(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /admin/transactions");
-        Map<String, Object> model = new HashMap<String,Object>();
+
         Iterable<Transaction> result = transactionService.getTransactions();
 
-        model.put("transactions",result);
+        model.addAttribute("transactions",result);
 
-        return new ModelAndView("admin/adminDashboard_Transactions",model);
+        return "admin/adminDashboard_Transactions";
     }
 
     @PreAuthorize("hasRole('ADMIN')")
