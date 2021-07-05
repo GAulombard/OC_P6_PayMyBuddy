@@ -27,6 +27,7 @@ public class MyUserDetails implements UserDetails {
     private int phone;
     private List<GrantedAuthority> authorities;
     private List<Contact> contactList;
+    private List<BankAccount> accountList;
 
     public MyUserDetails(User user) {
         this.firstName = user.getFirstName();
@@ -42,7 +43,16 @@ public class MyUserDetails implements UserDetails {
         this.phone = user.getPhone();
         this.zip = user.getZip();
         this.userID = user.getUserID();
+        this.accountList = user.getAccountList();
 
+    }
+
+    public List<BankAccount> getAccountList() {
+        return accountList;
+    }
+
+    public void setAccountList(List<BankAccount> accountList) {
+        this.accountList = accountList;
     }
 
     public int getUserID() {

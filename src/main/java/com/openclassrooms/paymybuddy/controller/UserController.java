@@ -1,8 +1,11 @@
 package com.openclassrooms.paymybuddy.controller;
 
 import com.openclassrooms.paymybuddy.PayMyBuddyApplication;
+import com.openclassrooms.paymybuddy.exception.BankAccountAlreadyExistException;
+import com.openclassrooms.paymybuddy.model.BankAccount;
 import com.openclassrooms.paymybuddy.model.MyUserDetails;
 import com.openclassrooms.paymybuddy.model.User;
+import com.openclassrooms.paymybuddy.service.BankAccountService;
 import com.openclassrooms.paymybuddy.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +15,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -24,10 +31,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private BankAccountService bankAccountService;
+
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/home")
     public String getHome(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /user/home by: "+user.getEmail());
+
+        //model.addAttribute("contacts",user.getContactList());
+        model.addAttribute("accounts",user.getAccountList());
+
         return "user/home";
     }
 
@@ -35,6 +49,8 @@ public class UserController {
     @GetMapping("/user/contact")
     public String getContact(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /user/contact by: "+user.getEmail());
+
+
         return "user/contact";
     }
 
@@ -64,4 +80,34 @@ public class UserController {
         return "redirect:/";
     }
 
+    @RolesAllowed({"USER","ADMIN"})
+    @GetMapping("/user/accountform")
+    public String getAccountForm(@AuthenticationPrincipal MyUserDetails user, Model model) {
+        LOGGER.info("HTTP GET request received at /user/accountform by: "+user.getEmail());
+
+        model.addAttribute("account",new BankAccount());
+
+        return "user/accountForm";
+    }
+
+    @RolesAllowed({"USER","ADMIN"})
+    @PostMapping("/user/createaccount") //Bank Account
+    public String saveBankAccount(@ModelAttribute("account") BankAccount account, @AuthenticationPrincipal MyUserDetails user, Model model) throws BankAccountAlreadyExistException {
+        LOGGER.info("HTTP POST request received at /user/accountform by: "+user.getEmail());
+
+        account.setAccountOwner(userService.getUserById(user.getUserID()));
+        bankAccountService.saveBankAccount(account);
+
+        return "redirect:/user/home";
+    }
+
+    @RolesAllowed({"USER","ADMIN"})
+    @GetMapping("/user/deleteaccount{id}") //Bank Account
+    public String deleteBankAccount(@RequestParam("id") String id, @AuthenticationPrincipal MyUserDetails user) {
+        LOGGER.info("HTTP GET request received at /user/deleteaccount{id} by: "+user.getEmail());
+
+        bankAccountService.removeBankAccountById(id);
+
+        return "redirect:/user/home";
+    }
 }

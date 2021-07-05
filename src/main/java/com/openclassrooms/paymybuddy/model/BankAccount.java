@@ -15,10 +15,8 @@ public class BankAccount {
     private String bic;
     @Column(name = "balance")
     private double balance;
-    @OneToOne(
-            cascade = CascadeType.PERSIST,
-            orphanRemoval = false,
-            fetch = FetchType.EAGER
+    @ManyToOne(
+            fetch = FetchType.LAZY
     )
     @JoinColumn(name = "user_id")
     private User accountOwner;

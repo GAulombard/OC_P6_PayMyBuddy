@@ -55,19 +55,15 @@
                         <tr>
                             <th class="text-left">user (id)</th>
                             <th class="text-left">iban</th>
-                            <th class="text-left">bic</th>
-                            <th class="text-left">bank</th>
                             <th class="text-left">balance</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="accounts: ${accounts}">
-                            <td th:text="${accounts.accountOwner.firstName+' '+accounts.accountOwner.lastName+' ('+accounts.accountOwner.userID+')'}"
+                        <tr th:each="account: ${accounts}">
+                            <td th:text="${account.accountOwner.firstName+' '+account.accountOwner.lastName+' ('+account.accountOwner.userID+')'}"
                                 width="300"></td>
-                            <td th:text="${accounts.iban}"></td>
-                            <td th:text="${accounts.bic}"></td>
-                            <td th:text="${accounts.bankEstablishment}"></td>
-                            <td th:text="${accounts.balance}+ €"></td>
+                            <td th:text="${account.iban}"></td>
+                            <td th:text="${account.balance}+ €"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -94,8 +90,8 @@
                         <tbody>
                         <tr th:each="transactions: ${transactions}">
                             <td th:text="${transactions.reference}"></td>
-                            <td th:text="${transactions.date}"></td>
-                            <td th:text="${transactions.message}"></td>
+                            <td th:text="${transactions.date}" width="150"></td>
+                            <td th:text="${transactions.message}" width="400"></td>
                             <td th:text="${transactions.amount+' €'}"></td>
                         </tr>
                         </tbody>

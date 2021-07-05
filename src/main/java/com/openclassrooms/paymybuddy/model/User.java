@@ -43,12 +43,11 @@ public class User {
     private String userRole;
 
     @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
+            cascade = CascadeType.REMOVE,
             fetch = FetchType.EAGER
     )
     @JoinColumn(name = "user_id")
-    private List<BankAccount> accountList = new ArrayList<>();
+    private List<BankAccount> accountList;
 
 /*    @OneToMany(
             fetch = FetchType.LAZY,

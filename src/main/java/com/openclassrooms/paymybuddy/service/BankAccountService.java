@@ -1,9 +1,12 @@
 package com.openclassrooms.paymybuddy.service;
 
+import com.openclassrooms.paymybuddy.exception.BankAccountAlreadyExistException;
+import com.openclassrooms.paymybuddy.exception.UserAlreadyExistException;
 import com.openclassrooms.paymybuddy.model.BankAccount;
 import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.repository.BankAccountRepository;
 import com.openclassrooms.paymybuddy.repository.UserRepository;
+import com.openclassrooms.paymybuddy.util.BankAccountUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +20,27 @@ public class BankAccountService {
     private BankAccountRepository bankAccountRepository;
 
     public Iterable<BankAccount> getAccounts() {
-        LOGGER.info("Process to get all accounts");
+        LOGGER.info("Processing to get all accounts");
         return bankAccountRepository.findAll();
+    }
+
+    public void saveBankAccount(BankAccount bankAccount) throws BankAccountAlreadyExistException {
+        LOGGER.info("Processing to save a new bank account in database");
+        if(bankAccountRepository.existsById(bankAccount.getIban())) {
+            throw new BankAccountAlreadyExistException("Bank account already exist in database");
+        }
+
+        //Simulate the balance between -500 and 5000
+        bankAccount.setBalance(BankAccountUtil.getRandomValueBetween(-500,5000));
+
+        bankAccount.setBankEstablishment(BankAccountUtil.getRandomBankNameFromEnum());
+        bankAccountRepository.save(bankAccount);
+    }
+
+    public void removeBankAccountById(String id) {
+        LOGGER.info("Processing to delete bank account");
+
+        bankAccountRepository.deleteById(id);
+
     }
 }

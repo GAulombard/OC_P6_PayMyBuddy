@@ -12,11 +12,11 @@ public class Contact {
     private int id;
 
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "contact_user_id")
     private User contactUserId;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User userId;
 

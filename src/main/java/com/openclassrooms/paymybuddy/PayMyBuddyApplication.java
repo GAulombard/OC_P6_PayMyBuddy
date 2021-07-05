@@ -30,4 +30,17 @@ public class PayMyBuddyApplication {
 
     }
 
+   /*    TODO: page ne refresh pas après avoir ajouté/supprimé un compte
+         TODO: ajouter les validations pour les formulaires
+         TODO: list de contact ne fonctionne pas -->> bi-directionnel ?
+         TODO: delete bank account ne fonctionne pas
+         TODO: javadoc
+         TODO: jacoco
+         TODO: surefire
+         TODO: gérer les exceptions
+         TODO: boutons make admin-user
+
+   */
+
+
 }
