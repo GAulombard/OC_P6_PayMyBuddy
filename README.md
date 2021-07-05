@@ -31,7 +31,7 @@ This is a Spring Boot Application, working with:
 - MySQL
 - Thymeleaf
 
-###Logic
+### Logic
 
 - Users can have multiple accounts
 - Account owned by only one user
