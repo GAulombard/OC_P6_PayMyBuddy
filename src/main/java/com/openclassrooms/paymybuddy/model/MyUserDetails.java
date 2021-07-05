@@ -16,11 +16,17 @@ public class MyUserDetails implements UserDetails {
 
     private final Logger LOGGER = LoggerFactory.getLogger(MyUserDetails.class);
 
+    private int userID;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
+    private String address;
+    private String city;
+    private int zip;
+    private int phone;
     private List<GrantedAuthority> authorities;
+    private List<Contact> contactList;
 
     public MyUserDetails(User user) {
         this.firstName = user.getFirstName();
@@ -30,6 +36,69 @@ public class MyUserDetails implements UserDetails {
         this.authorities = Arrays.stream(user.getUserRole().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
+        this.contactList = user.getContactList();
+        this.address = user.getAddress();
+        this.city = user.getCity();
+        this.phone = user.getPhone();
+        this.zip = user.getZip();
+        this.userID = user.getUserID();
+
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getZip() {
+        return zip;
+    }
+
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setAuthorities(List<GrantedAuthority> authorities) {
+        this.authorities = authorities;
+    }
+
+    public List<Contact> getContactList() {
+        return contactList;
+    }
+
+    public void setContactList(List<Contact> contactList) {
+        this.contactList = contactList;
     }
 
     public String getFirstName() {

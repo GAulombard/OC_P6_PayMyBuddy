@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -35,4 +37,13 @@ public class UserService {
             userRepository.save(user);
     }
 
+    public Optional<User> findUserById(int id) {
+        LOGGER.info("Processing to find a user by id");
+        return userRepository.findById(id);
+    }
+
+    public void removeUserById(int id) {
+
+        userRepository.deleteById(id);
+    }
 }

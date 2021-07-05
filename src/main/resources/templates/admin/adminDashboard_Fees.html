@@ -25,22 +25,22 @@
     <div class=" col-12 col-lg-12">
       <div class="card my-3 shadow">
         <div class="card-body">
-          <h2 class="mt-4">Fees</h2>
+          <h2 class="mt-4">Fees details</h2>
           <table class="table">
             <thead class="thead-light">
             <tr>
               <th class="text-left">fee_id</th>
               <th class="text-left">date</th>
-              <th class="text-left">amount</th>
               <th class="text-left">rate100</th>
+              <th class="text-left">amount</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="fee: ${fees}">
               <td th:text="${fee.feeId}"></td>
               <td th:text="${fee.date}"></td>
-              <td th:text="${fee.amount}+ €"></td>
               <td th:text="${fee.rate100}"></td>
+              <td th:text="${fee.amount}+' €'"></td>
             </tr>
             </tbody>
           </table>

@@ -15,8 +15,7 @@
 
 <body>
 
-            <div th:replace="fragments/nav"></div>
-
+<div th:replace="fragments/nav"></div>
 
 
 <!-- SECTION -->
@@ -25,7 +24,7 @@
         <div class=" col-12 col-lg-12">
             <div class="card my-3 shadow">
                 <div class="card-body">
-                    <h2 class="mt-4">Users<!--<th:block th:text="${user}"></th:block>--></h2>
+                    <h2 class="mt-4">Users details</h2>
                     <table class="table">
                         <thead class="thead-light">
                         <tr>
@@ -34,13 +33,14 @@
                             <th class="text-left">last_name</th>
                             <th class="text-left">email</th>
                             <!--<th class="text-left">password</th>-->
-                            <th class="text-left">phone</th>
+                            <!--<th class="text-left">phone</th>
                             <th class="text-left fluid">address</th>
                             <th class="text-left">zip</th>
-                            <th class="text-left">city</th>
+                            <th class="text-left">city</th>-->
                             <th class="text-left">user_role</th>
                             <th class="text-left">accounts</th>
-                            <th class="text-left">contacts</th>
+                            <th class="text-left">contacts (id)</th>
+                            <th class="text-left"></th>
                             <th class="text-left"></th>
                         </tr>
                         </thead>
@@ -51,20 +51,35 @@
                             <td th:text="${user.lastName}"></td>
                             <td th:text="${user.email}" width="150"></td>
                             <!--<td th:text="${user.password}"></td>-->
-                            <td th:text="${user.phone}"></td>
-                            <td th:text="${user.address}"width="250"></td>
-                            <td th:text="${user.zip}"></td>
-                            <td th:text="${user.city}"></td>
+                            <!-- <td th:text="${user.phone}"></td>
+                             <td th:text="${user.address}"width="250"></td>
+                             <td th:text="${user.zip}"></td>
+                             <td th:text="${user.city}"></td>-->
                             <td th:text="${user.userRole}"></td>
                             <td width="50">
                                 <th:block th:each="account: ${user.accountList}">
-                                    <th:block th:text="${account.iban}"></th:block>
+                                    <div><th:block th:text="${account.iban}"></th:block></div>
                                 </th:block>
                             </td>
                             <td width="150">
                                 <th:block th:each="contact: ${user.contactList}">
-                                    <th:block th:text="${contact}"></th:block>
+                                    <div><th:block th:text="${contact.contactUserId.firstName+' '+contact.contactUserId.lastName+' ('+contact.contactUserId.userID+')'}"></th:block></div>
                                 </th:block>
+                            </td>
+                            <td>
+                                <a th:href="@{/admin/delete(id=${user.userID})}"
+                                   class="btn btn-danger btn-sm"
+                                   onclick="if(!(confirm('Are you sure you want to delete this user ?'))) return false">
+                                    Delete
+                                </a>
+                            </td>
+                            <td>
+                                <a th:href="${user.userRole == 'ROLE_USER'} ? '/admin/makeadmin(id=${user.userID})' : '/admin/makeuser(id=${user.userID})'"
+                                   class="btn btn-success btn-sm"
+                                   onclick="if(!(confirm('Are you sure you want the role for this user ?'))) return false">
+                                    <th:block
+                                            th:text="${user.userRole == 'ROLE_USER'} ? 'Make admin' : 'Make user'"></th:block>
+                                </a>
                             </td>
                         </tr>
                         </tbody>

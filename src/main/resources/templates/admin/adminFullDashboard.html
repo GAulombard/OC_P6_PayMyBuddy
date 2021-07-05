@@ -18,14 +18,13 @@
 <div th:replace="fragments/nav"></div>
 
 
-
 <!-- SECTION -->
 <div class="d-flex p-2 container-fluid justify-content-center">
     <div class="row">
-        <div class=" col-12 col-lg-12">
+        <div class=" col-5 col-lg-5">
             <div class="card my-3 shadow">
                 <div class="card-body">
-                    <h2 class="mt-4">Users<!--<th:block th:text="${user}"></th:block>--></h2>
+                    <h2 class="mt-4">Users</h2>
                     <table class="table">
                         <thead class="thead-light">
                         <tr>
@@ -33,16 +32,6 @@
                             <th class="text-left">first_name</th>
                             <th class="text-left">last_name</th>
                             <th class="text-left">email</th>
-                            <!--<th class="text-left">password</th>-->
-                            <!--<th class="text-left">phone</th>
-                            <th class="text-left fluid">address</th>
-                            <th class="text-left">zip</th>
-                            <th class="text-left">city</th>-->
-                            <th class="text-left">user_role</th>
-                            <th class="text-left">accounts</th>
-                            <th class="text-left">contacts</th>
-                            <th class="text-left"></th>
-                            <th class="text-left"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -51,36 +40,88 @@
                             <td th:text="${user.firstName}"></td>
                             <td th:text="${user.lastName}"></td>
                             <td th:text="${user.email}" width="150"></td>
-                            <!--<td th:text="${user.password}"></td>-->
-                           <!-- <td th:text="${user.phone}"></td>
-                            <td th:text="${user.address}"width="250"></td>
-                            <td th:text="${user.zip}"></td>
-                            <td th:text="${user.city}"></td>-->
-                            <td th:text="${user.userRole}"></td>
-                            <td width="50">
-                                <th:block th:each="account: ${user.accountList}">
-                                    <th:block th:text="${account.iban}"></th:block>
-                                </th:block>
-                            </td>
-                            <td width="150">
-                                <th:block th:each="contact: ${user.contactList}">
-                                    <th:block th:text="${contact}"></th:block>
-                                </th:block>
-                            </td>
-                            <td>
-                                <a th:href="@{<!--/user/delete(userId=${user.id})-->}"
-                                   class="btn btn-danger btn-sm"
-                                   onclick="if(!(confirm('Are you sure you want to delete this user ?'))) return false">
-                                    Delete
-                                </a>
-                            </td>
-                            <td>
-                                <a th:href="@{<!--/user/delete(userId=${user.id})-->}"
-                                   class="btn btn-success btn-sm"
-                                   onclick="if(!(confirm('Are you sure you want promote the user as ADMIN ?'))) return false">
-                                    Make admin
-                                </a>
-                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class=" col-7 col-lg-7">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <h2 class="mt-4">Accounts</h2>
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="text-left">user (id)</th>
+                            <th class="text-left">iban</th>
+                            <th class="text-left">bic</th>
+                            <th class="text-left">bank</th>
+                            <th class="text-left">balance</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="accounts: ${accounts}">
+                            <td th:text="${accounts.accountOwner.firstName+' '+accounts.accountOwner.lastName+' ('+accounts.accountOwner.userID+')'}"
+                                width="300"></td>
+                            <td th:text="${accounts.iban}"></td>
+                            <td th:text="${accounts.bic}"></td>
+                            <td th:text="${accounts.bankEstablishment}"></td>
+                            <td th:text="${accounts.balance}+ €"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex p-2 container-fluid justify-content-center">
+    <div class="row">
+        <div class=" col-6 col-lg-6">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <h2 class="mt-4">Transactions</h2>
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="text-left">reference</th>
+                            <th class="text-left">date</th>
+                            <th class="text-left">message</th>
+                            <th class="text-left">amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="transactions: ${transactions}">
+                            <td th:text="${transactions.reference}"></td>
+                            <td th:text="${transactions.date}"></td>
+                            <td th:text="${transactions.message}"></td>
+                            <td th:text="${transactions.amount+' €'}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class=" col-6 col-lg-6">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <h2 class="mt-4">Fees</h2>
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="text-left">fee_id</th>
+                            <th class="text-left">date</th>
+                            <th class="text-left">rate100</th>
+                            <th class="text-left">amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="fee: ${fees}">
+                            <td th:text="${fee.feeId}"></td>
+                            <td th:text="${fee.date}"></td>
+                            <td th:text="${fee.rate100}"></td>
+                            <td th:text="${fee.amount}+' €'"></td>
                         </tr>
                         </tbody>
                     </table>

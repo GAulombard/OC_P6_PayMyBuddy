@@ -12,8 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.security.RolesAllowed;
@@ -21,6 +20,7 @@ import javax.transaction.Transactional;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class AdminController {
@@ -40,15 +40,17 @@ public class AdminController {
     @GetMapping("/admin")
     @Transactional
     public String getFullDashboard(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        LOGGER.info("HTTP GET request received at /admin");
+        LOGGER.info("HTTP GET request received at /admin by: "+user.getEmail());
 
         Iterable<User> users = userService.getUsers();
         Iterable<BankAccount> accounts = bankAccountService.getAccounts();
         Iterable<Transaction> transactions = transactionService.getTransactions();
+        Iterable<Fee> fees = feeService.getFees();
 
         model.addAttribute("users",users);
         model.addAttribute("accounts",accounts);
-        model.addAttribute("transaction",transactions);
+        model.addAttribute("transactions",transactions);
+        model.addAttribute("fees",fees);
 
         return "admin/adminFullDashboard";
     }
@@ -58,6 +60,7 @@ public class AdminController {
     @Transactional
     public String getAllUsers(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /admin/users by: "+user.getEmail());
+
         Iterable<User> result = userService.getUsers();
 
         model.addAttribute("users",result);
@@ -69,7 +72,7 @@ public class AdminController {
     @GetMapping("/admin/accounts")
     @Transactional
     public String getAllBankAccounts(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        LOGGER.info("HTTP GET request received at /admin/accounts");
+        LOGGER.info("HTTP GET request received at /admin/accounts by: "+user.getEmail());
 
         Iterable<BankAccount> result = bankAccountService.getAccounts();
 
@@ -81,7 +84,7 @@ public class AdminController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/transactions")
     public String getAllTransactions(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        LOGGER.info("HTTP GET request received at /admin/transactions");
+        LOGGER.info("HTTP GET request received at /admin/transactionsby: "+user.getEmail());
 
         Iterable<Transaction> result = transactionService.getTransactions();
 
@@ -100,5 +103,17 @@ public class AdminController {
         model.addAttribute("fees",result);
 
         return "admin/adminDashboard_Fees";
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/delete")
+    @Transactional
+    public String deleteUser(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") int id) {
+        LOGGER.info("HTTP GET request received at /admin/delete?id={id} by: "+user.getEmail());
+
+        userService.removeUserById(id);
+
+
+        return "redirect:/admin";
     }
 }

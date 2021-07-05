@@ -29,10 +29,22 @@
                     <div>User Name:
                         <th:block th:text="${user.firstName}+' '+${user.lastName}"></th:block>
                     </div>
-                    <div>User email:
+                    <div>Email:
                         <th:block th:text="${user.email}"></th:block>
                     </div>
+                    <div>Address:
+                        <th:block th:text="${user.address}"></th:block>
+                        <th:block th:text="${user.zip+' '+user.city}"></th:block>
+                    </div>
+                    <div>Phone:
+                        <th:block th:text="${user.phone}"></th:block>
+                    </div>
                     </p>
+                    <p><div><a th:href="@{/user/deletemypmb}"
+                               class="btn btn-danger btn-sm"
+                               onclick="if(!(confirm('Are you sure you want to delete your Pay My Buddy account ?'))) return false">
+                    Delete my PMB account
+                </a></div></p>
                 </div>
             </div>
         </div>

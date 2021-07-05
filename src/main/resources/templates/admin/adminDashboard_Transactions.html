@@ -4,66 +4,65 @@
       xmlns:sec="http://thymeleaf.org/extras/spring-security">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
-  <title>Pay My Buddy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <title>Pay My Buddy</title>
 </head>
 
 
 <body>
 
-      <div th:replace="fragments/nav"></div>
-
+<div th:replace="fragments/nav"></div>
 
 
 <!-- SECTION -->
-<div class="d-flex p-2 container">
-  <div class="row">
-    <div class=" col-12 col-lg-12">
-      <div class="card my-3 shadow">
-        <div class="card-body">
-          <h2 class="mt-4">Transactions</h2>
-          <table class="table">
-            <thead class="thead-light">
-            <tr>
-              <th class="text-left">reference</th>
-              <th class="text-left">amount</th>
-              <th class="text-left">message</th>
-              <th class="text-left">date</th>
-              <th class="text-left"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="transactions: ${transactions}">
-              <td th:text="${transactions.reference}"></td>
-              <td th:text="${transactions.amount}"></td>
-              <td th:text="${transactions.message}"></td>
-              <td th:text="${transactions.date}"></td>
-            </tr>
-            </tbody>
-          </table>
+<div class="d-flex p-2 container-fluid justify-content-center">
+    <div class="row">
+        <div class=" col-12 col-lg-12">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <h2 class="mt-4">Transactions details</h2>
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="text-left">reference</th>
+                            <th class="text-left">date</th>
+                            <th class="text-left">message</th>
+                            <th class="text-left">amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="transactions: ${transactions}">
+                            <td th:text="${transactions.reference}"></td>
+                            <td th:text="${transactions.date}"></td>
+                            <td th:text="${transactions.message}"></td>
+                            <td th:text="${transactions.amount+' €'}"></td>
+                        </tr>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <!-- FOOTER -->
 <div class="bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <ul class="list-inline text-center">
-          <li class="list-inline-item"><a href="#" class="text-dark">About</a></li>
-          <li class="list-inline-item text-dark">&middot;</li>
-          <li class="list-inline-item"><a href="#" class="text-dark">Terms of use</a></li>
-        </ul>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item"><a href="#" class="text-dark">About</a></li>
+                    <li class="list-inline-item text-dark">&middot;</li>
+                    <li class="list-inline-item"><a href="#" class="text-dark">Terms of use</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
