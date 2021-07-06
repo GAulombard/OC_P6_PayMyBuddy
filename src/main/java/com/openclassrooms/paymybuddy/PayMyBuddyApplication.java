@@ -30,7 +30,8 @@ public class PayMyBuddyApplication {
 
     }
 
-   /*    TODO: page ne refresh pas après avoir ajouté/supprimé un compte
+   /*    ----BackEnd/fonctionnement
+         TODO: page ne refresh pas après avoir ajouté/supprimé un compte
          TODO: ajouter les validations pour les formulaires
          TODO: list de contact ne fonctionne pas -->> bi-directionnel ?
          TODO: javadoc
@@ -38,9 +39,11 @@ public class PayMyBuddyApplication {
          TODO: surefire
          TODO: gérer les exceptions
          TODO: boutons make admin-user
-         TODO: changer le signin form
          TODO: voir pourquoi /login est appelé au début
          TODO: logout pas quand compte supprimé
+         TODO: si l'utilisateur est deja authentifié et enregistre un nouveau compte après souscription renvois sur la page 404
+         ---FrontEnd
+
 
    */
 

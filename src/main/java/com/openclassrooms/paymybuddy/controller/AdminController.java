@@ -114,6 +114,6 @@ public class AdminController {
         userService.removeUserById(id);
 
 
-        return "redirect:/admin";
+        return "redirect:/admin/users";
     }
 }

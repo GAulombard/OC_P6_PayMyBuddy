@@ -92,6 +92,7 @@ public class UserController {
 
     @RolesAllowed({"USER","ADMIN"})
     @PostMapping("/user/createaccount") //Bank Account
+    @Transactional
     public String saveBankAccount(@ModelAttribute("account") BankAccount account, @AuthenticationPrincipal MyUserDetails user, Model model) throws BankAccountAlreadyExistException {
         LOGGER.info("HTTP POST request received at /user/accountform by: "+user.getEmail());
 
