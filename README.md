@@ -16,8 +16,6 @@
 
 - first, run the script creat_db.sql located in src/main/resources/script
 - second, run the script insert_data.sql located in src/main/resources/script
-- username: root
-- password: rootroot
 - more information in the application.properties file located in src/main/resources
 
 ## How it works

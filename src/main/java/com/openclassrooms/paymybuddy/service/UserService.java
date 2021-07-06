@@ -1,6 +1,7 @@
 package com.openclassrooms.paymybuddy.service;
 
 import com.openclassrooms.paymybuddy.exception.UserAlreadyExistException;
+import com.openclassrooms.paymybuddy.model.BankAccount;
 import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.repository.UserRepository;
 import org.slf4j.Logger;
@@ -9,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class UserService {
@@ -49,5 +52,18 @@ public class UserService {
     public void removeUserById(int id) {
 
         userRepository.deleteById(id);
+    }
+
+    public AtomicReference<Double> getTotalAccountBalanceByUserId(int id){
+        AtomicReference<Double> result= new AtomicReference<>((double) 0);
+        List<BankAccount> bankAccounts = userRepository.getById(id).getAccountList();
+
+        if(bankAccounts == null) return result;
+
+        bankAccounts.iterator().forEachRemaining(bankAccount -> {
+            result.updateAndGet(v -> new Double((double) (v + bankAccount.getBalance())));
+        });
+
+        return result;
     }
 }

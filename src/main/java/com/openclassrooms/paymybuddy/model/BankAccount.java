@@ -15,9 +15,8 @@ public class BankAccount {
     private String bic;
     @Column(name = "balance")
     private double balance;
-    @ManyToOne(
-            fetch = FetchType.LAZY
-    )
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User accountOwner;
 

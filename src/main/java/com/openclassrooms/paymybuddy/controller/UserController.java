@@ -39,7 +39,7 @@ public class UserController {
     public String getHome(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /user/home by: "+user.getEmail());
 
-        //model.addAttribute("contacts",user.getContactList());
+        model.addAttribute("total",userService.getTotalAccountBalanceByUserId(user.getUserID()));
         model.addAttribute("accounts",user.getAccountList());
 
         return "user/home";
@@ -77,7 +77,7 @@ public class UserController {
 
         userService.removeUserById(user.getUserID());
 
-        return "redirect:/";
+        return "redirect:/logout";
     }
 
     @RolesAllowed({"USER","ADMIN"})
@@ -103,6 +103,7 @@ public class UserController {
 
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/deleteaccount{id}") //Bank Account
+    @Transactional
     public String deleteBankAccount(@RequestParam("id") String id, @AuthenticationPrincipal MyUserDetails user) {
         LOGGER.info("HTTP GET request received at /user/deleteaccount{id} by: "+user.getEmail());
 

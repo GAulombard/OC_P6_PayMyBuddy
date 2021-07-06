@@ -68,7 +68,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="flex-grow1 text-right">
+        <div class="flex-grow1 text-right font-italic font-weight-light">
             <span sec:authentication="name" sec:authorize="isAuthenticated()"></span>
             <span sec:authentication="principal.authorities" sec:authorize="isAuthenticated()"></span>
         </div>

@@ -44,9 +44,9 @@ public class User {
 
     @OneToMany(
             cascade = CascadeType.REMOVE,
-            fetch = FetchType.EAGER
+            fetch = FetchType.EAGER,
+            mappedBy = "accountOwner"
     )
-    @JoinColumn(name = "user_id")
     private List<BankAccount> accountList;
 
 /*    @OneToMany(
