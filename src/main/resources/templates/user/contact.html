@@ -5,47 +5,89 @@
 
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
-  <title>Pay My Buddy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
+    <title>Pay My Buddy</title>
 </head>
 
 <body>
 
-      <div th:replace="fragments/nav"></div>
+<div th:replace="fragments/nav"></div>
 
 
 <!-- SECTION -->
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-lg-12">
-      <div class="card my-3 shadow">
-        <div class="card-body">
-          <h5 class="card-title">Titre</h5>
-          <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur
-            quidem iste facilis iure doloribus quas repudiandae, corrupti deleniti nostrum odit earum
-            voluptatibus vitae molestiae, at aspernatur odio enim assumenda necessitatibus.</p>
+<div class="d-flex p-2 container-fluid justify-content-center">
+    <div class="row">
+        <div class=" col-12 col-lg-12">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <div class="flex-row justify-content-between"><h2 class="mt-4">My contacts</h2>
+                        <h3 class="mt-4 text-right">
+                            <th:block></th:block>
+                        </h3>
+                    </div>
+
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="text-left">first name</th>
+                            <th class="text-left">last name</th>
+                            <th class="text-left">email</th>
+                            <th class="text-left">phone</th>
+                            <th class="text-left"></th>
+                            <th class="text-left"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="contact: ${contacts}">
+                            <td th:text="${contact.contactUserId.firstName}"></td>
+                            <td th:text="${contact.contactUserId.lastName}"></td>
+                            <td th:text="${contact.contactUserId.email}"></td>
+                            <td th:text="${contact.contactUserId.phone}"></td>
+                            <td>
+                                <a th:href="@{/user}"
+                                   class="btn btn-primary btn-sm"
+                                   onclick="">
+                                    Send money
+                                </a>
+                            </td>
+                            <td>
+                                <a th:href="@{/user}"
+                                   class="btn btn-danger btn-sm"
+                                   onclick="">
+                                    delete
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-around">
+                        <div class="p-2"><a th:href="@{/user/accountform}"
+                                            class="btn btn-success btn-lg">
+                            Add new contact
+                        </a></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- FOOTER -->
 <div class="bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <ul class="list-inline text-center">
-          <li class="list-inline-item"><a href="#" class="text-dark">About</a></li>
-          <li class="list-inline-item text-dark">&middot;</li>
-          <li class="list-inline-item"><a href="#" class="text-dark">Terms of use</a></li>
-        </ul>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item"><a href="#" class="text-dark">About</a></li>
+                    <li class="list-inline-item text-dark">&middot;</li>
+                    <li class="list-inline-item"><a href="#" class="text-dark">Terms of use</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

@@ -2,6 +2,8 @@ package com.openclassrooms.paymybuddy.service;
 
 import com.openclassrooms.paymybuddy.exception.UserAlreadyExistException;
 import com.openclassrooms.paymybuddy.model.BankAccount;
+import com.openclassrooms.paymybuddy.model.Contact;
+import com.openclassrooms.paymybuddy.model.MyUserDetails;
 import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.repository.UserRepository;
 import org.slf4j.Logger;
@@ -66,4 +68,5 @@ public class UserService {
 
         return result;
     }
+
 }

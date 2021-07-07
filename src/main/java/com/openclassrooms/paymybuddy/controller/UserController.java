@@ -47,9 +47,11 @@ public class UserController {
 
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/contact")
+    @Transactional
     public String getContact(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /user/contact by: "+user.getEmail());
 
+        model.addAttribute("contacts",(userService.getUserById(user.getUserID())).getContactList());
 
         return "user/contact";
     }

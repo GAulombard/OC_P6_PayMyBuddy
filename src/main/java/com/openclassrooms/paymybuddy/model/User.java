@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -49,17 +50,17 @@ public class User {
     )
     private List<BankAccount> accountList;
 
-/*    @OneToMany(
-            fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.ALL,
-            }
-    )
-    @JoinTable(
-            name = "contact",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "contact_user_id")
-    )*/
+    /*    @OneToMany(
+                fetch = FetchType.LAZY,
+                cascade = {
+                        CascadeType.ALL,
+                }
+        )
+        @JoinTable(
+                name = "contact",
+                joinColumns = @JoinColumn(name = "user_id"),
+                inverseJoinColumns = @JoinColumn(name = "contact_user_id")
+        )*/
     @OneToMany(mappedBy = "userId")
     private List<Contact> contactList;
 

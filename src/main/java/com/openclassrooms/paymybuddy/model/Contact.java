@@ -1,7 +1,16 @@
 package com.openclassrooms.paymybuddy.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import javax.persistence.*;
 
+/*@NamedEntityGraph(
+        name = "post-entity-graph",
+        attributeNodes = {
+                @NamedAttributeNode("contactUserId"),
+                @NamedAttributeNode("userId"),
+        })*/
 @Entity
 @Table(name = "contact")
 public class Contact {
