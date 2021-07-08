@@ -50,25 +50,35 @@ public class User {
     )
     private List<BankAccount> accountList;
 
-    /*    @OneToMany(
-                fetch = FetchType.LAZY,
-                cascade = {
-                        CascadeType.ALL,
-                }
-        )
-        @JoinTable(
-                name = "contact",
-                joinColumns = @JoinColumn(name = "user_id"),
-                inverseJoinColumns = @JoinColumn(name = "contact_user_id")
-        )*/
-    @OneToMany(mappedBy = "userId")
-    private List<Contact> contactList;
+    @ManyToMany
+    @JoinTable(
+            name = "contact",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "contact_user_id")
+    )
+    private List<User> contactList;
 
-    public List<Contact> getContactList() {
+    @ManyToMany
+    @JoinTable(
+            name = "contact",
+            joinColumns = @JoinColumn(name = "contact_user_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<User> contactListOf;
+
+    public List<User> getContactListOf() {
+        return contactListOf;
+    }
+
+    public void setContactListOf(List<User> contactListOf) {
+        this.contactListOf = contactListOf;
+    }
+
+    public List<User> getContactList() {
         return contactList;
     }
 
-    public void setContactList(List<Contact> contactList) {
+    public void setContactList(List<User> contactList) {
         this.contactList = contactList;
     }
 

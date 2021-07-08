@@ -51,6 +51,7 @@ public class UserController {
     public String getContact(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /user/contact by: "+user.getEmail());
 
+        //model.addAttribute("contacts",(user.getContactList()));
         model.addAttribute("contacts",(userService.getUserById(user.getUserID())).getContactList());
 
         return "user/contact";

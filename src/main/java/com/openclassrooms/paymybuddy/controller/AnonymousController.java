@@ -22,7 +22,7 @@ public class AnonymousController {
     @Autowired
     private UserService userService;
 
-    @GetMapping({"/","/index"})
+    @GetMapping({"/index"})
     public String getIndex() {
         LOGGER.info("HTTP GET request received at /index");
         return "index";

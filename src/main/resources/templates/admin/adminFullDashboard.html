@@ -28,17 +28,15 @@
                     <table class="table">
                         <thead class="thead-light">
                         <tr>
-                            <th class="text-left">user_id</th>
-                            <th class="text-left">first_name</th>
-                            <th class="text-left">last_name</th>
+                            <th class="text-left">id</th>
+                            <th class="text-left">user name</th>
                             <th class="text-left">email</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="user: ${users}">
                             <td th:text="${user.userID}"></td>
-                            <td th:text="${user.firstName}"></td>
-                            <td th:text="${user.lastName}"></td>
+                            <td th:text="${user.firstName+' '+user.lastName}"></td>
                             <td th:text="${user.email}" width="150"></td>
                         </tr>
                         </tbody>
@@ -81,7 +79,7 @@
                     <table class="table">
                         <thead class="thead-light">
                         <tr>
-                            <th class="text-left">reference</th>
+                            <th class="text-left">ref.</th>
                             <th class="text-left">date</th>
                             <th class="text-left">message</th>
                             <th class="text-left">amount</th>
@@ -106,7 +104,7 @@
                     <table class="table">
                         <thead class="thead-light">
                         <tr>
-                            <th class="text-left">fee_id</th>
+                            <th class="text-left">id</th>
                             <th class="text-left">date</th>
                             <th class="text-left">rate100</th>
                             <th class="text-left">amount</th>

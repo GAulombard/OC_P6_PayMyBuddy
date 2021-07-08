@@ -31,19 +31,20 @@ public class PayMyBuddyApplication {
     }
 
    /*    ----BackEnd/fonctionnement
-         TODO: page ne refresh pas après avoir ajouté/supprimé un compte
+
          TODO: ajouter les validations pour les formulaires
-         TODO: list de contact ne fonctionne pas -->> bi-directionnel ?
+
          TODO: javadoc
          TODO: jacoco
          TODO: surefire
          TODO: gérer les exceptions
          TODO: boutons make admin-user
-         TODO: voir pourquoi /login est appelé au début
-         TODO: logout pas quand compte supprimé
-         TODO: si l'utilisateur est deja authentifié et enregistre un nouveau compte après souscription renvois sur la page 404
-         ---FrontEnd
 
+         TODO: si l'utilisateur est deja authentifié et enregistre un nouveau compte après souscription renvois sur la page 404
+         TODO: pourquoi image s'affiche pas tant qu'on est pas connecté ?
+         TOTO: si deja loger erreur si on va sur la page login
+         ---FrontEnd
+         TODO: make admin menu responsive
 
    */
 

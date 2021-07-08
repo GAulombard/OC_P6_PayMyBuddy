@@ -33,20 +33,26 @@
                     <table class="table">
                         <thead class="thead-light">
                         <tr>
-                            <th class="text-left">first name</th>
-                            <th class="text-left">last name</th>
+                            <th class="text-left">user name</th>
                             <th class="text-left">email</th>
                             <th class="text-left">phone</th>
+                            <th class="text-left"></th>
                             <th class="text-left"></th>
                             <th class="text-left"></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="contact: ${contacts}">
-                            <td th:text="${contact.contactUserId.firstName}"></td>
-                            <td th:text="${contact.contactUserId.lastName}"></td>
-                            <td th:text="${contact.contactUserId.email}"></td>
-                            <td th:text="${contact.contactUserId.phone}"></td>
+                            <td th:text="${contact.firstName+' '+contact.lastName}"></td>
+                            <td th:text="${contact.email}"></td>
+                            <td th:text="${contact.phone}"></td>
+                            <td>
+                                <a th:href="@{/user}"
+                                   class="btn btn-secondary btn-sm"
+                                   onclick="">
+                                    Send message
+                                </a>
+                            </td>
                             <td>
                                 <a th:href="@{/user}"
                                    class="btn btn-primary btn-sm"
@@ -65,7 +71,7 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-around">
-                        <div class="p-2"><a th:href="@{/user/accountform}"
+                        <div class="p-2"><a th:href="@{/user/addcontact}"
                                             class="btn btn-success btn-lg">
                             Add new contact
                         </a></div>

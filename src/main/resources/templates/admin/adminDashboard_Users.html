@@ -63,7 +63,10 @@
                             </td>
                             <td width="150">
                                 <th:block th:each="contact: ${user.contactList}">
-                                    <div><th:block th:text="${contact.contactUserId.firstName+' '+contact.contactUserId.lastName+' ('+contact.contactUserId.userID+')'}"></th:block></div>
+                                    <div><th:block th:text="${contact.firstName+' '+contact.lastName+' ('+contact.userID+')'}"></th:block></div>
+                                </th:block>
+                                <th:block th:each="contact: ${user.contactListOf}">
+                                    <div><th:block th:text="${contact.firstName+' '+contact.lastName+' ('+contact.userID+')'}"></th:block></div>
                                 </th:block>
                             </td>
                             <td>

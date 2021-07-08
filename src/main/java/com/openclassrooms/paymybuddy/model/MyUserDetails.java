@@ -26,8 +26,9 @@ public class MyUserDetails implements UserDetails {
     private int zip;
     private int phone;
     private List<GrantedAuthority> authorities;
-    private List<Contact> contactList;
+    private List<User> contactList;
     private List<BankAccount> accountList;
+    private List<User> contactListOf;
 
     public MyUserDetails(User user) {
         this.firstName = user.getFirstName();
@@ -44,11 +45,20 @@ public class MyUserDetails implements UserDetails {
         this.zip = user.getZip();
         this.userID = user.getUserID();
         this.accountList = user.getAccountList();
+        this.contactListOf = user.getContactListOf();
 
     }
 
     public List<BankAccount> getAccountList() {
         return accountList;
+    }
+
+    public List<User> getContactListOf() {
+        return contactListOf;
+    }
+
+    public void setContactListOf(List<User> contactListOf) {
+        this.contactListOf = contactListOf;
     }
 
     public void setAccountList(List<BankAccount> accountList) {
@@ -103,20 +113,20 @@ public class MyUserDetails implements UserDetails {
         this.authorities = authorities;
     }
 
-    public List<Contact> getContactList() {
-        return contactList;
-    }
-
-    public void setContactList(List<Contact> contactList) {
-        this.contactList = contactList;
-    }
-
     public String getFirstName() {
         return firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public List<User> getContactList() {
+        return contactList;
+    }
+
+    public void setContactList(List<User> contactList) {
+        this.contactList = contactList;
     }
 
     public String getLastName() {
