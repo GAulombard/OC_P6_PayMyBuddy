@@ -1,5 +1,6 @@
 package com.openclassrooms.paymybuddy.service;
 
+import com.openclassrooms.paymybuddy.exception.UserNotFoundException;
 import com.openclassrooms.paymybuddy.model.Contact;
 import com.openclassrooms.paymybuddy.model.MyUserDetails;
 import com.openclassrooms.paymybuddy.model.User;
@@ -18,10 +19,14 @@ public class ContactService {
     private ContactRepository contactRepository;
     
     @Autowired
-    UserService userService;
+    private UserService userService;
 
-    public void saveContactRelationship(MyUserDetails user, User userContact) {
+    public void saveContactRelationship(MyUserDetails user, User userContact) throws UserNotFoundException {
         Contact contact = new Contact();
+
+        if (userContact==null) {
+            throw new UserNotFoundException("User not found");
+        }
         contact.setContactUserId(userContact);
         contact.setUserId(userService.getUserById(user.getUserID()));
 

@@ -73,10 +73,10 @@
                     <div>
                         <h4 class="form-signup-heading">Add new contact</h4>
                         <form class="form-signup d-flex justify-content-around align-items-center" method="post"
-                              th:action="@{/user/addcontact}" th:object="${contact}">
+                              th:action="@{/user/addcontact}">
                             <div class="form-group col-md-8">
                                 <label for="email"></label>
-                                <input th:field="*{email}" type="email" class="form-control" id="email"
+                                <input th:value="${email}" type="email" class="form-control" name="email" id="email"
                                        placeholder="Search by email only">
                             </div>
                             <div>

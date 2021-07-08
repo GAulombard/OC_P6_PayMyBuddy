@@ -2,6 +2,7 @@ package com.openclassrooms.paymybuddy.controller;
 
 import com.openclassrooms.paymybuddy.PayMyBuddyApplication;
 import com.openclassrooms.paymybuddy.exception.BankAccountAlreadyExistException;
+import com.openclassrooms.paymybuddy.exception.UserNotFoundException;
 import com.openclassrooms.paymybuddy.model.BankAccount;
 import com.openclassrooms.paymybuddy.model.Contact;
 import com.openclassrooms.paymybuddy.model.MyUserDetails;
@@ -56,7 +57,6 @@ public class UserController {
     public String getContact(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /user/contact by: "+user.getEmail());
 
-        model.addAttribute("contact", new User());
         model.addAttribute("users",userService.getUsers());
         model.addAttribute("contacts",(userService.getUserById(user.getUserID())).getContactList());
 
@@ -125,7 +125,8 @@ public class UserController {
     @RolesAllowed({"USER","ADMIN"})
     @PostMapping("/user/addcontact")
     @Transactional
-    public String addContact(@AuthenticationPrincipal MyUserDetails user, Model model, @ModelAttribute("contact") String email) {
+    public String addContact(@AuthenticationPrincipal MyUserDetails user, Model model, @RequestParam String email) throws UserNotFoundException {
+        LOGGER.info("HTTP GET request received at /user/addcontact{email} by: "+user.getEmail());
 
         contactService.saveContactRelationship(user,userService.findUserByEmail(email));
 
