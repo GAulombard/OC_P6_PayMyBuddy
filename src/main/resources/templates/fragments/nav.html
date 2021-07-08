@@ -33,7 +33,7 @@
                             <a class="nav-link text-dark" href="/logout" sec:authorize="isAuthenticated()">Logout</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/signup">Sign-Up</a>
+                            <a class="nav-link text-dark" href="/signup" sec:authorize="isAnonymous()">Sign-Up</a>
                         </li>
                     </ul>
                 </div>

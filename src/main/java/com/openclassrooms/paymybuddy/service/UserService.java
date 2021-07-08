@@ -2,8 +2,6 @@ package com.openclassrooms.paymybuddy.service;
 
 import com.openclassrooms.paymybuddy.exception.UserAlreadyExistException;
 import com.openclassrooms.paymybuddy.model.BankAccount;
-import com.openclassrooms.paymybuddy.model.Contact;
-import com.openclassrooms.paymybuddy.model.MyUserDetails;
 import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.repository.UserRepository;
 import org.slf4j.Logger;
@@ -67,6 +65,18 @@ public class UserService {
         });
 
         return result;
+    }
+
+    public User findUserByEmail(String email) {
+        List<User> users = userRepository.findAll();
+
+        for (User user : users) {
+            if(user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+
+        return null;
     }
 
 }

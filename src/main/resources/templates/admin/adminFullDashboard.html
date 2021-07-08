@@ -51,16 +51,16 @@
                     <table class="table">
                         <thead class="thead-light">
                         <tr>
-                            <th class="text-left">user (id)</th>
                             <th class="text-left">iban</th>
+                            <th class="text-left">user (id)</th>
                             <th class="text-left">balance</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="account: ${accounts}">
+                            <td th:text="${account.iban}"></td>
                             <td th:text="${account.accountOwner.firstName+' '+account.accountOwner.lastName+' ('+account.accountOwner.userID+')'}"
                                 width="300"></td>
-                            <td th:text="${account.iban}"></td>
                             <td th:text="${account.balance}+ €"></td>
                         </tr>
                         </tbody>

@@ -70,11 +70,25 @@
                         </tr>
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-around">
-                        <div class="p-2"><a th:href="@{/user/addcontact}"
-                                            class="btn btn-success btn-lg">
-                            Add new contact
-                        </a></div>
+                    <div>
+                        <h4 class="form-signup-heading">Add new contact</h4>
+                        <form class="form-signup d-flex justify-content-around align-items-center" method="post"
+                              th:action="@{/user/addcontact}" th:object="${contact}">
+                            <div class="form-group col-md-8">
+                                <label for="email"></label>
+                                <input th:field="*{email}" type="email" class="form-control" id="email"
+                                       placeholder="Search by email only">
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-md btn-success align-center">Add contact</button>
+                            </div>
+                        </form>
+                        <!--<select class="form-select" aria-label="Default select example">
+                        <option selected>Choose contact to add</option>
+                        <th:block th:each="user: ${users}">
+                            <option value="1" th:text="${user.firstName+' '+user.lastName}"></option>
+                    </select>-->
+
                     </div>
                 </div>
             </div>

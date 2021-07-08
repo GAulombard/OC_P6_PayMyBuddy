@@ -3,9 +3,11 @@ package com.openclassrooms.paymybuddy.controller;
 import com.openclassrooms.paymybuddy.PayMyBuddyApplication;
 import com.openclassrooms.paymybuddy.exception.BankAccountAlreadyExistException;
 import com.openclassrooms.paymybuddy.model.BankAccount;
+import com.openclassrooms.paymybuddy.model.Contact;
 import com.openclassrooms.paymybuddy.model.MyUserDetails;
 import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.service.BankAccountService;
+import com.openclassrooms.paymybuddy.service.ContactService;
 import com.openclassrooms.paymybuddy.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +36,9 @@ public class UserController {
     @Autowired
     private BankAccountService bankAccountService;
 
+    @Autowired
+    private ContactService contactService;
+
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/home")
     public String getHome(@AuthenticationPrincipal MyUserDetails user, Model model) {
@@ -51,7 +56,8 @@ public class UserController {
     public String getContact(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /user/contact by: "+user.getEmail());
 
-        //model.addAttribute("contacts",(user.getContactList()));
+        model.addAttribute("contact", new User());
+        model.addAttribute("users",userService.getUsers());
         model.addAttribute("contacts",(userService.getUserById(user.getUserID())).getContactList());
 
         return "user/contact";
@@ -114,5 +120,15 @@ public class UserController {
         bankAccountService.removeBankAccountById(id);
 
         return "redirect:/user/home";
+    }
+
+    @RolesAllowed({"USER","ADMIN"})
+    @PostMapping("/user/addcontact")
+    @Transactional
+    public String addContact(@AuthenticationPrincipal MyUserDetails user, Model model, @ModelAttribute("contact") String email) {
+
+        contactService.saveContactRelationship(user,userService.findUserByEmail(email));
+
+        return "redirect:/user/contact";
     }
 }
