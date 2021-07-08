@@ -22,6 +22,7 @@ public class ContactService {
     private UserService userService;
 
     public void saveContactRelationship(MyUserDetails user, User userContact) throws UserNotFoundException {
+        LOGGER.info("Processing to save a new relationship");
         Contact contact = new Contact();
 
         if (userContact==null) {

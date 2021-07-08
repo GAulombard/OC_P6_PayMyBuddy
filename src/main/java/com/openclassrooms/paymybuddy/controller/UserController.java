@@ -46,7 +46,7 @@ public class UserController {
         LOGGER.info("HTTP GET request received at /user/home by: "+user.getEmail());
 
         model.addAttribute("total",userService.getTotalAccountBalanceByUserId(user.getUserID()));
-        model.addAttribute("accounts",user.getAccountList());
+        model.addAttribute("accounts",userService.getUserById(user.getUserID()).getAccountList());
 
         return "user/home";
     }

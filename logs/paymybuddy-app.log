@@ -4547,3 +4547,323 @@ Identify and stop the process that's listening on port 80 or configure this appl
 2021-07-09 01:26:38.903  INFO 5676 --- [http-nio-80-exec-3] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
 2021-07-09 01:26:38.903  INFO 5676 --- [http-nio-80-exec-3] c.o.paymybuddy.service.UserService       : Process to get all users
 2021-07-09 01:26:38.929  INFO 5676 --- [http-nio-80-exec-3] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:31:42.131  INFO 4480 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Starting PayMyBuddyApplication using Java 11.0.11 on DESKTOP-2K67CMT with PID 4480 (D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy\target\classes started by Hodor-Fixe in D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P6_aulombard_geoffrey\P6_05_PayMyBuddy)
+2021-07-09 01:31:42.134  INFO 4480 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : No active profile set, falling back to default profiles: default
+2021-07-09 01:31:43.075  INFO 4480 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-09 01:31:43.155  INFO 4480 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 5 JPA repository interfaces.
+2021-07-09 01:31:43.841  INFO 4480 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@7650ded6' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-09 01:31:43.852  INFO 4480 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-09 01:31:44.143  INFO 4480 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2021-07-09 01:31:44.154  INFO 4480 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-09 01:31:44.155  INFO 4480 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2021-07-09 01:31:44.269  INFO 4480 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-09 01:31:44.270  INFO 4480 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2059 ms
+2021-07-09 01:31:44.554  INFO 4480 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-09 01:31:44.939  INFO 4480 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-09 01:31:44.994  INFO 4480 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-09 01:31:45.057  INFO 4480 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-09 01:31:45.274  INFO 4480 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-09 01:31:45.422  INFO 4480 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-07-09 01:31:46.192  INFO 4480 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-09 01:31:46.229  INFO 4480 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-09 01:31:46.310  WARN 4480 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-09 01:31:47.068  INFO 4480 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@17b387ef, org.springframework.security.web.context.SecurityContextPersistenceFilter@42095996, org.springframework.security.web.header.HeaderWriterFilter@750b200b, org.springframework.security.web.authentication.logout.LogoutFilter@2b18b308, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3d00e981, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@496c6d94, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@65f36591, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@a1e578f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@489b7559, org.springframework.security.web.session.SessionManagementFilter@eaa07bb, org.springframework.security.web.access.ExceptionTranslationFilter@1c09bb7a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1f847d9e]
+2021-07-09 01:31:47.349  INFO 4480 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-07-09 01:31:47.758  INFO 4480 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 5 endpoint(s) beneath base path '/actuator'
+2021-07-09 01:31:47.840  INFO 4480 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2021-07-09 01:31:47.857  INFO 4480 --- [main] c.o.paymybuddy.PayMyBuddyApplication     : Started PayMyBuddyApplication in 6.368 seconds (JVM running for 7.602)
+2021-07-09 01:31:48.110  INFO 4480 --- [RMI TCP Connection(1)-192.168.1.17] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-09 01:31:48.113  INFO 4480 --- [RMI TCP Connection(1)-192.168.1.17] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-09 01:31:48.117  INFO 4480 --- [RMI TCP Connection(1)-192.168.1.17] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2021-07-09 01:32:08.342  INFO 4480 --- [http-nio-80-exec-1] c.o.p.controller.LoginController         : HTTP GET request received at /login
+2021-07-09 01:32:08.917  INFO 4480 --- [http-nio-80-exec-4] c.o.p.controller.LoginController         : HTTP GET request received at /login
+2021-07-09 01:32:12.652  INFO 4480 --- [http-nio-80-exec-6] c.o.p.service.MyUserDetailsService       : Process to authentication
+2021-07-09 01:32:12.897  INFO 4480 --- [http-nio-80-exec-6] c.o.p.service.MyUserDetailsService       : User: g.aulomb@jetmail.fr authentication success.
+2021-07-09 01:32:13.011  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:32:13.041  INFO 4480 --- [http-nio-80-exec-5] c.o.p.controller.AdminController         : HTTP GET request received at /admin by: g.aulomb@jetmail.fr
+2021-07-09 01:32:13.042  INFO 4480 --- [http-nio-80-exec-5] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:32:13.068  INFO 4480 --- [http-nio-80-exec-5] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:32:13.092  INFO 4480 --- [http-nio-80-exec-5] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-09 01:32:13.103  INFO 4480 --- [http-nio-80-exec-5] c.o.paymybuddy.service.FeeService        : Process to get all fees
+2021-07-09 01:32:13.146  INFO 4480 --- [http-nio-80-exec-5] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:32:15.451  INFO 4480 --- [http-nio-80-exec-8] c.o.p.controller.UserController          : HTTP GET request received at /user/contact by: g.aulomb@jetmail.fr
+2021-07-09 01:32:15.451  INFO 4480 --- [http-nio-80-exec-8] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:32:15.489  INFO 4480 --- [http-nio-80-exec-8] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:32:18.266  INFO 4480 --- [http-nio-80-exec-10] c.o.p.controller.UserController          : HTTP GET request received at /user/addcontact{email} by: g.aulomb@jetmail.fr
+2021-07-09 01:32:18.302 ERROR 4480 --- [http-nio-80-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is com.openclassrooms.paymybuddy.exception.UserNotFoundException: User not found] with root cause
+
+com.openclassrooms.paymybuddy.exception.UserNotFoundException: User not found
+	at com.openclassrooms.paymybuddy.service.ContactService.saveContactRelationship(ContactService.java:28) ~[classes/:na]
+	at com.openclassrooms.paymybuddy.controller.UserController.addContact(UserController.java:131) ~[classes/:na]
+	at com.openclassrooms.paymybuddy.controller.UserController$$FastClassBySpringCGLIB$$1c089fb4.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.8.jar:5.3.8]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779) ~[spring-aop-5.3.8.jar:5.3.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.8.jar:5.3.8]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.8.jar:5.3.8]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.8.jar:5.3.8]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.8.jar:5.3.8]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.8.jar:5.3.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.8.jar:5.3.8]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.8.jar:5.3.8]
+	at org.springframework.security.access.intercept.aopalliance.MethodSecurityInterceptor.invoke(MethodSecurityInterceptor.java:61) ~[spring-security-core-5.5.1.jar:5.5.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.8.jar:5.3.8]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.8.jar:5.3.8]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692) ~[spring-aop-5.3.8.jar:5.3.8]
+	at com.openclassrooms.paymybuddy.controller.UserController$$EnhancerBySpringCGLIB$$a1bffd66.addContact(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.8.jar:5.3.8]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.8.jar:5.3.8]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.8.jar:5.3.8]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.8.jar:5.3.8]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1063) ~[spring-webmvc-5.3.8.jar:5.3.8]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.8.jar:5.3.8]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.8.jar:5.3.8]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.8.jar:5.3.8]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.48.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.8.jar:5.3.8]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.48.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:228) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:121) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:149) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:218) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183) ~[spring-security-web-5.5.1.jar:5.5.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96) ~[spring-boot-actuator-2.5.2.jar:2.5.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.8.jar:5.3.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1723) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.48.jar:9.0.48]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2021-07-09 01:32:25.846  INFO 4480 --- [http-nio-80-exec-2] c.o.p.controller.UserController          : HTTP GET request received at /user/contact by: g.aulomb@jetmail.fr
+2021-07-09 01:32:25.847  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:32:25.873  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:33:46.965  INFO 4480 --- [http-nio-80-exec-4] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
+2021-07-09 01:33:46.965  INFO 4480 --- [http-nio-80-exec-4] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:33:46.995  INFO 4480 --- [http-nio-80-exec-4] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:33:58.996  INFO 4480 --- [http-nio-80-exec-5] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts by: g.aulomb@jetmail.fr
+2021-07-09 01:33:58.997  INFO 4480 --- [http-nio-80-exec-5] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:33:59.016  INFO 4480 --- [http-nio-80-exec-5] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:34:19.909  INFO 4480 --- [http-nio-80-exec-8] c.o.p.controller.AdminController         : HTTP GET request received at /admin by: g.aulomb@jetmail.fr
+2021-07-09 01:34:19.909  INFO 4480 --- [http-nio-80-exec-8] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:34:19.926  INFO 4480 --- [http-nio-80-exec-8] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:34:19.930  INFO 4480 --- [http-nio-80-exec-8] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-09 01:34:19.933  INFO 4480 --- [http-nio-80-exec-8] c.o.paymybuddy.service.FeeService        : Process to get all fees
+2021-07-09 01:34:19.942  INFO 4480 --- [http-nio-80-exec-8] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:34:23.098  INFO 4480 --- [http-nio-80-exec-10] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts by: g.aulomb@jetmail.fr
+2021-07-09 01:34:23.099  INFO 4480 --- [http-nio-80-exec-10] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:34:23.109  INFO 4480 --- [http-nio-80-exec-10] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:34:23.996  INFO 4480 --- [http-nio-80-exec-1] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
+2021-07-09 01:34:23.997  INFO 4480 --- [http-nio-80-exec-1] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:34:24.016  INFO 4480 --- [http-nio-80-exec-1] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:34:25.815  INFO 4480 --- [http-nio-80-exec-4] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts by: g.aulomb@jetmail.fr
+2021-07-09 01:34:25.816  INFO 4480 --- [http-nio-80-exec-4] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:34:25.825  INFO 4480 --- [http-nio-80-exec-4] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:34:31.137  INFO 4480 --- [http-nio-80-exec-5] c.o.p.controller.AdminController         : HTTP GET request received at /admin/transactionsby: g.aulomb@jetmail.fr
+2021-07-09 01:34:31.137  INFO 4480 --- [http-nio-80-exec-5] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-09 01:34:31.153  INFO 4480 --- [http-nio-80-exec-5] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:34:39.801  INFO 4480 --- [http-nio-80-exec-8] c.o.p.controller.UserController          : HTTP GET request received at /user/home by: g.aulomb@jetmail.fr
+2021-07-09 01:34:39.818  INFO 4480 --- [http-nio-80-exec-8] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:37:15.890  INFO 4480 --- [http-nio-80-exec-2] c.o.p.controller.UserController          : HTTP GET request received at /user/deleteaccount{id} by: g.aulomb@jetmail.fr
+2021-07-09 01:37:15.891  INFO 4480 --- [http-nio-80-exec-2] c.o.p.service.BankAccountService         : Processing to delete bank account
+2021-07-09 01:37:15.975  INFO 4480 --- [http-nio-80-exec-1] c.o.p.controller.UserController          : HTTP GET request received at /user/home by: g.aulomb@jetmail.fr
+2021-07-09 01:37:15.989  INFO 4480 --- [http-nio-80-exec-1] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:39:12.365  INFO 4480 --- [http-nio-80-exec-6] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
+2021-07-09 01:39:12.365  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:39:12.380  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:39:15.941  INFO 4480 --- [http-nio-80-exec-7] c.o.p.controller.AdminController         : HTTP GET request received at /admin/transactionsby: g.aulomb@jetmail.fr
+2021-07-09 01:39:15.942  INFO 4480 --- [http-nio-80-exec-7] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-09 01:39:15.951  INFO 4480 --- [http-nio-80-exec-7] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:39:17.427  INFO 4480 --- [http-nio-80-exec-9] c.o.p.controller.AdminController         : HTTP GET request received at /admin/fees by: g.aulomb@jetmail.fr
+2021-07-09 01:39:17.428  INFO 4480 --- [http-nio-80-exec-9] c.o.paymybuddy.service.FeeService        : Process to get all fees
+2021-07-09 01:39:17.436  INFO 4480 --- [http-nio-80-exec-9] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:39:19.154  INFO 4480 --- [http-nio-80-exec-2] c.o.p.controller.UserController          : HTTP GET request received at /user/contact by: g.aulomb@jetmail.fr
+2021-07-09 01:39:19.154  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:39:19.170  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:39:25.761  INFO 4480 --- [http-nio-80-exec-3] c.o.p.controller.AdminController         : HTTP GET request received at /admin by: g.aulomb@jetmail.fr
+2021-07-09 01:39:25.762  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:39:25.777  INFO 4480 --- [http-nio-80-exec-3] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:39:25.781  INFO 4480 --- [http-nio-80-exec-3] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-09 01:39:25.784  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.service.FeeService        : Process to get all fees
+2021-07-09 01:39:25.791  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:39:26.303  INFO 4480 --- [http-nio-80-exec-6] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
+2021-07-09 01:39:26.304  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:39:26.320  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:39:38.191  INFO 4480 --- [http-nio-80-exec-7] c.o.p.controller.UserController          : HTTP GET request received at /user/home by: g.aulomb@jetmail.fr
+2021-07-09 01:39:38.201  INFO 4480 --- [http-nio-80-exec-7] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:39:43.449  INFO 4480 --- [http-nio-80-exec-9] c.o.p.controller.UserController          : HTTP GET request received at /user/deleteaccount{id} by: g.aulomb@jetmail.fr
+2021-07-09 01:39:43.449  INFO 4480 --- [http-nio-80-exec-9] c.o.p.service.BankAccountService         : Processing to delete bank account
+2021-07-09 01:39:43.471  INFO 4480 --- [http-nio-80-exec-10] c.o.p.controller.UserController          : HTTP GET request received at /user/home by: g.aulomb@jetmail.fr
+2021-07-09 01:39:43.485  INFO 4480 --- [http-nio-80-exec-10] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:39:46.598  INFO 4480 --- [http-nio-80-exec-1] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts by: g.aulomb@jetmail.fr
+2021-07-09 01:39:46.598  INFO 4480 --- [http-nio-80-exec-1] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:39:46.603  INFO 4480 --- [http-nio-80-exec-1] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:39:49.515  INFO 4480 --- [http-nio-80-exec-4] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
+2021-07-09 01:39:49.516  INFO 4480 --- [http-nio-80-exec-4] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:39:49.531  INFO 4480 --- [http-nio-80-exec-4] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:39:52.932  INFO 4480 --- [http-nio-80-exec-5] c.o.p.controller.UserController          : HTTP GET request received at /user/home by: g.aulomb@jetmail.fr
+2021-07-09 01:39:52.941  INFO 4480 --- [http-nio-80-exec-5] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:40:20.196  INFO 4480 --- [http-nio-80-exec-8] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
+2021-07-09 01:40:20.197  INFO 4480 --- [http-nio-80-exec-8] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:40:20.212  INFO 4480 --- [http-nio-80-exec-8] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:25.836  INFO 4480 --- [http-nio-80-exec-2] c.o.p.controller.UserController          : HTTP GET request received at /user/transfer by: g.aulomb@jetmail.fr
+2021-07-09 01:42:25.842  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:26.967  INFO 4480 --- [http-nio-80-exec-3] c.o.p.controller.UserController          : HTTP GET request received at /user/contact by: g.aulomb@jetmail.fr
+2021-07-09 01:42:26.967  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:42:26.984  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:27.908  INFO 4480 --- [http-nio-80-exec-6] c.o.p.controller.UserController          : HTTP GET request received at /user/profile by: g.aulomb@jetmail.fr
+2021-07-09 01:42:27.914  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:29.745  INFO 4480 --- [http-nio-80-exec-7] c.o.p.controller.UserController          : HTTP GET request received at /user/home by: g.aulomb@jetmail.fr
+2021-07-09 01:42:29.752  INFO 4480 --- [http-nio-80-exec-7] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:30.595  INFO 4480 --- [http-nio-80-exec-9] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts by: g.aulomb@jetmail.fr
+2021-07-09 01:42:30.596  INFO 4480 --- [http-nio-80-exec-9] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:42:30.603  INFO 4480 --- [http-nio-80-exec-9] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:31.076  INFO 4480 --- [http-nio-80-exec-2] c.o.p.controller.AdminController         : HTTP GET request received at /admin/transactionsby: g.aulomb@jetmail.fr
+2021-07-09 01:42:31.076  INFO 4480 --- [http-nio-80-exec-2] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-09 01:42:31.085  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:31.456  INFO 4480 --- [http-nio-80-exec-3] c.o.p.controller.AdminController         : HTTP GET request received at /admin/fees by: g.aulomb@jetmail.fr
+2021-07-09 01:42:31.457  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.service.FeeService        : Process to get all fees
+2021-07-09 01:42:31.462  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:32.098  INFO 4480 --- [http-nio-80-exec-6] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
+2021-07-09 01:42:32.098  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:42:32.112  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:33.569  INFO 4480 --- [http-nio-80-exec-7] c.o.p.controller.AdminController         : HTTP GET request received at /admin/transactionsby: g.aulomb@jetmail.fr
+2021-07-09 01:42:33.570  INFO 4480 --- [http-nio-80-exec-7] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-09 01:42:33.578  INFO 4480 --- [http-nio-80-exec-7] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:34.299  INFO 4480 --- [http-nio-80-exec-9] c.o.p.controller.AdminController         : HTTP GET request received at /admin/fees by: g.aulomb@jetmail.fr
+2021-07-09 01:42:34.299  INFO 4480 --- [http-nio-80-exec-9] c.o.paymybuddy.service.FeeService        : Process to get all fees
+2021-07-09 01:42:34.307  INFO 4480 --- [http-nio-80-exec-9] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:35.707  INFO 4480 --- [http-nio-80-exec-2] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts by: g.aulomb@jetmail.fr
+2021-07-09 01:42:35.708  INFO 4480 --- [http-nio-80-exec-2] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:42:35.714  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:36.420  INFO 4480 --- [http-nio-80-exec-3] c.o.p.controller.AdminController         : HTTP GET request received at /admin by: g.aulomb@jetmail.fr
+2021-07-09 01:42:36.420  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:42:36.431  INFO 4480 --- [http-nio-80-exec-3] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:42:36.434  INFO 4480 --- [http-nio-80-exec-3] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-09 01:42:36.438  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.service.FeeService        : Process to get all fees
+2021-07-09 01:42:36.445  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:37.686  INFO 4480 --- [http-nio-80-exec-6] c.o.p.controller.AdminController         : HTTP GET request received at /admin/fees by: g.aulomb@jetmail.fr
+2021-07-09 01:42:37.687  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.service.FeeService        : Process to get all fees
+2021-07-09 01:42:37.693  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:40.066  INFO 4480 --- [http-nio-80-exec-7] c.o.p.controller.AdminController         : HTTP GET request received at /admin/transactionsby: g.aulomb@jetmail.fr
+2021-07-09 01:42:40.066  INFO 4480 --- [http-nio-80-exec-7] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-09 01:42:40.075  INFO 4480 --- [http-nio-80-exec-7] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:40.860  INFO 4480 --- [http-nio-80-exec-9] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts by: g.aulomb@jetmail.fr
+2021-07-09 01:42:40.860  INFO 4480 --- [http-nio-80-exec-9] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:42:40.865  INFO 4480 --- [http-nio-80-exec-9] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:43.073  INFO 4480 --- [http-nio-80-exec-2] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
+2021-07-09 01:42:43.074  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:42:43.090  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:44.977  INFO 4480 --- [http-nio-80-exec-3] c.o.p.controller.AdminController         : HTTP GET request received at /admin by: g.aulomb@jetmail.fr
+2021-07-09 01:42:44.977  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:42:44.984  INFO 4480 --- [http-nio-80-exec-3] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:42:44.989  INFO 4480 --- [http-nio-80-exec-3] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-09 01:42:44.992  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.service.FeeService        : Process to get all fees
+2021-07-09 01:42:44.997  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:46.842  INFO 4480 --- [http-nio-80-exec-6] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
+2021-07-09 01:42:46.842  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:42:46.855  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:47.368  INFO 4480 --- [http-nio-80-exec-7] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts by: g.aulomb@jetmail.fr
+2021-07-09 01:42:47.369  INFO 4480 --- [http-nio-80-exec-7] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:42:47.375  INFO 4480 --- [http-nio-80-exec-7] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:49.215  INFO 4480 --- [http-nio-80-exec-9] c.o.p.controller.AdminController         : HTTP GET request received at /admin/transactionsby: g.aulomb@jetmail.fr
+2021-07-09 01:42:49.215  INFO 4480 --- [http-nio-80-exec-9] c.o.p.service.TransactionService         : Process to get all transactions
+2021-07-09 01:42:49.223  INFO 4480 --- [http-nio-80-exec-9] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:54.288  INFO 4480 --- [http-nio-80-exec-2] c.o.p.controller.AdminController         : HTTP GET request received at /admin/fees by: g.aulomb@jetmail.fr
+2021-07-09 01:42:54.288  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.service.FeeService        : Process to get all fees
+2021-07-09 01:42:54.295  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:42:57.833  INFO 4480 --- [http-nio-80-exec-3] c.o.p.controller.UserController          : HTTP GET request received at /user/home by: g.aulomb@jetmail.fr
+2021-07-09 01:42:57.841  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:43:02.588  INFO 4480 --- [http-nio-80-exec-6] c.o.p.controller.AdminController         : HTTP GET request received at /admin/users by: g.aulomb@jetmail.fr
+2021-07-09 01:43:02.589  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.service.UserService       : Process to get all users
+2021-07-09 01:43:02.600  INFO 4480 --- [http-nio-80-exec-6] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:43:05.498  INFO 4480 --- [http-nio-80-exec-7] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts by: g.aulomb@jetmail.fr
+2021-07-09 01:43:05.499  INFO 4480 --- [http-nio-80-exec-7] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:43:05.507  INFO 4480 --- [http-nio-80-exec-7] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:43:11.827  INFO 4480 --- [http-nio-80-exec-9] c.o.p.controller.UserController          : HTTP GET request received at /user/home by: g.aulomb@jetmail.fr
+2021-07-09 01:43:11.833  INFO 4480 --- [http-nio-80-exec-9] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:43:15.921  INFO 4480 --- [http-nio-80-exec-2] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts by: g.aulomb@jetmail.fr
+2021-07-09 01:43:15.922  INFO 4480 --- [http-nio-80-exec-2] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:43:15.929  INFO 4480 --- [http-nio-80-exec-2] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:43:22.673  INFO 4480 --- [http-nio-80-exec-3] c.o.p.controller.UserController          : HTTP GET request received at /user/home by: g.aulomb@jetmail.fr
+2021-07-09 01:43:22.681  INFO 4480 --- [http-nio-80-exec-3] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:43:27.174  INFO 4480 --- [http-nio-80-exec-6] c.o.p.controller.UserController          : HTTP GET request received at /user/deleteaccount{id} by: g.aulomb@jetmail.fr
+2021-07-09 01:43:27.174  INFO 4480 --- [http-nio-80-exec-6] c.o.p.service.BankAccountService         : Processing to delete bank account
+2021-07-09 01:43:27.196  INFO 4480 --- [http-nio-80-exec-5] c.o.p.controller.UserController          : HTTP GET request received at /user/home by: g.aulomb@jetmail.fr
+2021-07-09 01:43:27.201  INFO 4480 --- [http-nio-80-exec-5] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:44:25.302  INFO 4480 --- [http-nio-80-exec-8] c.o.p.controller.AdminController         : HTTP GET request received at /admin/accounts by: g.aulomb@jetmail.fr
+2021-07-09 01:44:25.303  INFO 4480 --- [http-nio-80-exec-8] c.o.p.service.BankAccountService         : Processing to get all accounts
+2021-07-09 01:44:25.311  INFO 4480 --- [http-nio-80-exec-8] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-07-09 01:44:28.300  INFO 4480 --- [http-nio-80-exec-10] c.o.p.controller.UserController          : HTTP GET request received at /user/home by: g.aulomb@jetmail.fr
+2021-07-09 01:44:28.310  INFO 4480 --- [http-nio-80-exec-10] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
