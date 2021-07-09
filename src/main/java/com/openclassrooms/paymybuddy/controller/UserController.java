@@ -59,6 +59,7 @@ public class UserController {
 
         model.addAttribute("users",userService.getUsers());
         model.addAttribute("contacts",(userService.getUserById(user.getUserID())).getContactList());
+        model.addAttribute("contactsOf",(userService.getUserById(user.getUserID())).getContactListOf());
 
         return "user/contact";
     }

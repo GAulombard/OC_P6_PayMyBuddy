@@ -34,7 +34,7 @@ public class BankAccountService {
             throw new BankAccountAlreadyExistException("Bank account already exist in database");
         }
 
-        bankAccount.setBalance(BankAccountUtil.getRandomValueBetween(-500,5000));//Simulate the balance between -500 and 5000
+        bankAccount.setBalance(BankAccountUtil.getRandomValueBetween(-5000,5000));//Simulate the balance between -500 and 5000
         bankAccount.setBankEstablishment(BankAccountUtil.getRandomBankNameFromEnum());
 
         bankAccountRepository.save(bankAccount);

@@ -33,15 +33,11 @@ public class PayMyBuddyApplication {
    /*    ----BackEnd/fonctionnement
 
          TODO: ajouter les validations pour les formulaires
-
          TODO: javadoc
          TODO: jacoco
          TODO: surefire
          TODO: gérer les exceptions
          TODO: boutons make admin-user
-
-         TODO: si l'utilisateur est deja authentifié et enregistre un nouveau compte après souscription renvois sur la page 404
-         TODO: pourquoi image s'affiche pas tant qu'on est pas connecté ?
          TOTO: si deja loger erreur si on va sur la page login
          ---FrontEnd
          TODO: make admin menu responsive
