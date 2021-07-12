@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,6 +84,7 @@ public class UserController {
 
         List<Transaction> transactions = transactionService.findAllTransactionsByUserId(user.getUserID());
 
+        model.addAttribute("transaction",new Transaction());
         model.addAttribute("contactAccount",bankAccountService.getAllContactBankAccountById(user.getUserID()));
         model.addAttribute("myAccounts",bankAccountService.findAllBankAccountByOwnerId(user.getUserID()));
         model.addAttribute("transactions",transactions);
@@ -153,6 +156,17 @@ public class UserController {
         contactService.deleteContactByUserIdAndContactUserId(user.getUserID(),id);
 
         return "redirect:/user/contact";
+    }
+
+    @RolesAllowed({"USER","ADMIN"})
+    @PostMapping("/user/new-transfer") //Bank Account
+    @Transactional
+    public String saveTransaction(@ModelAttribute("transaction") Transaction transaction, @AuthenticationPrincipal MyUserDetails user, Model model) {
+        LOGGER.info("HTTP POST request received at /user/new-transfer by: "+user.getEmail());
+
+        transactionService.saveTransaction(transaction);
+
+        return "redirect:/user/transfer";
     }
 
 }

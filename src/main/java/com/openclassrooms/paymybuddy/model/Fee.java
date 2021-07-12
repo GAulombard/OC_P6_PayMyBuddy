@@ -2,6 +2,7 @@ package com.openclassrooms.paymybuddy.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "fee")
@@ -12,7 +13,7 @@ public class Fee {
     @Column(name = "fee_id")
     private int feeId;
     @Column(name = "date")
-    private LocalDate date;
+    private LocalDateTime date;
     @Column(name = "amount")
     private double amount;
     @Column(name = "rate100")
@@ -26,11 +27,11 @@ public class Fee {
         this.feeId = feeId;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

@@ -2,6 +2,7 @@ package com.openclassrooms.paymybuddy.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "transaction")
@@ -19,7 +20,7 @@ public class Transaction {
     private String message;
 
     @Column(name = "date")
-    private LocalDate date;
+    private LocalDateTime date;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "debtor")
@@ -69,11 +70,11 @@ public class Transaction {
         this.message = message;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

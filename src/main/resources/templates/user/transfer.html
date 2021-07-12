@@ -1,7 +1,7 @@
 <!doctype html>
 
 <html lang="en" xmlns:th="http://wwww.thymeleaf.org" class="h-100"
-      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
 
 
 <head>
@@ -25,26 +25,44 @@
             <div class="card my-3 shadow">
                 <div class="card-body">
                     <h5 class="card-title">Send money</h5>
-                    <form class="d-flex justify-content-around">
-                            <div class="form-group col-md-4">
-                                <label for="debtor">Debtor</label>
-                                <select id="debtor" class="form-control">
-                                    <option selected>Choose your account...</option>
-                                    <th:block th:each="account: ${myAccounts}">
-                                        <option th:text="${account.iban+' ('+account.balance+')€'}"></option>
-                                    </th:block>
-                                </select>
-                            </div>
-                        <div class="form-group col-md-4">
-                            <label for="creditor">Creditor</label>
-                            <select id="creditor" class="form-control">
-                                <option selected>Choose contact account...</option>
-                                <th:block th:each="account: ${contactAccount}">
-                                    <option th:text="${account.accountOwner+' ('+account.iban+')'}"></option>
+                    <form method="post" th:action="@{/user/new-transfer}" th:object="${transaction}">
+                        <div class="d-flex justify-content-around">
+                        <div class="form-group col-md-5">
+                            <label for="debtor">Debtor</label>
+                            <select id="debtor" class="form-control" th:field="*{debtor}">
+                                <option th:value="${'null'}" selected>Choose your account...</option>
+                                <th:block th:each="account: ${myAccounts}">
+                                    <option th:value="${account.iban}" th:text="${account.iban+' ('+account.balance+'€)'}">Choose your account...</option>
                                 </th:block>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-sm">Send monney</button>
+                        <div class="form-group col-md-5">
+                            <label for="creditor">Creditor</label>
+                            <select id="creditor" class="form-control" th:field="*{creditor}">
+                                <option th:value="${'null'}" selected>Choose contact account...</option>
+                                <th:block th:each="account: ${contactAccount}">
+                                    <option th:value="${account.iban}" th:text="${account.accountOwner.firstName+' '+account.accountOwner.lastName+' ('+account.iban+')'}">Choose contact account...</option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+
+                            <label for="amount">Amount</label>
+                            <div class="d-flex">
+                                <input type="number" id="amount" class="form-control" min="0" th:field="*{amount}">
+                                <div class="input-group-append"><span class="input-group-text">€</span></div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="d-flex justify-content-around">
+                            <div class="form-group col-md-11">
+                            <label for="message">Message</label>
+                            <div class="d-flex">
+                                <input type="text" id="message" class="form-control" th:field="*{message}">
+                            </div>
+                            </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Send money</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -58,7 +76,7 @@
                     <table class="table">
                         <thead class="thead-light">
                         <tr>
-                            <th class="text-left">reference</th>
+                            <th class="text-left">ref.</th>
                             <th class="text-left">from</th>
                             <th class="text-left">to</th>
                             <th class="text-left">date</th>
