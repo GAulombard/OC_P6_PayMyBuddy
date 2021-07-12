@@ -16,6 +16,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type User authentication success handler.
+ */
 public class UserAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -27,6 +30,14 @@ public class UserAuthenticationSuccessHandler implements AuthenticationSuccessHa
         clearAuthenticationAttributes(httpServletRequest);
     }
 
+    /**
+     * Handle.
+     *
+     * @param request        the request
+     * @param response       the response
+     * @param authentication the authentication
+     * @throws IOException the io exception
+     */
     protected void handle(
             HttpServletRequest request,
             HttpServletResponse response,
@@ -39,6 +50,12 @@ public class UserAuthenticationSuccessHandler implements AuthenticationSuccessHa
     }
 
 
+    /**
+     * Determine target url string.
+     *
+     * @param authentication the authentication
+     * @return the string
+     */
     protected String determineTargetUrl(final Authentication authentication) {
 
         Map<String, String> roleTargetUrlMap = new HashMap<>();
@@ -56,6 +73,11 @@ public class UserAuthenticationSuccessHandler implements AuthenticationSuccessHa
         throw new IllegalStateException();
     }
 
+    /**
+     * Clear authentication attributes.
+     *
+     * @param request the request
+     */
     protected void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session == null) {

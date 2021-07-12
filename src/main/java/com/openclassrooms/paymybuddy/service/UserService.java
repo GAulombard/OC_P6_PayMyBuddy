@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * The type User service.
+ */
 @Service
 public class UserService {
 
@@ -25,11 +28,22 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Gets users.
+     *
+     * @return the users
+     */
     public Iterable<User> getUsers() {
         LOGGER.info("Process to get all users");
         return userRepository.findAll();
     }
 
+    /**
+     * Save user.
+     *
+     * @param user the user
+     * @throws UserAlreadyExistException the user already exist exception
+     */
     public void saveUser(User user) throws UserAlreadyExistException {
         LOGGER.info("Processing to save a new user in database");
         if(userRepository.existsByEmail(user.getEmail())) {
@@ -40,22 +54,45 @@ public class UserService {
             userRepository.save(user);
     }
 
+    /**
+     * Find user by id optional.
+     *
+     * @param id the id
+     * @return the optional
+     */
     public Optional<User> findUserById(int id) {
         LOGGER.info("Processing to find a user by id");
         return userRepository.findById(id);
     }
 
+    /**
+     * Gets user by id.
+     *
+     * @param id the id
+     * @return the user by id
+     */
     public User getUserById(int id) {
 
         LOGGER.info("Processing to find a user by id");
         return userRepository.getById(id);
     }
 
+    /**
+     * Remove user by id.
+     *
+     * @param id the id
+     */
     public void removeUserById(int id) {
         LOGGER.info("Processing to remove user by id");
         userRepository.deleteById(id);
     }
 
+    /**
+     * Get total account balance by user id atomic reference.
+     *
+     * @param id the id
+     * @return the atomic reference
+     */
     public AtomicReference<Double> getTotalAccountBalanceByUserId(int id){
         AtomicReference<Double> result= new AtomicReference<>((double) 0);
         List<BankAccount> bankAccounts = userRepository.getById(id).getAccountList();
@@ -69,6 +106,12 @@ public class UserService {
         return result;
     }
 
+    /**
+     * Find user by email user.
+     *
+     * @param email the email
+     * @return the user
+     */
     public User findUserByEmail(String email) {
         LOGGER.info("Processing to find a user by email");
         List<User> users = userRepository.findAll();
@@ -80,6 +123,10 @@ public class UserService {
         }
 
         return null;
+    }
+
+    public void updateRoleById(int id, String role) {
+        userRepository.updateRole(id,role);
     }
 
 }

@@ -12,6 +12,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * The type My user details.
+ */
 public class MyUserDetails implements UserDetails {
 
     private final Logger LOGGER = LoggerFactory.getLogger(MyUserDetails.class);
@@ -30,6 +33,11 @@ public class MyUserDetails implements UserDetails {
     private List<BankAccount> accountList;
     private List<User> contactListOf;
 
+    /**
+     * Instantiates a new My user details.
+     *
+     * @param user the user
+     */
     public MyUserDetails(User user) {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
@@ -49,98 +57,218 @@ public class MyUserDetails implements UserDetails {
 
     }
 
+    /**
+     * Gets account list.
+     *
+     * @return the account list
+     */
     public List<BankAccount> getAccountList() {
         return accountList;
     }
 
+    /**
+     * Gets contact list of.
+     *
+     * @return the contact list of
+     */
     public List<User> getContactListOf() {
         return contactListOf;
     }
 
+    /**
+     * Sets contact list of.
+     *
+     * @param contactListOf the contact list of
+     */
     public void setContactListOf(List<User> contactListOf) {
         this.contactListOf = contactListOf;
     }
 
+    /**
+     * Sets account list.
+     *
+     * @param accountList the account list
+     */
     public void setAccountList(List<BankAccount> accountList) {
         this.accountList = accountList;
     }
 
+    /**
+     * Gets user id.
+     *
+     * @return the user id
+     */
     public int getUserID() {
         return userID;
     }
 
+    /**
+     * Sets user id.
+     *
+     * @param userID the user id
+     */
     public void setUserID(int userID) {
         this.userID = userID;
     }
 
+    /**
+     * Gets address.
+     *
+     * @return the address
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * Sets address.
+     *
+     * @param address the address
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     * Gets city.
+     *
+     * @return the city
+     */
     public String getCity() {
         return city;
     }
 
+    /**
+     * Sets city.
+     *
+     * @param city the city
+     */
     public void setCity(String city) {
         this.city = city;
     }
 
+    /**
+     * Gets zip.
+     *
+     * @return the zip
+     */
     public int getZip() {
         return zip;
     }
 
+    /**
+     * Sets zip.
+     *
+     * @param zip the zip
+     */
     public void setZip(int zip) {
         this.zip = zip;
     }
 
+    /**
+     * Gets phone.
+     *
+     * @return the phone
+     */
     public int getPhone() {
         return phone;
     }
 
+    /**
+     * Sets phone.
+     *
+     * @param phone the phone
+     */
     public void setPhone(int phone) {
         this.phone = phone;
     }
 
+    /**
+     * Sets password.
+     *
+     * @param password the password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * Sets authorities.
+     *
+     * @param authorities the authorities
+     */
     public void setAuthorities(List<GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
 
+    /**
+     * Gets first name.
+     *
+     * @return the first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Sets first name.
+     *
+     * @param firstName the first name
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * Gets contact list.
+     *
+     * @return the contact list
+     */
     public List<User> getContactList() {
         return contactList;
     }
 
+    /**
+     * Sets contact list.
+     *
+     * @param contactList the contact list
+     */
     public void setContactList(List<User> contactList) {
         this.contactList = contactList;
     }
 
+    /**
+     * Gets last name.
+     *
+     * @return the last name
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Sets last name.
+     *
+     * @param lastName the last name
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
     public void setEmail(String email) {
         this.email = email;
     }

@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+/**
+ * The type Fee service.
+ */
 @Service
 public class FeeService {
 
@@ -20,11 +23,21 @@ public class FeeService {
     @Autowired
     private FeeRepository feeRepository;
 
+    /**
+     * Gets fees.
+     *
+     * @return the fees
+     */
     public Iterable<Fee> getFees() {
         LOGGER.info("Processing to get all fees");
         return feeRepository.findAll();
     }
 
+    /**
+     * Save fee.
+     *
+     * @param fee the fee
+     */
     public void saveFee(Fee fee){
         LOGGER.info("Processing to save new fee");
 

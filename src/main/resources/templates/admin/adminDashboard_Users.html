@@ -58,15 +58,23 @@
                             <td th:text="${user.userRole}"></td>
                             <td width="50">
                                 <th:block th:each="account: ${user.accountList}">
-                                    <div><th:block th:text="${account.iban}"></th:block></div>
+                                    <div>
+                                        <th:block th:text="${account.iban}"></th:block>
+                                    </div>
                                 </th:block>
                             </td>
                             <td width="150">
                                 <th:block th:each="contact: ${user.contactList}">
-                                    <div><th:block th:text="${contact.firstName+' '+contact.lastName+' ('+contact.userID+')'}"></th:block></div>
+                                    <div>
+                                        <th:block
+                                                th:text="${contact.firstName+' '+contact.lastName+' ('+contact.userID+')'}"></th:block>
+                                    </div>
                                 </th:block>
                                 <th:block th:each="contact: ${user.contactListOf}">
-                                    <div><th:block th:text="${contact.firstName+' '+contact.lastName+' ('+contact.userID+')'}"></th:block></div>
+                                    <div>
+                                        <th:block
+                                                th:text="${contact.firstName+' '+contact.lastName+' ('+contact.userID+')'}"></th:block>
+                                    </div>
                                 </th:block>
                             </td>
                             <td>
@@ -77,9 +85,9 @@
                                 </a>
                             </td>
                             <td>
-                                <a th:href="${user.userRole == 'ROLE_USER'} ? '/admin/makeadmin(id=${user.userID})' : '/admin/makeuser(id=${user.userID})'"
+                                <a th:href="${user.userRole == 'ROLE_USER'} ? '/admin/make-admin?id='+${user.userID} : '/admin/make-user?id='+${user.userID}"
                                    class="btn btn-success btn-sm"
-                                   onclick="if(!(confirm('Are you sure you want the role for this user ?'))) return false">
+                                   onclick="if(!(confirm('Are you sure you want this role for this user ?'))) return false">
                                     <th:block
                                             th:text="${user.userRole == 'ROLE_USER'} ? 'Make admin' : 'Make user'"></th:block>
                                 </a>

@@ -2,11 +2,41 @@ package com.openclassrooms.paymybuddy.model;
 
 import java.util.Random;
 
+/**
+ * The type Bank.
+ */
 public class Bank {
 
+    /**
+     * The enum Bank name.
+     */
     public enum bankName {
-        POSTAL_BANK, AGRICULTURAL_CREDIT, POPULAR_BANK, GENERAL_SOCIETY, SAVINGS_BANK;
+        /**
+         * Postal bank bank name.
+         */
+        POSTAL_BANK,
+        /**
+         * Agricultural credit bank name.
+         */
+        AGRICULTURAL_CREDIT,
+        /**
+         * Popular bank bank name.
+         */
+        POPULAR_BANK,
+        /**
+         * General society bank name.
+         */
+        GENERAL_SOCIETY,
+        /**
+         * Savings bank bank name.
+         */
+        SAVINGS_BANK;
 
+        /**
+         * Gets random bank name.
+         *
+         * @return the random bank name
+         */
         public static bankName getRandomBankName() {
             bankName[] value = bankName.values();
             int length = value.length;

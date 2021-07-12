@@ -27,6 +27,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The type User controller.
+ */
 @Controller
 public class UserController {
 
@@ -47,6 +50,13 @@ public class UserController {
     @Autowired
     private FeeService feeService;
 
+    /**
+     * Gets home.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the home
+     */
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/home")
     public String getHome(@AuthenticationPrincipal MyUserDetails user, Model model) {
@@ -58,6 +68,13 @@ public class UserController {
         return "user/home";
     }
 
+    /**
+     * Gets contact.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the contact
+     */
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/contact")
     @Transactional
@@ -71,6 +88,13 @@ public class UserController {
         return "user/contact";
     }
 
+    /**
+     * Gets profile.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the profile
+     */
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/profile")
     public String getProfile(@AuthenticationPrincipal MyUserDetails user, Model model) {
@@ -79,6 +103,13 @@ public class UserController {
         return "user/profile";
     }
 
+    /**
+     * Gets transfer.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the transfer
+     */
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/transfer")
     @Transactional
@@ -95,6 +126,13 @@ public class UserController {
         return "user/transfer";
     }
 
+    /**
+     * Delete user account string.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the string
+     */
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/deletemypmb")
     @Transactional
@@ -106,6 +144,13 @@ public class UserController {
         return "redirect:/logout";
     }
 
+    /**
+     * Gets account form.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the account form
+     */
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/accountform")
     public String getAccountForm(@AuthenticationPrincipal MyUserDetails user, Model model) {
@@ -116,6 +161,15 @@ public class UserController {
         return "user/accountForm";
     }
 
+    /**
+     * Save bank account string.
+     *
+     * @param account the account
+     * @param user    the user
+     * @param model   the model
+     * @return the string
+     * @throws BankAccountAlreadyExistException the bank account already exist exception
+     */
     @RolesAllowed({"USER","ADMIN"})
     @PostMapping("/user/createaccount") //Bank Account
     @Transactional
@@ -128,6 +182,13 @@ public class UserController {
         return "redirect:/user/home";
     }
 
+    /**
+     * Delete bank account string.
+     *
+     * @param id   the id
+     * @param user the user
+     * @return the string
+     */
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/deleteaccount{id}") //Bank Account
     @Transactional
@@ -139,6 +200,15 @@ public class UserController {
         return "redirect:/user/home";
     }
 
+    /**
+     * Add contact string.
+     *
+     * @param user  the user
+     * @param model the model
+     * @param email the email
+     * @return the string
+     * @throws UserNotFoundException the user not found exception
+     */
     @RolesAllowed({"USER","ADMIN"})
     @PostMapping("/user/addcontact")
     @Transactional
@@ -150,6 +220,13 @@ public class UserController {
         return "redirect:/user/contact";
     }
 
+    /**
+     * Delete contact string.
+     *
+     * @param id   the id
+     * @param user the user
+     * @return the string
+     */
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/delete-contact{id}") //Bank Account
     @Transactional
@@ -161,6 +238,14 @@ public class UserController {
         return "redirect:/user/contact";
     }
 
+    /**
+     * Save transaction string.
+     *
+     * @param transaction the transaction
+     * @param user        the user
+     * @param model       the model
+     * @return the string
+     */
     @RolesAllowed({"USER","ADMIN"})
     @PostMapping("/user/new-transfer") //Bank Account
     @Transactional

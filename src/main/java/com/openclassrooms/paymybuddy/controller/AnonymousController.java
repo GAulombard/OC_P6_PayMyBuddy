@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+/**
+ * The type Anonymous controller.
+ */
 @Controller
 public class AnonymousController {
 
@@ -22,6 +25,11 @@ public class AnonymousController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Gets index.
+     *
+     * @return the index
+     */
     @GetMapping({"/index"})
     public String getIndex() {
         LOGGER.info("HTTP GET request received at /index");
@@ -29,6 +37,12 @@ public class AnonymousController {
     }
 
 
+    /**
+     * Gets signup form.
+     *
+     * @param model the model
+     * @return the signup form
+     */
     @GetMapping("/signup")
     public String getSignupForm(Model model) {
         LOGGER.info("HTTP GET request received at /signup");
@@ -37,6 +51,14 @@ public class AnonymousController {
     }
 
 
+    /**
+     * Add new user string.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the string
+     * @throws UserAlreadyExistException the user already exist exception
+     */
     @PostMapping("/signup/save")
     public String addNewUser(@ModelAttribute("user") User user, Model model) throws UserAlreadyExistException {
         LOGGER.info("HTTP POST request received at /signup/save");

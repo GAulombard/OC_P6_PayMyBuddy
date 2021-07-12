@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Contact service.
+ */
 @Service
 public class ContactService {
 
@@ -24,6 +27,13 @@ public class ContactService {
     @Autowired
     private UserService userService;
 
+    /**
+     * Save contact relationship.
+     *
+     * @param user        the user
+     * @param userContact the user contact
+     * @throws UserNotFoundException the user not found exception
+     */
     public void saveContactRelationship(MyUserDetails user, User userContact) throws UserNotFoundException {
         LOGGER.info("Processing to save a new relationship");
         Contact contact = new Contact();
@@ -37,6 +47,12 @@ public class ContactService {
         contactRepository.save(contact);
     }
 
+    /**
+     * Delete contact by user id and contact user id.
+     *
+     * @param userId        the user id
+     * @param contactUserId the contact user id
+     */
     public void deleteContactByUserIdAndContactUserId(int userId,int contactUserId) {
         LOGGER.info("Processing to delete contact");
 
@@ -58,6 +74,12 @@ public class ContactService {
 
     }
 
+    /**
+     * Gets all my contact by id.
+     *
+     * @param id the id
+     * @return the all my contact by id
+     */
     public List<User> getAllMyContactById(int id) {
         List<User> result = new ArrayList<>();
 

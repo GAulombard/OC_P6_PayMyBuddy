@@ -8,9 +8,18 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * The interface Transaction repository.
+ */
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction,Integer> {
 
+    /**
+     * Find all transactions by bank account iban list.
+     *
+     * @param iban the iban
+     * @return the list
+     */
     @Query("SELECT t FROM Transaction t WHERE t.creditor.iban =: iban OR t.debtor.iban = :iban")
     List<Transaction> findAllTransactionsByBankAccountIban(String iban);
 }

@@ -11,11 +11,20 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type Login controller.
+ */
 @Controller
 public class LoginController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
+    /**
+     * Get login page string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @PreAuthorize("isAnonymous()")
     @GetMapping("/login")
     public String getLoginPage(Model model){

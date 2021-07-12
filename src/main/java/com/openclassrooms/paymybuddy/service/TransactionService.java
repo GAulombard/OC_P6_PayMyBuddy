@@ -17,28 +17,51 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * The type Transaction service.
+ */
 @Service
 public class TransactionService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(TransactionService.class);
 
+    /**
+     * The Bank account service.
+     */
     @Autowired
     BankAccountService bankAccountService;
 
     @Autowired
     private TransactionRepository transactionRepository;
 
+    /**
+     * Gets transactions.
+     *
+     * @return the transactions
+     */
     public Iterable<Transaction> getTransactions() {
         LOGGER.info("Process to get all transactions");
         return transactionRepository.findAll();
     }
 
+    /**
+     * Find all transactions by bank account iban list.
+     *
+     * @param iban the iban
+     * @return the list
+     */
     public List<Transaction> findAllTransactionsByBankAccountIban(String iban) {
         List<Transaction> result = transactionRepository.findAllTransactionsByBankAccountIban(iban);
 
         return result;
     }
 
+    /**
+     * Find all transactions by user id list.
+     *
+     * @param id the id
+     * @return the list
+     */
     public List<Transaction> findAllTransactionsByUserId(int id) {
         Iterable<BankAccount> accounts = bankAccountService.findAllBankAccountByOwnerId(id);
         List<String> ibans = new ArrayList<>();
@@ -56,6 +79,11 @@ public class TransactionService {
         return transactions;
     }
 
+    /**
+     * Save transaction.
+     *
+     * @param transaction the transaction
+     */
     public void saveTransaction(Transaction transaction) {
 
 

@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 
+/**
+ * The type User.
+ */
 @Entity
 @Table(name = "user")
 public class User {
@@ -66,106 +69,236 @@ public class User {
     )
     private List<User> contactListOf;
 
+    /**
+     * Gets contact list of.
+     *
+     * @return the contact list of
+     */
     public List<User> getContactListOf() {
         return contactListOf;
     }
 
+    /**
+     * Sets contact list of.
+     *
+     * @param contactListOf the contact list of
+     */
     public void setContactListOf(List<User> contactListOf) {
         this.contactListOf = contactListOf;
     }
 
+    /**
+     * Gets contact list.
+     *
+     * @return the contact list
+     */
     public List<User> getContactList() {
         return contactList;
     }
 
+    /**
+     * Sets contact list.
+     *
+     * @param contactList the contact list
+     */
     public void setContactList(List<User> contactList) {
         this.contactList = contactList;
     }
 
+    /**
+     * Gets account list.
+     *
+     * @return the account list
+     */
     public List<BankAccount> getAccountList() {
         return accountList;
     }
 
+    /**
+     * Sets account list.
+     *
+     * @param accountList the account list
+     */
     public void setAccountList(List<BankAccount> accountList) {
         this.accountList = accountList;
     }
 
+    /**
+     * Gets user id.
+     *
+     * @return the user id
+     */
     public int getUserID() {
         return userID;
     }
 
+    /**
+     * Sets user id.
+     *
+     * @param userID the user id
+     */
     public void setUserID(int userID) {
         this.userID = userID;
     }
 
+    /**
+     * Gets first name.
+     *
+     * @return the first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Sets first name.
+     *
+     * @param firstName the first name
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * Gets last name.
+     *
+     * @return the last name
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Sets last name.
+     *
+     * @param lastName the last name
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Gets password.
+     *
+     * @return the password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Sets password.
+     *
+     * @param password the password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * Gets phone.
+     *
+     * @return the phone
+     */
     public int getPhone() {
         return phone;
     }
 
+    /**
+     * Sets phone.
+     *
+     * @param phone the phone
+     */
     public void setPhone(int phone) {
         this.phone = phone;
     }
 
+    /**
+     * Gets address.
+     *
+     * @return the address
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * Sets address.
+     *
+     * @param address the address
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     * Gets zip.
+     *
+     * @return the zip
+     */
     public int getZip() {
         return zip;
     }
 
+    /**
+     * Sets zip.
+     *
+     * @param zip the zip
+     */
     public void setZip(int zip) {
         this.zip = zip;
     }
 
+    /**
+     * Gets city.
+     *
+     * @return the city
+     */
     public String getCity() {
         return city;
     }
 
+    /**
+     * Sets city.
+     *
+     * @param city the city
+     */
     public void setCity(String city) {
         this.city = city;
     }
 
+    /**
+     * Gets user role.
+     *
+     * @return the user role
+     */
     public String getUserRole() {
         return userRole;
     }
 
+    /**
+     * Sets user role.
+     *
+     * @param userRole the user role
+     */
     public void setUserRole(String userRole) {
         this.userRole = userRole;
     }

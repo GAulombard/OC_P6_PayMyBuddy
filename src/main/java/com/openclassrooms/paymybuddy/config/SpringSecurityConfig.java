@@ -15,12 +15,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+/**
+ * The type Spring security config.
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true,jsr250Enabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
+    /**
+     * The User details service.
+     */
     @Autowired
     MyUserDetailsService userDetailsService;
 
@@ -58,11 +64,21 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+    /**
+     * Password encoder password encoder.
+     *
+     * @return the password encoder
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Authentication success handler authentication success handler.
+     *
+     * @return the authentication success handler
+     */
     @Bean
     public AuthenticationSuccessHandler AuthenticationSuccessHandler() {
         return new UserAuthenticationSuccessHandler();

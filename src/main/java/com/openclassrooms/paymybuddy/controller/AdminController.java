@@ -1,5 +1,6 @@
 package com.openclassrooms.paymybuddy.controller;
 
+import com.openclassrooms.paymybuddy.constants.Constants;
 import com.openclassrooms.paymybuddy.model.*;
 import com.openclassrooms.paymybuddy.service.BankAccountService;
 import com.openclassrooms.paymybuddy.service.FeeService;
@@ -22,6 +23,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * The type Admin controller.
+ */
 @Controller
 public class AdminController {
 
@@ -36,6 +40,13 @@ public class AdminController {
     @Autowired
     private FeeService feeService;
 
+    /**
+     * Gets full dashboard.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the full dashboard
+     */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
     @Transactional
@@ -55,6 +66,13 @@ public class AdminController {
         return "admin/adminFullDashboard";
     }
 
+    /**
+     * Gets all users.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the all users
+     */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/users")
     @Transactional
@@ -68,6 +86,13 @@ public class AdminController {
         return "admin/adminDashboard_Users";
     }
 
+    /**
+     * Gets all bank accounts.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the all bank accounts
+     */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/accounts")
     @Transactional
@@ -81,6 +106,13 @@ public class AdminController {
         return "admin/adminDashboard_Accounts";
     }
 
+    /**
+     * Gets all transactions.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the all transactions
+     */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/transactions")
     public String getAllTransactions(@AuthenticationPrincipal MyUserDetails user, Model model) {
@@ -93,6 +125,13 @@ public class AdminController {
         return "admin/adminDashboard_Transactions";
     }
 
+    /**
+     * Gets all fees.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the all fees
+     */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/fees")
     @Transactional
@@ -105,6 +144,13 @@ public class AdminController {
         return "admin/adminDashboard_Fees";
     }
 
+    /**
+     * Delete user string.
+     *
+     * @param user the user
+     * @param id   the id
+     * @return the string
+     */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/delete")
     @Transactional
@@ -113,6 +159,28 @@ public class AdminController {
 
         userService.removeUserById(id);
 
+
+        return "redirect:/admin/users";
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/make-admin")
+    @Transactional
+    public String makeAdmin(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") int id) {
+        LOGGER.info("HTTP GET request received at /admin/make-admin?id={id} by: "+user.getEmail());
+
+        userService.updateRoleById(id, Constants.ROLE_ADMIN);
+
+        return "redirect:/admin/users";
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/make-user")
+    @Transactional
+    public String makeUser(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") int id) {
+        LOGGER.info("HTTP GET request received at /admin/make-user?id={id} by: "+user.getEmail());
+
+        userService.updateRoleById(id, Constants.ROLE_USER);
 
         return "redirect:/admin/users";
     }
