@@ -37,10 +37,17 @@ public class PayMyBuddyApplication {
          TODO: jacoco
          TODO: surefire
          TODO: gérer les exceptions
-         TODO: boutons make admin-user
-         TOTO: si deja loger erreur si on va sur la page login
+         TODO: gérer le trie des tables
+         TODO: test unitaire
+         TODO: test integrations
+
          ---FrontEnd
          TODO: make admin menu responsive
+         TODO: ajouter page profile contact
+         TODO: ajouter bouton delete dans accounts pour admin
+         TODO: ajouter total fees
+         TODO: ajouter last transaction sur la page home et last message
+         TODO: logo moins gros page d'acceuil
 
    */
 

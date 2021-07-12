@@ -163,6 +163,13 @@ public class AdminController {
         return "redirect:/admin/users";
     }
 
+    /**
+     * Make admin string.
+     *
+     * @param user the user
+     * @param id   the id
+     * @return the string
+     */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/make-admin")
     @Transactional
@@ -174,6 +181,13 @@ public class AdminController {
         return "redirect:/admin/users";
     }
 
+    /**
+     * Make user string.
+     *
+     * @param user the user
+     * @param id   the id
+     * @return the string
+     */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/make-user")
     @Transactional

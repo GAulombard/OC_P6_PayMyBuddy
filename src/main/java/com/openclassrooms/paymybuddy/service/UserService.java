@@ -125,6 +125,12 @@ public class UserService {
         return null;
     }
 
+    /**
+     * Update role by id.
+     *
+     * @param id   the id
+     * @param role the role
+     */
     public void updateRoleById(int id, String role) {
         userRepository.updateRole(id,role);
     }

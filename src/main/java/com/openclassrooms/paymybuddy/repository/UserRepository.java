@@ -32,6 +32,12 @@ public interface UserRepository extends JpaRepository<User,Integer> {
      */
     boolean existsByEmail(String email);
 
+    /**
+     * Update role.
+     *
+     * @param id   the id
+     * @param role the role
+     */
     @Modifying
     @Query("UPDATE User u SET u.userRole = :role WHERE u.userID = :id")
     public void updateRole(int id, String role);

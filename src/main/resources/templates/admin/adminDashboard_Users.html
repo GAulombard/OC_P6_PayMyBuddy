@@ -29,8 +29,7 @@
                         <thead class="thead-light">
                         <tr>
                             <th class="text-left">id</th>
-                            <th class="text-left">first_name</th>
-                            <th class="text-left">last_name</th>
+                            <th class="text-left">user name</th>
                             <th class="text-left">email</th>
                             <!--<th class="text-left">password</th>-->
                             <!--<th class="text-left">phone</th>
@@ -47,14 +46,8 @@
                         <tbody>
                         <tr th:each="user: ${users}">
                             <td th:text="${user.userID}"></td>
-                            <td th:text="${user.firstName}"></td>
-                            <td th:text="${user.lastName}"></td>
+                            <td th:text="${user.firstName+' '+user.lastName}"></td>
                             <td th:text="${user.email}" width="150"></td>
-                            <!--<td th:text="${user.password}"></td>-->
-                            <!-- <td th:text="${user.phone}"></td>
-                             <td th:text="${user.address}"width="250"></td>
-                             <td th:text="${user.zip}"></td>
-                             <td th:text="${user.city}"></td>-->
                             <td th:text="${user.userRole}"></td>
                             <td width="50">
                                 <th:block th:each="account: ${user.accountList}">
