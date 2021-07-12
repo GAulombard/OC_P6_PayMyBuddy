@@ -1,5 +1,6 @@
 package com.openclassrooms.paymybuddy.service;
 
+import com.openclassrooms.paymybuddy.constants.Constants;
 import com.openclassrooms.paymybuddy.model.Fee;
 import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.repository.FeeRepository;
@@ -8,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public class FeeService {
@@ -18,7 +21,16 @@ public class FeeService {
     private FeeRepository feeRepository;
 
     public Iterable<Fee> getFees() {
-        LOGGER.info("Process to get all fees");
+        LOGGER.info("Processing to get all fees");
         return feeRepository.findAll();
+    }
+
+    public void saveFee(Fee fee){
+        LOGGER.info("Processing to save new fee");
+
+        fee.setDate(LocalDateTime.now());
+        fee.setRate100(Constants.RATE100);
+
+        feeRepository.save(fee);
     }
 }

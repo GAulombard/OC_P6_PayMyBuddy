@@ -73,4 +73,10 @@ public class BankAccountService {
         return result;
     }
 
+    public void updateBalanceByIban(String iban, double amount) {
+
+        bankAccountRepository.updateBalanceByIban(iban,amount);
+
+    }
+
 }

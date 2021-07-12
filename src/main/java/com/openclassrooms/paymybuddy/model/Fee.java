@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class Fee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "fee_id")
     private int feeId;
     @Column(name = "date")
@@ -18,6 +18,28 @@ public class Fee {
     private double amount;
     @Column(name = "rate100")
     private double rate100;
+
+    @Column(name = "reference_transaction")
+    private int transactionReference;
+
+    @Column(name = "iban_account")
+    private String account;
+
+    public int getTransactionReference() {
+        return transactionReference;
+    }
+
+    public void setTransactionReference(int transactionReference) {
+        this.transactionReference = transactionReference;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
 
     public int getFeeId() {
         return feeId;

@@ -25,4 +25,12 @@ public class BankAccountUtil {
         return Bank.bankName.getRandomBankName().toString();
     }
 
+    public static double balanceCalculator(double accountBalance, double feeAmount, double transferAmount) {
+        double result = 0;
+
+        result = accountBalance - feeAmount - transferAmount;
+
+        return result;
+    }
+
 }

@@ -1,13 +1,13 @@
 package com.openclassrooms.paymybuddy.controller;
 
 import com.openclassrooms.paymybuddy.PayMyBuddyApplication;
+import com.openclassrooms.paymybuddy.constants.Constants;
 import com.openclassrooms.paymybuddy.exception.BankAccountAlreadyExistException;
 import com.openclassrooms.paymybuddy.exception.UserNotFoundException;
 import com.openclassrooms.paymybuddy.model.*;
-import com.openclassrooms.paymybuddy.service.BankAccountService;
-import com.openclassrooms.paymybuddy.service.ContactService;
-import com.openclassrooms.paymybuddy.service.TransactionService;
-import com.openclassrooms.paymybuddy.service.UserService;
+import com.openclassrooms.paymybuddy.service.*;
+import com.openclassrooms.paymybuddy.util.BankAccountUtil;
+import com.openclassrooms.paymybuddy.util.FeeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +43,9 @@ public class UserController {
 
     @Autowired
     private TransactionService transactionService;
+
+    @Autowired
+    private FeeService feeService;
 
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/home")
@@ -165,6 +168,19 @@ public class UserController {
         LOGGER.info("HTTP POST request received at /user/new-transfer by: "+user.getEmail());
 
         transactionService.saveTransaction(transaction);
+
+        Fee fee = new Fee();
+        fee.setTransactionReference(transaction.getReference());
+        fee.setAccount(transaction.getDebtor().getIban());
+        fee.setAmount(FeeUtil.FeeCalculator(Constants.RATE100,transaction.getAmount()));
+
+        feeService.saveFee(fee);
+
+        double debtorBalance = BankAccountUtil.balanceCalculator(transaction.getDebtor().getBalance(),fee.getAmount(),transaction.getAmount());
+        double creditorBalance = BankAccountUtil.balanceCalculator(transaction.getCreditor().getBalance(),0,-transaction.getAmount());
+
+        bankAccountService.updateBalanceByIban(transaction.getDebtor().getIban(),debtorBalance);
+        bankAccountService.updateBalanceByIban(transaction.getCreditor().getIban(),creditorBalance);
 
         return "redirect:/user/transfer";
     }

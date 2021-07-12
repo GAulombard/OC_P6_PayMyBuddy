@@ -58,8 +58,8 @@ public class TransactionService {
 
     public void saveTransaction(Transaction transaction) {
 
-        transaction.setDate(LocalDateTime.now());
 
+        transaction.setDate(LocalDateTime.now());
         transactionRepository.save(transaction);
 
     }
