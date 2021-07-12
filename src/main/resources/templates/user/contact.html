@@ -47,23 +47,23 @@
                             <td th:text="${contact.email}"></td>
                             <td th:text="${contact.phone}"></td>
                             <td>
-                                <a th:href="@{/user}"
+                                <a th:href="@{user/contact}"
                                    class="btn btn-secondary btn-sm"
                                    onclick="">
                                     Send message
                                 </a>
                             </td>
                             <td>
-                                <a th:href="@{/user}"
+                                <a th:href="@{/user/transfer}"
                                    class="btn btn-primary btn-sm"
                                    onclick="">
                                     Send money
                                 </a>
                             </td>
                             <td>
-                                <a th:href="@{/user}"
+                                <a th:href="@{/user/delete-contact(id=${contact.userID})}"
                                    class="btn btn-danger btn-sm"
-                                   onclick="">
+                                   onclick="if(!(confirm('Are you sure you want to delete this contact ?'))) return false">
                                     delete
                                 </a>
                             </td>
@@ -73,23 +73,23 @@
                             <td th:text="${contact.email}"></td>
                             <td th:text="${contact.phone}"></td>
                             <td>
-                                <a th:href="@{/user}"
+                                <a th:href="@{user/contact}"
                                    class="btn btn-secondary btn-sm"
                                    onclick="">
                                     Send message
                                 </a>
                             </td>
                             <td>
-                                <a th:href="@{/user}"
+                                <a th:href="@{/user/transfer}"
                                    class="btn btn-primary btn-sm"
                                    onclick="">
                                     Send money
                                 </a>
                             </td>
                             <td>
-                                <a th:href="@{/user}"
+                                <a th:href="@{/user/delete-contact(id=${contact.userID})}"
                                    class="btn btn-danger btn-sm"
-                                   onclick="">
+                                   onclick="if(!(confirm('Are you sure you want to delete this contact ?'))) return false">
                                     delete
                                 </a>
                             </td>

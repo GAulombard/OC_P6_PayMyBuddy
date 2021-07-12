@@ -3,12 +3,10 @@ package com.openclassrooms.paymybuddy.controller;
 import com.openclassrooms.paymybuddy.PayMyBuddyApplication;
 import com.openclassrooms.paymybuddy.exception.BankAccountAlreadyExistException;
 import com.openclassrooms.paymybuddy.exception.UserNotFoundException;
-import com.openclassrooms.paymybuddy.model.BankAccount;
-import com.openclassrooms.paymybuddy.model.Contact;
-import com.openclassrooms.paymybuddy.model.MyUserDetails;
-import com.openclassrooms.paymybuddy.model.User;
+import com.openclassrooms.paymybuddy.model.*;
 import com.openclassrooms.paymybuddy.service.BankAccountService;
 import com.openclassrooms.paymybuddy.service.ContactService;
+import com.openclassrooms.paymybuddy.service.TransactionService;
 import com.openclassrooms.paymybuddy.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -39,6 +38,9 @@ public class UserController {
 
     @Autowired
     private ContactService contactService;
+
+    @Autowired
+    private TransactionService transactionService;
 
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/home")
@@ -74,8 +76,16 @@ public class UserController {
 
     @RolesAllowed({"USER","ADMIN"})
     @GetMapping("/user/transfer")
+    @Transactional
     public String getTransfer(@AuthenticationPrincipal MyUserDetails user, Model model) {
         LOGGER.info("HTTP GET request received at /user/transfer by: "+user.getEmail());
+
+        List<Transaction> transactions = transactionService.findAllTransactionsByUserId(user.getUserID());
+
+        model.addAttribute("contactAccount",bankAccountService.getAllContactBankAccountById(user.getUserID()));
+        model.addAttribute("myAccounts",bankAccountService.findAllBankAccountByOwnerId(user.getUserID()));
+        model.addAttribute("transactions",transactions);
+        model.addAttribute("user",user);
         return "user/transfer";
     }
 
@@ -127,10 +137,22 @@ public class UserController {
     @PostMapping("/user/addcontact")
     @Transactional
     public String addContact(@AuthenticationPrincipal MyUserDetails user, Model model, @RequestParam String email) throws UserNotFoundException {
-        LOGGER.info("HTTP GET request received at /user/addcontact{email} by: "+user.getEmail());
+        LOGGER.info("HTTP POST request received at /user/addcontact{email} by: "+user.getEmail());
 
         contactService.saveContactRelationship(user,userService.findUserByEmail(email));
 
         return "redirect:/user/contact";
     }
+
+    @RolesAllowed({"USER","ADMIN"})
+    @GetMapping("/user/delete-contact{id}") //Bank Account
+    @Transactional
+    public String deleteContact(@RequestParam("id") int id, @AuthenticationPrincipal MyUserDetails user) {
+        LOGGER.info("HTTP GET request received at /user/delete-contact{id} by: "+user.getEmail());
+
+        contactService.deleteContactByUserIdAndContactUserId(user.getUserID(),id);
+
+        return "redirect:/user/contact";
+    }
+
 }

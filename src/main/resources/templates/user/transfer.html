@@ -5,47 +5,97 @@
 
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
-  <title>Pay My Buddy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
+    <title>Pay My Buddy</title>
 </head>
 
 <body>
 
-      <div th:replace="fragments/nav"></div>
+<div th:replace="fragments/nav"></div>
 
 
 <!-- SECTION -->
 <div class="container">
-  <div class="row">
-    <div class="col-12 col-lg-12">
-      <div class="card my-3 shadow">
-        <div class="card-body">
-          <h5 class="card-title">Titre</h5>
-          <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur
-            quidem iste facilis iure doloribus quas repudiandae, corrupti deleniti nostrum odit earum
-            voluptatibus vitae molestiae, at aspernatur odio enim assumenda necessitatibus.</p>
+    <div class="row">
+        <div class="col-12 col-lg-12">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Send money</h5>
+                    <form class="d-flex justify-content-around">
+                            <div class="form-group col-md-4">
+                                <label for="debtor">Debtor</label>
+                                <select id="debtor" class="form-control">
+                                    <option selected>Choose your account...</option>
+                                    <th:block th:each="account: ${myAccounts}">
+                                        <option th:text="${account.iban+' ('+account.balance+')€'}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
+                        <div class="form-group col-md-4">
+                            <label for="creditor">Creditor</label>
+                            <select id="creditor" class="form-control">
+                                <option selected>Choose contact account...</option>
+                                <th:block th:each="account: ${contactAccount}">
+                                    <option th:text="${account.accountOwner+' ('+account.iban+')'}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Send monney</button>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+    <div class="row">
+        <div class="col-12 col-lg-12">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">My transactions</h5>
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="text-left">reference</th>
+                            <th class="text-left">from</th>
+                            <th class="text-left">to</th>
+                            <th class="text-left">date</th>
+                            <th class="text-left">message</th>
+                            <th class="text-left">amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="transaction: ${transactions}">
+                            <td th:text="${transaction.reference}"></td>
+                            <td th:text="${transaction.debtor.iban}"></td>
+                            <td th:text="${transaction.creditor.iban}"></td>
+                            <td th:text="${transaction.date}"></td>
+                            <td th:text="${transaction.message}"></td>
+                            <td th:text="${transaction.amount+' €'}"></td>
+                        </tr>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- FOOTER -->
 <div class="bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <ul class="list-inline text-center">
-          <li class="list-inline-item"><a href="#" class="text-dark">About</a></li>
-          <li class="list-inline-item text-dark">&middot;</li>
-          <li class="list-inline-item"><a href="#" class="text-dark">Terms of use</a></li>
-        </ul>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item"><a href="#" class="text-dark">About</a></li>
+                    <li class="list-inline-item text-dark">&middot;</li>
+                    <li class="list-inline-item"><a href="#" class="text-dark">Terms of use</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

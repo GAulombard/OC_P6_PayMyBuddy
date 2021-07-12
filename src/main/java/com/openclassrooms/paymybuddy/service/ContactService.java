@@ -10,6 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ContactService {
 
@@ -33,4 +36,35 @@ public class ContactService {
 
         contactRepository.save(contact);
     }
+
+    public void deleteContactByUserIdAndContactUserId(int userId,int contactUserId) {
+        LOGGER.info("Processing to delete contact");
+
+        try {
+            try {
+                contactRepository.deleteContactByContactId(userId,contactUserId);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                contactRepository.deleteContactByContactId(contactUserId,userId);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public List<User> getAllMyContactById(int id) {
+        List<User> result = new ArrayList<>();
+
+        result.addAll(userService.getUserById(id).getContactList());
+        result.addAll(userService.getUserById(id).getContactListOf());
+
+        return result;
+    }
+
 }

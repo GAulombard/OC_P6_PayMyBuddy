@@ -21,6 +21,30 @@ public class Transaction {
     @Column(name = "date")
     private LocalDate date;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "debtor")
+    private BankAccount debtor;
+
+    @OneToOne
+    @JoinColumn(name = "creditor")
+    private BankAccount creditor;
+
+    public BankAccount getDebtor() {
+        return debtor;
+    }
+
+    public void setDebtor(BankAccount debtor) {
+        this.debtor = debtor;
+    }
+
+    public BankAccount getCreditor() {
+        return creditor;
+    }
+
+    public void setCreditor(BankAccount creditor) {
+        this.creditor = creditor;
+    }
+
     public int getReference() {
         return reference;
     }

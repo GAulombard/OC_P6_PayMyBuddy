@@ -20,8 +20,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @EnableGlobalMethodSecurity(prePostEnabled = true,jsr250Enabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    /*@Autowired
-    UserDetailsService userDetailsService;*/
 
     @Autowired
     MyUserDetailsService userDetailsService;
@@ -36,7 +34,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests(authorize -> {
-                    authorize.antMatchers("/","/index","/login","/signup","/error/403","/error/404","/signup/save","/images/**")
+                    authorize.antMatchers("/","/index","/login","/signup","/error/403","/error/404","/signup/save","/images/**","/css/**")
                             .permitAll();
                 })
                 .authorizeRequests()

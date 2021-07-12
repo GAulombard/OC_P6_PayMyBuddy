@@ -20,6 +20,7 @@ public class BankAccount {
     @JoinColumn(name = "user_id")
     private User accountOwner;
 
+
     public User getAccountOwner() {
         return accountOwner;
     }

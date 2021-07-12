@@ -46,11 +46,13 @@ public class UserService {
     }
 
     public User getUserById(int id) {
+
+        LOGGER.info("Processing to find a user by id");
         return userRepository.getById(id);
     }
 
     public void removeUserById(int id) {
-
+        LOGGER.info("Processing to remove user by id");
         userRepository.deleteById(id);
     }
 
@@ -68,6 +70,7 @@ public class UserService {
     }
 
     public User findUserByEmail(String email) {
+        LOGGER.info("Processing to find a user by email");
         List<User> users = userRepository.findAll();
 
         for (User user : users) {
