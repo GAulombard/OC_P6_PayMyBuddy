@@ -1,6 +1,10 @@
 package com.openclassrooms.paymybuddy.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -19,27 +23,36 @@ public class User {
     @Column(name = "user_id")
     private int userID;
 
+    @NotEmpty(message = "First name is mandatory")
     @Column(name = "first_name")
     private String firstName;
 
+    @NotEmpty(message = "Last name is mandatory")
     @Column(name = "last_name")
     private String lastName;
 
+    @NotEmpty(message = "Email is mandatory")
+    @Email(message = "Email is not valid")
     @Column(name = "email")
     private String email;
 
+    @NotEmpty(message = "Password is mandatory")
+    @Size(min = 3, message = "Password should contains at least 3 characters")
     @Column(name = "password")
     private String password;
 
     @Column(name = "phone")
     private int phone;
 
+    @NotEmpty(message = "Address is mandatory")
     @Column(name = "address")
     private String address;
 
+    @NotNull(message = "Zip is mandatory")
     @Column(name = "zip")
     private int zip;
 
+    @NotEmpty(message = "City is mandatory")
     @Column(name = "city")
     private String city;
 

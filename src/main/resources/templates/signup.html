@@ -30,43 +30,61 @@
                             <div class="form-group col-md-6">
                                 <label for="firstName">First Name</label>
                                 <input th:field="*{firstName}" type="text" class="form-control" id="firstName"
-                                       placeholder="John">
+                                       placeholder="John"><span class="text-danger" th:errors="*{firstName}"></span>
                             </div>
+
+
                             <div class="form-group col-md-6">
                                 <label for="lastName">Last Name</label>
                                 <input th:field="*{lastName}" type="text" class="form-control" id="lastName"
-                                       placeholder="Doe">
+                                       placeholder="Doe"><span class="text-danger" th:errors="*{lastName}"></span>
                             </div>
+
+
                             <div class="form-group col-md-6">
                                 <label for="email">Email</label>
                                 <input th:field="*{email}" type="email" class="form-control" id="email"
-                                       placeholder="Email">
+                                       placeholder="Email"><span class="text-danger" th:errors="*{email}"></span>
                             </div>
+
+
                             <div class="form-group col-md-6">
                                 <label for="password">Password</label>
                                 <input th:field="*{password}" type="password" class="form-control" id="password"
-                                       placeholder="Password">
+                                       placeholder="Password"><span class="text-danger" th:errors="*{password}"> </span>
                             </div>
+
+
                         </div>
                         <div class="form-group">
                             <label for="Address">Address</label>
                             <input th:field="*{address}" type="text" class="form-control" id="Address"
-                                   placeholder="1234 Main St">
+                                   placeholder="1234 Main St"><span class="text-danger" th:errors="*{address}"> </span>
                         </div>
 
-                        <div class="form-row">
+
+                        <div class="form-row d-flex justify-content-around">
                             <div class="form-group col-md-2">
                                 <label for="zip">Zip</label>
-                                <input th:field="*{zip}" type="text" class="form-control" id="zip" placeholder="00000">
+                                <input th:field="*{zip}" type="text" class="form-control" id="zip"
+                                       placeholder="00000"><span class="text-danger" th:errors="*{zip}"></span>
                             </div>
+
+
                             <div class="form-group col-md-6">
                                 <label for="City">City</label>
-                                <input th:field="*{city}" type="text" class="form-control" id="City" placeholder="New-York">
+                                <input th:field="*{city}" type="text" class="form-control" id="City"
+                                       placeholder="New-York"><span class="text-danger" th:errors="*{city}"> </span>
                             </div>
+
+
                             <div class="form-group col-md-2">
                                 <label for="phone">Phone</label>
-                                <input th:field="*{phone}" type="text" class="form-control" id="phone" placeholder="0000000000">
+                                <input th:field="*{phone}" type="text" class="form-control" id="phone"
+                                       placeholder="0000000000"><span class="text-danger" th:errors="*{phone}"></span>
                             </div>
+
+
                         </div>
                         <div class="form-group">
                             <div class="form-check">
@@ -77,7 +95,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-around">
-                        <button type="submit" class="btn btn-lg btn-primary align-center">Sign in</button>
+                            <button type="submit" class="btn btn-lg btn-primary align-center">Sign in</button>
                         </div>
                     </form>
                 </div>

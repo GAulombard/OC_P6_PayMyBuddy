@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 /**
  * The type Anonymous controller.
  */
@@ -47,6 +49,7 @@ public class AnonymousController {
     public String getSignupForm(Model model) {
         LOGGER.info("HTTP GET request received at /signup");
         model.addAttribute("user",new User());
+
         return "signup";
     }
 
@@ -60,8 +63,12 @@ public class AnonymousController {
      * @throws UserAlreadyExistException the user already exist exception
      */
     @PostMapping("/signup/save")
-    public String addNewUser(@ModelAttribute("user") User user, Model model) throws UserAlreadyExistException {
+    public String addNewUser(@Valid @ModelAttribute("user") User user, Model model, BindingResult bindingResult) throws UserAlreadyExistException {
         LOGGER.info("HTTP POST request received at /signup/save");
+
+        if(bindingResult.hasErrors()){
+            return "redirect:/signup";
+        }
 
         userService.saveUser(user);
 

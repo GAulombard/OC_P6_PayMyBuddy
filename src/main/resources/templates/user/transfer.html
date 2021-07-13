@@ -27,41 +27,48 @@
                     <h5 class="card-title">Send money</h5>
                     <form method="post" th:action="@{/user/new-transfer}" th:object="${transaction}">
                         <div class="d-flex justify-content-around">
-                        <div class="form-group col-md-5">
-                            <label for="debtor">Debtor</label>
-                            <select id="debtor" class="form-control" th:field="*{debtor}">
-                                <option th:value="${'null'}" selected>Choose your account...</option>
-                                <th:block th:each="account: ${myAccounts}">
-                                    <option th:value="${account.iban}" th:text="${account.iban+' ('+account.balance+'€)'}">Choose your account...</option>
-                                </th:block>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label for="creditor">Creditor</label>
-                            <select id="creditor" class="form-control" th:field="*{creditor}">
-                                <option th:value="${'null'}" selected>Choose contact account...</option>
-                                <th:block th:each="account: ${contactAccount}">
-                                    <option th:value="${account.iban}" th:text="${account.accountOwner.firstName+' '+account.accountOwner.lastName+' ('+account.iban+')'}">Choose contact account...</option>
-                                </th:block>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2">
-
-                            <label for="amount">Amount</label>
-                            <div class="d-flex">
-                                <input type="number" id="amount" class="form-control" min="0" th:field="*{amount}">
-                                <div class="input-group-append"><span class="input-group-text">€</span></div>
+                            <div class="form-group col-md-5">
+                                <label for="debtor">Debtor</label>
+                                <select id="debtor" class="form-control" th:field="*{debtor}">
+                                    <option th:value="${'null'}" selected>Choose your account...</option>
+                                    <th:block th:each="account: ${myAccounts}">
+                                        <option th:value="${account.iban}"
+                                                th:text="${account.iban+' ('+account.balance+'€)'}">Choose your
+                                            account...
+                                        </option>
+                                    </th:block>
+                                </select><span class="text-danger" th:errors="*{debtor}"></span>
                             </div>
-                        </div>
+                            <div class="form-group col-md-5">
+                                <label for="creditor">Creditor</label>
+                                <select id="creditor" class="form-control" th:field="*{creditor}">
+                                    <option th:value="${'null'}" selected>Choose contact account...</option>
+                                    <th:block th:each="account: ${contactAccount}">
+                                        <option th:value="${account.iban}"
+                                                th:text="${account.accountOwner.firstName+' '+account.accountOwner.lastName+' ('+account.iban+')'}">
+                                            Choose contact account...
+                                        </option>
+                                    </th:block>
+                                </select><span class="text-danger" th:errors="*{creditor}"></span>
+                            </div>
+                            <div class="form-group col-md-2">
+
+                                <label for="amount">Amount</label>
+                                <div class="d-flex">
+
+                                <input type="number" id="amount" class="form-control" min="0" th:field="*{amount}">
+                                <div class="input-group-append"><span class="input-group-text">€</span>
+                                </div></div><span class="text-danger" th:errors="*{amount}"></span>
+                            </div>
                         </div>
                         <div class="d-flex justify-content-around">
                             <div class="form-group col-md-11">
-                            <label for="message">Message</label>
-                            <div class="d-flex">
-                                <input type="text" id="message" class="form-control" th:field="*{message}">
+                                <label for="message">Message</label>
+                                <div class="d-flex">
+                                    <input type="text" id="message" class="form-control" th:field="*{message}">
+                                </div><span class="text-danger" th:errors="*{message}"></span>
                             </div>
-                            </div>
-                        <button type="submit" class="btn btn-primary btn-sm">Send money</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Send money</button>
                         </div>
                     </form>
                 </div>

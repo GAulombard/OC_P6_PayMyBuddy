@@ -15,6 +15,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -57,13 +59,13 @@ public class UserController {
      * @param model the model
      * @return the home
      */
-    @RolesAllowed({"USER","ADMIN"})
+    @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/home")
     public String getHome(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        LOGGER.info("HTTP GET request received at /user/home by: "+user.getEmail());
+        LOGGER.info("HTTP GET request received at /user/home by: " + user.getEmail());
 
-        model.addAttribute("total",userService.getTotalAccountBalanceByUserId(user.getUserID()));
-        model.addAttribute("accounts",userService.getUserById(user.getUserID()).getAccountList());
+        model.addAttribute("total", userService.getTotalAccountBalanceByUserId(user.getUserID()));
+        model.addAttribute("accounts", userService.getUserById(user.getUserID()).getAccountList());
 
         return "user/home";
     }
@@ -75,15 +77,15 @@ public class UserController {
      * @param model the model
      * @return the contact
      */
-    @RolesAllowed({"USER","ADMIN"})
+    @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/contact")
     @Transactional
     public String getContact(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        LOGGER.info("HTTP GET request received at /user/contact by: "+user.getEmail());
+        LOGGER.info("HTTP GET request received at /user/contact by: " + user.getEmail());
 
-        model.addAttribute("users",userService.getUsers());
-        model.addAttribute("contacts",(userService.getUserById(user.getUserID())).getContactList());
-        model.addAttribute("contactsOf",(userService.getUserById(user.getUserID())).getContactListOf());
+        model.addAttribute("users", userService.getUsers());
+        model.addAttribute("contacts", (userService.getUserById(user.getUserID())).getContactList());
+        model.addAttribute("contactsOf", (userService.getUserById(user.getUserID())).getContactListOf());
 
         return "user/contact";
     }
@@ -95,11 +97,11 @@ public class UserController {
      * @param model the model
      * @return the profile
      */
-    @RolesAllowed({"USER","ADMIN"})
+    @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/profile")
     public String getProfile(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        LOGGER.info("HTTP GET request received at /user/profile by: "+user.getEmail());
-        model.addAttribute("user",user);
+        LOGGER.info("HTTP GET request received at /user/profile by: " + user.getEmail());
+        model.addAttribute("user", user);
         return "user/profile";
     }
 
@@ -110,19 +112,19 @@ public class UserController {
      * @param model the model
      * @return the transfer
      */
-    @RolesAllowed({"USER","ADMIN"})
+    @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/transfer")
     @Transactional
     public String getTransfer(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        LOGGER.info("HTTP GET request received at /user/transfer by: "+user.getEmail());
+        LOGGER.info("HTTP GET request received at /user/transfer by: " + user.getEmail());
 
         List<Transaction> transactions = transactionService.findAllTransactionsByUserId(user.getUserID());
 
-        model.addAttribute("transaction",new Transaction());
-        model.addAttribute("contactAccount",bankAccountService.getAllContactBankAccountById(user.getUserID()));
-        model.addAttribute("myAccounts",bankAccountService.findAllBankAccountByOwnerId(user.getUserID()));
-        model.addAttribute("transactions",transactions);
-        model.addAttribute("user",user);
+        model.addAttribute("transaction", new Transaction());
+        model.addAttribute("contactAccount", bankAccountService.getAllContactBankAccountById(user.getUserID()));
+        model.addAttribute("myAccounts", bankAccountService.findAllBankAccountByOwnerId(user.getUserID()));
+        model.addAttribute("transactions", transactions);
+        model.addAttribute("user", user);
         return "user/transfer";
     }
 
@@ -133,11 +135,11 @@ public class UserController {
      * @param model the model
      * @return the string
      */
-    @RolesAllowed({"USER","ADMIN"})
+    @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/deletemypmb")
     @Transactional
     public String deleteUserAccount(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        LOGGER.info("HTTP GET request received at /user/deletemypmb by: "+user.getEmail());
+        LOGGER.info("HTTP GET request received at /user/deletemypmb by: " + user.getEmail());
 
         userService.removeUserById(user.getUserID());
 
@@ -151,12 +153,12 @@ public class UserController {
      * @param model the model
      * @return the account form
      */
-    @RolesAllowed({"USER","ADMIN"})
+    @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/accountform")
     public String getAccountForm(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        LOGGER.info("HTTP GET request received at /user/accountform by: "+user.getEmail());
+        LOGGER.info("HTTP GET request received at /user/accountform by: " + user.getEmail());
 
-        model.addAttribute("account",new BankAccount());
+        model.addAttribute("account", new BankAccount());
 
         return "user/accountForm";
     }
@@ -170,11 +172,15 @@ public class UserController {
      * @return the string
      * @throws BankAccountAlreadyExistException the bank account already exist exception
      */
-    @RolesAllowed({"USER","ADMIN"})
+    @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/createaccount") //Bank Account
     @Transactional
-    public String saveBankAccount(@ModelAttribute("account") BankAccount account, @AuthenticationPrincipal MyUserDetails user, Model model) throws BankAccountAlreadyExistException {
-        LOGGER.info("HTTP POST request received at /user/accountform by: "+user.getEmail());
+    public String saveBankAccount(@Valid @ModelAttribute("account") BankAccount account, @AuthenticationPrincipal MyUserDetails user, Model model, BindingResult bindingResult) throws BankAccountAlreadyExistException {
+        LOGGER.info("HTTP POST request received at /user/accountform by: " + user.getEmail());
+
+        if (bindingResult.hasErrors()) {
+            return "redirect:/user/accountform";
+        }
 
         account.setAccountOwner(userService.getUserById(user.getUserID()));
         bankAccountService.saveBankAccount(account);
@@ -189,11 +195,11 @@ public class UserController {
      * @param user the user
      * @return the string
      */
-    @RolesAllowed({"USER","ADMIN"})
+    @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/deleteaccount{id}") //Bank Account
     @Transactional
     public String deleteBankAccount(@RequestParam("id") String id, @AuthenticationPrincipal MyUserDetails user) {
-        LOGGER.info("HTTP GET request received at /user/deleteaccount{id} by: "+user.getEmail());
+        LOGGER.info("HTTP GET request received at /user/deleteaccount{id} by: " + user.getEmail());
 
         bankAccountService.removeBankAccountById(id);
 
@@ -209,13 +215,13 @@ public class UserController {
      * @return the string
      * @throws UserNotFoundException the user not found exception
      */
-    @RolesAllowed({"USER","ADMIN"})
+    @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/addcontact")
     @Transactional
     public String addContact(@AuthenticationPrincipal MyUserDetails user, Model model, @RequestParam String email) throws UserNotFoundException {
-        LOGGER.info("HTTP POST request received at /user/addcontact{email} by: "+user.getEmail());
+        LOGGER.info("HTTP POST request received at /user/addcontact{email} by: " + user.getEmail());
 
-        contactService.saveContactRelationship(user,userService.findUserByEmail(email));
+        contactService.saveContactRelationship(user, userService.findUserByEmail(email));
 
         return "redirect:/user/contact";
     }
@@ -227,13 +233,13 @@ public class UserController {
      * @param user the user
      * @return the string
      */
-    @RolesAllowed({"USER","ADMIN"})
+    @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/delete-contact{id}") //Bank Account
     @Transactional
     public String deleteContact(@RequestParam("id") int id, @AuthenticationPrincipal MyUserDetails user) {
-        LOGGER.info("HTTP GET request received at /user/delete-contact{id} by: "+user.getEmail());
+        LOGGER.info("HTTP GET request received at /user/delete-contact{id} by: " + user.getEmail());
 
-        contactService.deleteContactByUserIdAndContactUserId(user.getUserID(),id);
+        contactService.deleteContactByUserIdAndContactUserId(user.getUserID(), id);
 
         return "redirect:/user/contact";
     }
@@ -246,26 +252,30 @@ public class UserController {
      * @param model       the model
      * @return the string
      */
-    @RolesAllowed({"USER","ADMIN"})
+    @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/new-transfer") //Bank Account
     @Transactional
-    public String saveTransaction(@ModelAttribute("transaction") Transaction transaction, @AuthenticationPrincipal MyUserDetails user, Model model) {
-        LOGGER.info("HTTP POST request received at /user/new-transfer by: "+user.getEmail());
+    public String saveTransaction(@Valid @ModelAttribute("transaction") Transaction transaction, @AuthenticationPrincipal MyUserDetails user, Model model, BindingResult bindingResult) {
+        LOGGER.info("HTTP POST request received at /user/new-transfer by: " + user.getEmail());
+
+        if (bindingResult.hasErrors()) {
+            return "redirect:/user/transfer";
+        }
 
         transactionService.saveTransaction(transaction);
 
         Fee fee = new Fee();
         fee.setTransactionReference(transaction.getReference());
         fee.setAccount(transaction.getDebtor().getIban());
-        fee.setAmount(FeeUtil.FeeCalculator(Constants.RATE100,transaction.getAmount()));
+        fee.setAmount(FeeUtil.FeeCalculator(Constants.RATE100, transaction.getAmount()));
 
         feeService.saveFee(fee);
 
-        double debtorBalance = BankAccountUtil.balanceCalculator(transaction.getDebtor().getBalance(),fee.getAmount(),transaction.getAmount());
-        double creditorBalance = BankAccountUtil.balanceCalculator(transaction.getCreditor().getBalance(),0,-transaction.getAmount());
+        double debtorBalance = BankAccountUtil.balanceCalculator(transaction.getDebtor().getBalance(), fee.getAmount(), transaction.getAmount());
+        double creditorBalance = BankAccountUtil.balanceCalculator(transaction.getCreditor().getBalance(), 0, -transaction.getAmount());
 
-        bankAccountService.updateBalanceByIban(transaction.getDebtor().getIban(),debtorBalance);
-        bankAccountService.updateBalanceByIban(transaction.getCreditor().getIban(),creditorBalance);
+        bankAccountService.updateBalanceByIban(transaction.getDebtor().getIban(), debtorBalance);
+        bankAccountService.updateBalanceByIban(transaction.getCreditor().getIban(), creditorBalance);
 
         return "redirect:/user/transfer";
     }

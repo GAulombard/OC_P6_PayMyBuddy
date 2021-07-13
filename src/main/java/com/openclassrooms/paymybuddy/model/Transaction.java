@@ -1,6 +1,7 @@
 package com.openclassrooms.paymybuddy.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -16,19 +17,24 @@ public class Transaction {
     @Column(name = "reference")
     private int reference;
 
+    @NotNull
+    @Positive(message = "Amount should be positive")
     @Column(name = "amount")
     private double amount;
 
+    @Size(max = 50,message = "Message should be maximum 50 characters")
     @Column(name = "message")
     private String message;
 
     @Column(name = "date")
     private LocalDateTime date;
 
+    @NotNull(message = "Debtor is mandatory")
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "debtor")
     private BankAccount debtor;
 
+    @NotNull(message = "Creditor is mandatory")
     @OneToOne
     @JoinColumn(name = "creditor")
     private BankAccount creditor;
