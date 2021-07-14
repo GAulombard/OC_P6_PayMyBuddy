@@ -36,7 +36,7 @@ public class PayMyBuddyApplication {
          TODO: javadoc
          TODO: jacoco
          TODO: surefire
-         TODO: exception when insufficient found
+         TODO: probleme quand delete account -> transaction -> fee
          TODO: gérer le trie des tables
          TODO: test unitaire
          TODO: test integrations
