@@ -1,5 +1,7 @@
 package com.openclassrooms.paymybuddy.service;
 
+import com.openclassrooms.paymybuddy.exception.BankAccountNotFoundException;
+import com.openclassrooms.paymybuddy.exception.TransactionNotFoundException;
 import com.openclassrooms.paymybuddy.model.BankAccount;
 import com.openclassrooms.paymybuddy.model.MyUserDetails;
 import com.openclassrooms.paymybuddy.model.Transaction;
@@ -51,6 +53,8 @@ public class TransactionService {
      * @return the list
      */
     public List<Transaction> findAllTransactionsByBankAccountIban(String iban) {
+        LOGGER.info("Process to get all transactions by bank account iban");
+
         List<Transaction> result = transactionRepository.findAllTransactionsByBankAccountIban(iban);
 
         return result;
@@ -62,7 +66,9 @@ public class TransactionService {
      * @param id the id
      * @return the list
      */
-    public List<Transaction> findAllTransactionsByUserId(int id) {
+    public List<Transaction> findAllTransactionsByUserId(int id) throws BankAccountNotFoundException {
+        LOGGER.info("Process to find all transactions by user Id");
+
         Iterable<BankAccount> accounts = bankAccountService.findAllBankAccountByOwnerId(id);
         List<String> ibans = new ArrayList<>();
 
@@ -85,10 +91,10 @@ public class TransactionService {
      * @param transaction the transaction
      */
     public void saveTransaction(Transaction transaction) {
+        LOGGER.info("Process to save new transaction");
 
-
-        transaction.setDate(LocalDateTime.now());
-        transactionRepository.save(transaction);
+            transaction.setDate(LocalDateTime.now());
+            transactionRepository.save(transaction);
 
     }
 }

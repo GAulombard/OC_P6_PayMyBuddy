@@ -56,4 +56,9 @@ public class BankAccountUtil {
         return result;
     }
 
+    public static boolean isSufficientFound(double accountBalance, double amountTransaction) {
+        if ( accountBalance >= amountTransaction) return true;
+        else return false;
+    }
+
 }

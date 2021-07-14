@@ -5,6 +5,7 @@ import com.openclassrooms.paymybuddy.model.Contact;
 import com.openclassrooms.paymybuddy.model.MyUserDetails;
 import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.repository.ContactRepository;
+import com.openclassrooms.paymybuddy.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,10 @@ public class ContactService {
 
     @Autowired
     private ContactRepository contactRepository;
-    
+
+    @Autowired
+    private UserRepository userRepository;
+
     @Autowired
     private UserService userService;
 
@@ -38,7 +42,7 @@ public class ContactService {
         LOGGER.info("Processing to save a new relationship");
         Contact contact = new Contact();
 
-        if (userContact==null) {
+        if (userContact == null) {
             throw new UserNotFoundException("User not found");
         }
         contact.setContactUserId(userContact);
@@ -53,25 +57,27 @@ public class ContactService {
      * @param userId        the user id
      * @param contactUserId the contact user id
      */
-    public void deleteContactByUserIdAndContactUserId(int userId,int contactUserId) {
+    public void deleteContactByUserIdAndContactUserId(int userId, int contactUserId) throws UserNotFoundException {
         LOGGER.info("Processing to delete contact");
 
-        try {
+        if (!userRepository.existsById(userId) || !userRepository.existsById(contactUserId)) {
+            throw new UserNotFoundException("User not found in data base");
+        } else {
             try {
-                contactRepository.deleteContactByContactId(userId,contactUserId);
+                try {
+                    contactRepository.deleteContactByContactId(userId, contactUserId);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    contactRepository.deleteContactByContactId(contactUserId, userId);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            try {
-                contactRepository.deleteContactByContactId(contactUserId,userId);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
-
     }
 
     /**
@@ -81,6 +87,8 @@ public class ContactService {
      * @return the all my contact by id
      */
     public List<User> getAllMyContactById(int id) {
+        LOGGER.info("Processing to get all my contact");
+
         List<User> result = new ArrayList<>();
 
         result.addAll(userService.getUserById(id).getContactList());

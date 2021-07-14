@@ -1,6 +1,7 @@
 package com.openclassrooms.paymybuddy.controller;
 
 import com.openclassrooms.paymybuddy.constants.Constants;
+import com.openclassrooms.paymybuddy.exception.UserNotFoundException;
 import com.openclassrooms.paymybuddy.model.*;
 import com.openclassrooms.paymybuddy.service.BankAccountService;
 import com.openclassrooms.paymybuddy.service.FeeService;
@@ -173,7 +174,7 @@ public class AdminController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/make-admin")
     @Transactional
-    public String makeAdmin(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") int id) {
+    public String makeAdmin(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") int id) throws UserNotFoundException {
         LOGGER.info("HTTP GET request received at /admin/make-admin?id={id} by: "+user.getEmail());
 
         userService.updateRoleById(id, Constants.ROLE_ADMIN);
@@ -191,7 +192,7 @@ public class AdminController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/make-user")
     @Transactional
-    public String makeUser(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") int id) {
+    public String makeUser(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") int id) throws UserNotFoundException {
         LOGGER.info("HTTP GET request received at /admin/make-user?id={id} by: "+user.getEmail());
 
         userService.updateRoleById(id, Constants.ROLE_USER);

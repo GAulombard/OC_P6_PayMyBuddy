@@ -1,6 +1,7 @@
 package com.openclassrooms.paymybuddy.service;
 
 import com.openclassrooms.paymybuddy.exception.BankAccountAlreadyExistException;
+import com.openclassrooms.paymybuddy.exception.BankAccountNotFoundException;
 import com.openclassrooms.paymybuddy.exception.UserAlreadyExistException;
 import com.openclassrooms.paymybuddy.model.BankAccount;
 import com.openclassrooms.paymybuddy.model.Contact;
@@ -49,11 +50,11 @@ public class BankAccountService {
     public void saveBankAccount(BankAccount bankAccount) throws BankAccountAlreadyExistException {
         LOGGER.info("Processing to save a new bank account in database");
 
-        if(bankAccountRepository.existsById(bankAccount.getIban())) {
-            throw new BankAccountAlreadyExistException("Bank account already exist in database");
+        if (bankAccountRepository.existsById(bankAccount.getIban())) {
+            throw new BankAccountAlreadyExistException("Bank account already exists in database");
         }
 
-        bankAccount.setBalance(BankAccountUtil.getRandomValueBetween(-5000,5000));//Simulate the balance between -500 and 5000
+        bankAccount.setBalance(BankAccountUtil.getRandomValueBetween(-5000, 5000));//Simulate the balance between -500 and 5000
         bankAccount.setBankEstablishment(BankAccountUtil.getRandomBankNameFromEnum());
 
         bankAccountRepository.save(bankAccount);
@@ -64,10 +65,15 @@ public class BankAccountService {
      *
      * @param id the id
      */
-    public void removeBankAccountById(String id) {
+    public void removeBankAccountById(String id) throws BankAccountNotFoundException {
         LOGGER.info("Processing to delete bank account");
 
-        bankAccountRepository.deleteById(id);
+        if (bankAccountRepository.existsById(id)) {
+            bankAccountRepository.deleteById(id);
+        } else {
+            throw new BankAccountNotFoundException("Bank Account not found");
+        }
+
     }
 
     /**
@@ -76,9 +82,14 @@ public class BankAccountService {
      * @param id the id
      * @return the list
      */
-    public List<BankAccount> findAllBankAccountByOwnerId(int id) {
+    public List<BankAccount> findAllBankAccountByOwnerId(int id) throws BankAccountNotFoundException {
+        LOGGER.info("Processing to get all bank account by owner Id");
+
         List<BankAccount> result = new ArrayList<>();
         result = bankAccountRepository.findAllBankAccountByOwnerId(id);
+
+        if(result == null) throw new BankAccountNotFoundException("No bank account found");
+
         return result;
     }
 
@@ -89,13 +100,15 @@ public class BankAccountService {
      * @return the all contact bank account by id
      */
     public List<BankAccount> getAllContactBankAccountById(int id) {
+        LOGGER.info("Processing to get all contact bank account by Id");
+
         List<BankAccount> result = new ArrayList<>();
         List<User> contacts = contactService.getAllMyContactById(id);
         List<BankAccount> allAccounts = bankAccountRepository.findAll();
 
         contacts.iterator().forEachRemaining(contact -> {
-            allAccounts.iterator().forEachRemaining(account ->{
-                if(account.getAccountOwner().getUserID() == contact.getUserID()) {
+            allAccounts.iterator().forEachRemaining(account -> {
+                if (account.getAccountOwner().getUserID() == contact.getUserID()) {
                     result.add(account);
                 }
             });
@@ -110,9 +123,16 @@ public class BankAccountService {
      * @param iban   the iban
      * @param amount the amount
      */
-    public void updateBalanceByIban(String iban, double amount) {
+    public void updateBalanceByIban(String iban, double amount) throws BankAccountNotFoundException {
+        LOGGER.info("Processing to update balance by iban");
 
-        bankAccountRepository.updateBalanceByIban(iban,amount);
+        if (bankAccountRepository.existsById(iban)) {
+            bankAccountRepository.updateBalanceByIban(iban, amount);
+        }else {
+            throw new BankAccountNotFoundException("Bank account not found");
+        }
+
+
 
     }
 

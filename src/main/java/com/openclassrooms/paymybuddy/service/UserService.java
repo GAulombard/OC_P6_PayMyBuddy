@@ -1,6 +1,7 @@
 package com.openclassrooms.paymybuddy.service;
 
 import com.openclassrooms.paymybuddy.exception.UserAlreadyExistException;
+import com.openclassrooms.paymybuddy.exception.UserNotFoundException;
 import com.openclassrooms.paymybuddy.model.BankAccount;
 import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.repository.UserRepository;
@@ -94,6 +95,8 @@ public class UserService {
      * @return the atomic reference
      */
     public AtomicReference<Double> getTotalAccountBalanceByUserId(int id){
+        LOGGER.info("Processing to get total account balance by user Id");
+
         AtomicReference<Double> result= new AtomicReference<>((double) 0);
         List<BankAccount> bankAccounts = userRepository.getById(id).getAccountList();
 
@@ -131,8 +134,14 @@ public class UserService {
      * @param id   the id
      * @param role the role
      */
-    public void updateRoleById(int id, String role) {
-        userRepository.updateRole(id,role);
+    public void updateRoleById(int id, String role) throws UserNotFoundException {
+        LOGGER.info("Processing to role by Id");
+
+        if(userRepository.existsById(id)) {
+            userRepository.updateRole(id, role);
+        } else {
+            throw new UserNotFoundException("User not found");
+        }
     }
 
 }

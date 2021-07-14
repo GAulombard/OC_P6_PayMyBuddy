@@ -2,8 +2,7 @@ package com.openclassrooms.paymybuddy.controller;
 
 import com.openclassrooms.paymybuddy.PayMyBuddyApplication;
 import com.openclassrooms.paymybuddy.constants.Constants;
-import com.openclassrooms.paymybuddy.exception.BankAccountAlreadyExistException;
-import com.openclassrooms.paymybuddy.exception.UserNotFoundException;
+import com.openclassrooms.paymybuddy.exception.*;
 import com.openclassrooms.paymybuddy.model.*;
 import com.openclassrooms.paymybuddy.service.*;
 import com.openclassrooms.paymybuddy.util.BankAccountUtil;
@@ -115,7 +114,7 @@ public class UserController {
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/transfer")
     @Transactional
-    public String getTransfer(@AuthenticationPrincipal MyUserDetails user, Model model) {
+    public String getTransfer(@AuthenticationPrincipal MyUserDetails user, Model model) throws BankAccountNotFoundException {
         LOGGER.info("HTTP GET request received at /user/transfer by: " + user.getEmail());
 
         List<Transaction> transactions = transactionService.findAllTransactionsByUserId(user.getUserID());
@@ -198,7 +197,7 @@ public class UserController {
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/deleteaccount{id}") //Bank Account
     @Transactional
-    public String deleteBankAccount(@RequestParam("id") String id, @AuthenticationPrincipal MyUserDetails user) {
+    public String deleteBankAccount(@RequestParam("id") String id, @AuthenticationPrincipal MyUserDetails user) throws BankAccountNotFoundException {
         LOGGER.info("HTTP GET request received at /user/deleteaccount{id} by: " + user.getEmail());
 
         bankAccountService.removeBankAccountById(id);
@@ -236,7 +235,7 @@ public class UserController {
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/delete-contact{id}") //Bank Account
     @Transactional
-    public String deleteContact(@RequestParam("id") int id, @AuthenticationPrincipal MyUserDetails user) {
+    public String deleteContact(@RequestParam("id") int id, @AuthenticationPrincipal MyUserDetails user) throws UserNotFoundException {
         LOGGER.info("HTTP GET request received at /user/delete-contact{id} by: " + user.getEmail());
 
         contactService.deleteContactByUserIdAndContactUserId(user.getUserID(), id);
@@ -255,29 +254,33 @@ public class UserController {
     @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/new-transfer") //Bank Account
     @Transactional
-    public String saveTransaction(@Valid @ModelAttribute("transaction") Transaction transaction, @AuthenticationPrincipal MyUserDetails user, Model model, BindingResult bindingResult) {
+    public String saveTransaction(@Valid @ModelAttribute("transaction") Transaction transaction, @AuthenticationPrincipal MyUserDetails user, Model model, BindingResult bindingResult) throws BankAccountNotFoundException, InsufficientFoundException {
         LOGGER.info("HTTP POST request received at /user/new-transfer by: " + user.getEmail());
 
         if (bindingResult.hasErrors()) {
             return "redirect:/user/transfer";
         }
 
-        transactionService.saveTransaction(transaction);
 
-        Fee fee = new Fee();
-        fee.setTransactionReference(transaction.getReference());
-        fee.setAccount(transaction.getDebtor().getIban());
-        fee.setAmount(FeeUtil.FeeCalculator(Constants.RATE100, transaction.getAmount()));
+        if (BankAccountUtil.isSufficientFound(transaction.getDebtor().getBalance(), FeeUtil.FeeCalculator(Constants.RATE100, transaction.getAmount()))) {
+            transactionService.saveTransaction(transaction);
 
-        feeService.saveFee(fee);
+            Fee fee = new Fee();
+            fee.setTransactionReference(transaction.getReference());
+            fee.setAccount(transaction.getDebtor().getIban());
+            fee.setAmount(FeeUtil.FeeCalculator(Constants.RATE100, transaction.getAmount()));
 
-        double debtorBalance = BankAccountUtil.balanceCalculator(transaction.getDebtor().getBalance(), fee.getAmount(), transaction.getAmount());
-        double creditorBalance = BankAccountUtil.balanceCalculator(transaction.getCreditor().getBalance(), 0, -transaction.getAmount());
+            double debtorBalance = BankAccountUtil.balanceCalculator(transaction.getDebtor().getBalance(), fee.getAmount(), transaction.getAmount());
+            double creditorBalance = BankAccountUtil.balanceCalculator(transaction.getCreditor().getBalance(), 0, -transaction.getAmount());
 
-        bankAccountService.updateBalanceByIban(transaction.getDebtor().getIban(), debtorBalance);
-        bankAccountService.updateBalanceByIban(transaction.getCreditor().getIban(), creditorBalance);
+            feeService.saveFee(fee);
+            bankAccountService.updateBalanceByIban(transaction.getDebtor().getIban(), debtorBalance);
+            bankAccountService.updateBalanceByIban(transaction.getCreditor().getIban(), creditorBalance);
 
-        return "redirect:/user/transfer";
+            return "redirect:/user/transfer";
+        } else {
+            throw new InsufficientFoundException("Insufficient found");
+        }
     }
 
 }
