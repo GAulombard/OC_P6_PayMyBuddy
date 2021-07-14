@@ -1,5 +1,6 @@
 package com.openclassrooms.paymybuddy.service;
 
+import com.openclassrooms.paymybuddy.exception.ContactException;
 import com.openclassrooms.paymybuddy.exception.UserNotFoundException;
 import com.openclassrooms.paymybuddy.model.Contact;
 import com.openclassrooms.paymybuddy.model.MyUserDetails;
@@ -38,7 +39,7 @@ public class ContactService {
      * @param userContact the user contact
      * @throws UserNotFoundException the user not found exception
      */
-    public void saveContactRelationship(MyUserDetails user, User userContact) throws UserNotFoundException {
+    public void saveContactRelationship(MyUserDetails user, User userContact) throws UserNotFoundException, ContactException {
         LOGGER.info("Processing to save a new relationship");
         Contact contact = new Contact();
 
@@ -48,7 +49,11 @@ public class ContactService {
         contact.setContactUserId(userContact);
         contact.setUserId(userService.getUserById(user.getUserID()));
 
-        contactRepository.save(contact);
+        if(!userContact.getEmail().equals(user.getEmail())) {
+            contactRepository.save(contact);
+        } else {
+            throw new ContactException("Can't add yourself as a contact");
+        }
     }
 
     /**

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * The type Bank account service.
@@ -54,6 +55,8 @@ public class BankAccountService {
             throw new BankAccountAlreadyExistException("Bank account already exists in database");
         }
 
+        bankAccount.setIban(bankAccount.getIban().toUpperCase(Locale.ROOT));
+        bankAccount.setBic(bankAccount.getBic().toUpperCase(Locale.ROOT));
         bankAccount.setBalance(BankAccountUtil.getRandomValueBetween(-5000, 5000));//Simulate the balance between -500 and 5000
         bankAccount.setBankEstablishment(BankAccountUtil.getRandomBankNameFromEnum());
 

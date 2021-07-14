@@ -217,7 +217,7 @@ public class UserController {
     @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/addcontact")
     @Transactional
-    public String addContact(@AuthenticationPrincipal MyUserDetails user, Model model, @RequestParam String email) throws UserNotFoundException {
+    public String addContact(@AuthenticationPrincipal MyUserDetails user, Model model, @RequestParam String email) throws UserNotFoundException, ContactException {
         LOGGER.info("HTTP POST request received at /user/addcontact{email} by: " + user.getEmail());
 
         contactService.saveContactRelationship(user, userService.findUserByEmail(email));

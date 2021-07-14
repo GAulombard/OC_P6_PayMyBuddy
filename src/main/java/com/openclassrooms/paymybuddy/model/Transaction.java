@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * The type Transaction.
@@ -38,6 +39,18 @@ public class Transaction {
     @OneToOne
     @JoinColumn(name = "creditor")
     private BankAccount creditor;
+
+    /*@OneToOne
+    @JoinColumn(name = "fee_id")
+    private Fee fee;
+
+    public Fee getFee() {
+        return fee;
+    }
+
+    public void setFee(Fee fee) {
+        this.fee = fee;
+    }*/
 
     /**
      * Gets debtor.

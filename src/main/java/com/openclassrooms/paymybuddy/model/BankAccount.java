@@ -3,6 +3,7 @@ package com.openclassrooms.paymybuddy.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * The type Bank account.
@@ -28,6 +29,17 @@ public class BankAccount {
     @JoinColumn(name = "user_id")
     private User accountOwner;
 
+    /*@OneToMany
+    @JoinColumn(name = "reference")
+    private List<Transaction> transactionList;
+
+    public List<Transaction> getTransactionList() {
+        return transactionList;
+    }
+
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
+    }*/
 
     /**
      * Gets account owner.
