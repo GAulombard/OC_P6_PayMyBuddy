@@ -38,6 +38,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="account: ${accounts}">
+                            <th:block th:if="${account.deleted == false}">
                             <td th:text="${account.iban}"></td>
                             <td th:text="${account.bic}"></td>
                             <td th:text="${account.bankEstablishment}"></td>
@@ -48,7 +49,7 @@
                                    onclick="if(!(confirm('Are you sure you want to delete this bank account ?'))) return false">
                                     Delete
                                 </a>
-                            </td>
+                            </td></th:block>
                         </tr>
                         </tbody>
                     </table>

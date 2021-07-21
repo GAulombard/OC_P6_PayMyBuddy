@@ -98,8 +98,8 @@
                         <tbody>
                         <tr th:each="transaction: ${transactions}">
                             <td th:text="${transaction.reference}"></td>
-                            <td th:text="${transaction.debtor.iban}"></td>
-                            <td th:text="${transaction.creditor.iban}"></td>
+                            <td th:style="${transaction.debtor.deleted == true} ? 'color:red;' : 'color:black;'" th:text="${transaction.debtor.iban}"></td>
+                            <td th:style="${transaction.creditor.deleted == true} ? 'color:red;' : 'color:black;'" th:text="${transaction.creditor.iban}"></td>
                             <td th:text="${transaction.date}"></td>
                             <td th:text="${transaction.message}"></td>
                             <td th:text="${transaction.amount+' €'}"></td>
