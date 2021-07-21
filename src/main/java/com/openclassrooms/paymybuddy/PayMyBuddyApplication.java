@@ -39,6 +39,7 @@ public class PayMyBuddyApplication {
          TODO: gérer le trie des tables
          TODO: test unitaire
          TODO: test integrations
+         TODO: add reaffect endpoint for deleted user and bankaccount
 
          ---FrontEnd
          TODO: make admin menu responsive
@@ -47,6 +48,7 @@ public class PayMyBuddyApplication {
          TODO: ajouter total fees
          TODO: ajouter last transaction sur la page home et last message
          TODO: logo moins gros page d'acceuil
+         TODO: avertir l'usager du fee lors d'une transaction
 
    */
 

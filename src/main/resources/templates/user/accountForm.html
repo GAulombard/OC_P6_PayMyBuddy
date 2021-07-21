@@ -30,13 +30,13 @@
             <p>
               <label for="iban">iban</label>
               <input th:field="*{iban}" type="text" id="iban" name="iban" class="form-control"
-                     placeholder="iban">
+                     placeholder="iban" maxlength="27">
               <span class="text-danger" th:errors="*{iban}"></span>
             </p>
             <p>
               <label for="bic">bic</label>
               <input th:field="*{bic}" type="text" id="bic" name="bic" class="form-control"
-                     placeholder="bic">
+                     placeholder="bic" maxlength="11">
               <span class="text-danger" th:errors="*{bic}"></span>
             </p>
 

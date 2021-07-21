@@ -17,7 +17,8 @@ CREATE TABLE user (
                 address VARCHAR(50) NOT NULL,
                 zip INT NOT NULL,
                 city VARCHAR(100) NOT NULL,
-                user_role VARCHAR(50) DEFAULT "ROLE_USER" NOT NULL,
+                user_role VARCHAR(50) DEFAULT 'ROLE_USER' NOT NULL,
+                deleted BIT(1) DEFAULT FALSE NOT NULL,
                 PRIMARY KEY (user_id)
 );
 
@@ -40,6 +41,7 @@ CREATE TABLE bank_account (
                 bic VARCHAR(11) NOT NULL,
                 balance DOUBLE PRECISION NOT NULL,
                 user_id INT NOT NULL,
+                deleted BIT(1) DEFAULT FALSE NOT NULL,
                 PRIMARY KEY (iban)
 );
 

@@ -39,6 +39,7 @@
                             <th class="text-left">role</th>
                             <th class="text-left">accounts</th>
                             <th class="text-left">contact (id)</th>
+                            <th class="text-left">deleted</th>
                             <th class="text-left"></th>
                             <th class="text-left"></th>
                         </tr>
@@ -70,6 +71,7 @@
                                     </div>
                                 </th:block>
                             </td>
+                            <td th:style="${user.deleted == true} ? 'color:red;' : 'color:green;'" th:text="${user.deleted}"></td>
                             <td>
                                 <a th:href="@{/admin/delete(id=${user.userID})}"
                                    class="btn btn-danger btn-sm"

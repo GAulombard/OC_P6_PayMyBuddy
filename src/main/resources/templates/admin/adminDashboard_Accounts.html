@@ -34,15 +34,17 @@
               <th class="text-left">bic</th>
               <th class="text-left">bank</th>
               <th class="text-left">balance</th>
+              <th class="text-left">deleted</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="accounts: ${accounts}">
-              <td th:text="${accounts.accountOwner.firstName+' '+accounts.accountOwner.lastName+' ('+accounts.accountOwner.userID+')'}"></td>
-              <td th:text="${accounts.iban}"></td>
-              <td th:text="${accounts.bic}"></td>
-              <td th:text="${accounts.bankEstablishment}"></td>
-              <td th:text="${accounts.balance}+ €"></td>
+            <tr th:each="account: ${accounts}">
+              <td th:text="${account.accountOwner.firstName+' '+account.accountOwner.lastName+' ('+account.accountOwner.userID+')'}"></td>
+              <td th:text="${account.iban}"></td>
+              <td th:text="${account.bic}"></td>
+              <td th:text="${account.bankEstablishment}"></td>
+              <td th:text="${account.balance}+ €"></td>
+              <td th:style="${account.deleted == true} ? 'color:red;' : 'color:green;'" th:text="${account.deleted}"></td>
             </tr>
             </tbody>
           </table>

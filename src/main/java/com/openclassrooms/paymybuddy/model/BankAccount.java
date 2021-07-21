@@ -1,5 +1,8 @@
 package com.openclassrooms.paymybuddy.model;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -10,6 +13,8 @@ import java.util.List;
  */
 @Entity
 @Table(name = "bank_account")
+@SQLDelete(sql="UPDATE bank_account SET deleted = true WHERE iban=?")
+//@Where(clause = "deleted=false")
 public class BankAccount {
 
     @Id
@@ -28,6 +33,16 @@ public class BankAccount {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User accountOwner;
+
+    private boolean deleted = Boolean.FALSE;
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     /*@OneToMany
     @JoinColumn(name = "reference")

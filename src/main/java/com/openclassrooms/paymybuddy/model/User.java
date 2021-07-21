@@ -1,5 +1,8 @@
 package com.openclassrooms.paymybuddy.model;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.ArrayList;
@@ -13,6 +16,8 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "user")
+@SQLDelete(sql = "UPDATE user SET deleted = true WHERE user_id=?")
+//@Where(clause="deleted=false")
 public class User {
 
     @Id
@@ -78,6 +83,16 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private List<User> contactListOf;
+
+    private boolean deleted = Boolean.FALSE;
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     /**
      * Gets contact list of.

@@ -67,7 +67,7 @@
                             <div class="form-group col-md-2">
                                 <label for="zip">Zip</label>
                                 <input th:field="*{zip}" type="text" class="form-control" id="zip"
-                                       placeholder="00000"><span class="text-danger" th:errors="*{zip}"></span>
+                                       placeholder="00000" maxlength="5"><span class="text-danger" th:errors="*{zip}"></span>
                             </div>
 
 
@@ -81,7 +81,7 @@
                             <div class="form-group col-md-2">
                                 <label for="phone">Phone</label>
                                 <input th:field="*{phone}" type="text" class="form-control" id="phone"
-                                       placeholder="0000000000"><span class="text-danger" th:errors="*{phone}"></span>
+                                       placeholder="0000000000" maxlength="10"><span class="text-danger" th:errors="*{phone}"></span>
                             </div>
 
 

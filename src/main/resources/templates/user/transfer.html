@@ -32,10 +32,12 @@
                                 <select id="debtor" class="form-control" th:field="*{debtor}">
                                     <option th:value="${'null'}" selected>Choose your account...</option>
                                     <th:block th:each="account: ${myAccounts}">
+                                        <th:block th:if="${account.deleted == false}">
                                         <option th:value="${account.iban}"
                                                 th:text="${account.iban+' ('+account.balance+'€)'}">Choose your
                                             account...
                                         </option>
+                                        </th:block>
                                     </th:block>
                                 </select><span class="text-danger" th:errors="*{debtor}"></span>
                             </div>
@@ -44,10 +46,12 @@
                                 <select id="creditor" class="form-control" th:field="*{creditor}">
                                     <option th:value="${'null'}" selected>Choose contact account...</option>
                                     <th:block th:each="account: ${contactAccount}">
+                                        <th:block th:if="${account.deleted == false}">
                                         <option th:value="${account.iban}"
                                                 th:text="${account.accountOwner.firstName+' '+account.accountOwner.lastName+' ('+account.iban+')'}">
                                             Choose contact account...
                                         </option>
+                                        </th:block>
                                     </th:block>
                                 </select><span class="text-danger" th:errors="*{creditor}"></span>
                             </div>
