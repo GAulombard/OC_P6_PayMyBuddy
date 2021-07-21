@@ -1,10 +1,7 @@
 package com.openclassrooms.paymybuddy.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -48,7 +45,7 @@ public class User {
     @Column(name = "address")
     private String address;
 
-    @NotNull(message = "Zip is mandatory")
+    @Min(value=1,message = "Zip should be at lead 1 or more")
     @Column(name = "zip")
     private int zip;
 

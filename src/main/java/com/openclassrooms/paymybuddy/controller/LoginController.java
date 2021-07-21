@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,7 @@ import java.util.Map;
  * The type Login controller.
  */
 @Controller
-public class LoginController {
+public class LoginController implements WebMvcConfigurer {
 
     private final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 

@@ -32,11 +32,10 @@ public class PayMyBuddyApplication {
 
    /*    ----BackEnd/fonctionnement
 
-         TODO: ajouter les validations pour les formulaires
-         TODO: javadoc
+         TODO: ajouter les validations login
          TODO: jacoco
          TODO: surefire
-         TODO: probleme quand delete account -> transaction -> fee
+         TODO: probleme quand delete account -> transaction -> fee (voir soft delete)
          TODO: gérer le trie des tables
          TODO: test unitaire
          TODO: test integrations

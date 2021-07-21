@@ -133,6 +133,7 @@ public class UserService {
      *
      * @param id   the id
      * @param role the role
+     * @throws UserNotFoundException the user not found exception
      */
     public void updateRoleById(int id, String role) throws UserNotFoundException {
         LOGGER.info("Processing to role by Id");

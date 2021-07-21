@@ -56,6 +56,13 @@ public class BankAccountUtil {
         return result;
     }
 
+    /**
+     * Is sufficient found boolean.
+     *
+     * @param accountBalance    the account balance
+     * @param amountTransaction the amount transaction
+     * @return the boolean
+     */
     public static boolean isSufficientFound(double accountBalance, double amountTransaction) {
         if ( accountBalance >= amountTransaction) return true;
         else return false;

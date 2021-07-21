@@ -8,12 +8,6 @@ import javax.persistence.*;
 /**
  * The type Contact.
  */
-/*@NamedEntityGraph(
-        name = "post-entity-graph",
-        attributeNodes = {
-                @NamedAttributeNode("contactUserId"),
-                @NamedAttributeNode("userId"),
-        })*/
 @Entity
 @Table(name = "contact")
 public class Contact {

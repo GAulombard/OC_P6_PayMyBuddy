@@ -38,6 +38,7 @@ public class ContactService {
      * @param user        the user
      * @param userContact the user contact
      * @throws UserNotFoundException the user not found exception
+     * @throws ContactException      the contact exception
      */
     public void saveContactRelationship(MyUserDetails user, User userContact) throws UserNotFoundException, ContactException {
         LOGGER.info("Processing to save a new relationship");
@@ -61,6 +62,7 @@ public class ContactService {
      *
      * @param userId        the user id
      * @param contactUserId the contact user id
+     * @throws UserNotFoundException the user not found exception
      */
     public void deleteContactByUserIdAndContactUserId(int userId, int contactUserId) throws UserNotFoundException {
         LOGGER.info("Processing to delete contact");

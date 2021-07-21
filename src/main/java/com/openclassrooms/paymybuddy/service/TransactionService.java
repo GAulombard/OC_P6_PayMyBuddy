@@ -65,6 +65,7 @@ public class TransactionService {
      *
      * @param id the id
      * @return the list
+     * @throws BankAccountNotFoundException the bank account not found exception
      */
     public List<Transaction> findAllTransactionsByUserId(int id) throws BankAccountNotFoundException {
         LOGGER.info("Process to find all transactions by user Id");

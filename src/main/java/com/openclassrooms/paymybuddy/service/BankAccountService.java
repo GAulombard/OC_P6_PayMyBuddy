@@ -67,6 +67,7 @@ public class BankAccountService {
      * Remove bank account by id.
      *
      * @param id the id
+     * @throws BankAccountNotFoundException the bank account not found exception
      */
     public void removeBankAccountById(String id) throws BankAccountNotFoundException {
         LOGGER.info("Processing to delete bank account");
@@ -84,6 +85,7 @@ public class BankAccountService {
      *
      * @param id the id
      * @return the list
+     * @throws BankAccountNotFoundException the bank account not found exception
      */
     public List<BankAccount> findAllBankAccountByOwnerId(int id) throws BankAccountNotFoundException {
         LOGGER.info("Processing to get all bank account by owner Id");
@@ -125,6 +127,7 @@ public class BankAccountService {
      *
      * @param iban   the iban
      * @param amount the amount
+     * @throws BankAccountNotFoundException the bank account not found exception
      */
     public void updateBalanceByIban(String iban, double amount) throws BankAccountNotFoundException {
         LOGGER.info("Processing to update balance by iban");

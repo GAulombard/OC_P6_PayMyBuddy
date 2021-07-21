@@ -1,10 +1,15 @@
 package com.openclassrooms.paymybuddy.exception;
 
 /**
- * @author Hodor
- * @project PayMyBuddy
+ * The type Contact exception.
+ *
  */
 public class ContactException extends Throwable {
+    /**
+     * Instantiates a new Contact exception.
+     *
+     * @param s the s
+     */
     public ContactException(String s) {
         super(s);
     }

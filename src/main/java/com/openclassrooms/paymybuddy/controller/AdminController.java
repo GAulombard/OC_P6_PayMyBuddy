@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
@@ -28,7 +29,7 @@ import java.util.Optional;
  * The type Admin controller.
  */
 @Controller
-public class AdminController {
+public class AdminController implements WebMvcConfigurer {
 
     private final Logger LOGGER = LoggerFactory.getLogger(AdminController.class);
     @Autowired
@@ -170,6 +171,7 @@ public class AdminController {
      * @param user the user
      * @param id   the id
      * @return the string
+     * @throws UserNotFoundException the user not found exception
      */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/make-admin")
@@ -188,6 +190,7 @@ public class AdminController {
      * @param user the user
      * @param id   the id
      * @return the string
+     * @throws UserNotFoundException the user not found exception
      */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/make-user")

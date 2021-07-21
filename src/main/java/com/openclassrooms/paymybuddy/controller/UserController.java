@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
@@ -32,7 +33,7 @@ import java.util.Optional;
  * The type User controller.
  */
 @Controller
-public class UserController {
+public class UserController implements WebMvcConfigurer {
 
     private final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
@@ -110,6 +111,7 @@ public class UserController {
      * @param user  the user
      * @param model the model
      * @return the transfer
+     * @throws BankAccountNotFoundException the bank account not found exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/transfer")
@@ -165,20 +167,20 @@ public class UserController {
     /**
      * Save bank account string.
      *
-     * @param account the account
-     * @param user    the user
-     * @param model   the model
+     * @param account       the account
+     * @param bindingResult the binding result
+     * @param user          the user
      * @return the string
      * @throws BankAccountAlreadyExistException the bank account already exist exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/createaccount") //Bank Account
     @Transactional
-    public String saveBankAccount(@Valid @ModelAttribute("account") BankAccount account, @AuthenticationPrincipal MyUserDetails user, Model model, BindingResult bindingResult) throws BankAccountAlreadyExistException {
-        LOGGER.info("HTTP POST request received at /user/accountform by: " + user.getEmail());
+    public String saveBankAccount(@Valid @ModelAttribute("account") BankAccount account,BindingResult bindingResult, @AuthenticationPrincipal MyUserDetails user) throws BankAccountAlreadyExistException {
+        LOGGER.info("HTTP POST request received at /user/createaccount by: " + user.getEmail());
 
         if (bindingResult.hasErrors()) {
-            return "redirect:/user/accountform";
+            return "/user/accountForm";
         }
 
         account.setAccountOwner(userService.getUserById(user.getUserID()));
@@ -193,6 +195,7 @@ public class UserController {
      * @param id   the id
      * @param user the user
      * @return the string
+     * @throws BankAccountNotFoundException the bank account not found exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/deleteaccount{id}") //Bank Account
@@ -213,6 +216,7 @@ public class UserController {
      * @param email the email
      * @return the string
      * @throws UserNotFoundException the user not found exception
+     * @throws ContactException      the contact exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/addcontact")
@@ -231,6 +235,7 @@ public class UserController {
      * @param id   the id
      * @param user the user
      * @return the string
+     * @throws UserNotFoundException the user not found exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/delete-contact{id}") //Bank Account
@@ -246,10 +251,13 @@ public class UserController {
     /**
      * Save transaction string.
      *
-     * @param transaction the transaction
-     * @param user        the user
-     * @param model       the model
+     * @param transaction   the transaction
+     * @param user          the user
+     * @param model         the model
+     * @param bindingResult the binding result
      * @return the string
+     * @throws BankAccountNotFoundException the bank account not found exception
+     * @throws InsufficientFoundException   the insufficient found exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/new-transfer") //Bank Account

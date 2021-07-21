@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.validation.Valid;
 
@@ -20,7 +21,7 @@ import javax.validation.Valid;
  * The type Anonymous controller.
  */
 @Controller
-public class AnonymousController {
+public class AnonymousController implements WebMvcConfigurer {
 
     private final Logger LOGGER = LoggerFactory.getLogger(AnonymousController.class);
 
@@ -57,17 +58,17 @@ public class AnonymousController {
     /**
      * Add new user string.
      *
-     * @param user  the user
-     * @param model the model
+     * @param user          the user
+     * @param bindingResult the binding result
      * @return the string
      * @throws UserAlreadyExistException the user already exist exception
      */
     @PostMapping("/signup/save")
-    public String addNewUser(@Valid @ModelAttribute("user") User user, Model model, BindingResult bindingResult) throws UserAlreadyExistException {
+    public String addNewUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) throws UserAlreadyExistException {
         LOGGER.info("HTTP POST request received at /signup/save");
 
         if(bindingResult.hasErrors()){
-            return "redirect:/signup";
+            return "signup";
         }
 
         userService.saveUser(user);
