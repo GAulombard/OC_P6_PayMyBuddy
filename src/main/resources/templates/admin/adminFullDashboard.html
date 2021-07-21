@@ -24,7 +24,7 @@
         <div class=" col-5 col-lg-5">
             <div class="card my-3 shadow">
                 <div class="card-body">
-                    <h2 class="mt-4">Users</h2>
+                    <h2 class="mt-4">Users</h2><p>only active accounts</p>
                     <table class="table">
                         <thead class="thead-light">
                         <tr>
@@ -35,9 +35,11 @@
                         </thead>
                         <tbody>
                         <tr th:each="user: ${users}">
+                            <th:block th:if="${user.deleted == false}">
                             <td th:text="${user.userID}"></td>
                             <td th:text="${user.firstName+' '+user.lastName}"></td>
                             <td th:text="${user.email}" width="150"></td>
+                            </th:block>
                         </tr>
                         </tbody>
                     </table>
@@ -47,7 +49,7 @@
         <div class=" col-7 col-lg-7">
             <div class="card my-3 shadow">
                 <div class="card-body">
-                    <h2 class="mt-4">Accounts</h2>
+                    <h2 class="mt-4">Accounts</h2><p>only active accounts</p>
                     <table class="table">
                         <thead class="thead-light">
                         <tr>
@@ -58,10 +60,12 @@
                         </thead>
                         <tbody>
                         <tr th:each="account: ${accounts}">
+                            <th:block th:if="${account.deleted == false}">
                             <td th:text="${account.iban}"></td>
                             <td th:text="${account.accountOwner.firstName+' '+account.accountOwner.lastName+' ('+account.accountOwner.userID+')'}"
                                 width="300"></td>
                             <td th:text="${account.balance}+ €"></td>
+                            </th:block>
                         </tr>
                         </tbody>
                     </table>

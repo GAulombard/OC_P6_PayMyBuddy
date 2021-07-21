@@ -39,7 +39,7 @@
                                         </option>
                                         </th:block>
                                     </th:block>
-                                </select><span class="text-danger" th:errors="*{debtor}"></span>
+                                </select><span class="text-danger" th:errors="*{debtor}">test</span>
                             </div>
                             <div class="form-group col-md-5">
                                 <label for="creditor">Creditor</label>
@@ -53,7 +53,7 @@
                                         </option>
                                         </th:block>
                                     </th:block>
-                                </select><span class="text-danger" th:errors="*{creditor}"></span>
+                                </select><span class="text-danger" th:errors="*{creditor}">test</span>
                             </div>
                             <div class="form-group col-md-2">
 
@@ -62,7 +62,7 @@
 
                                 <input type="number" id="amount" class="form-control" min="0" th:field="*{amount}">
                                 <div class="input-group-append"><span class="input-group-text">€</span>
-                                </div></div><span class="text-danger" th:errors="*{amount}"></span>
+                                </div></div><span class="text-danger" th:errors="*{amount}">testes</span>
                             </div>
                         </div>
                         <div class="d-flex justify-content-around">
@@ -70,9 +70,9 @@
                                 <label for="message">Message</label>
                                 <div class="d-flex">
                                     <input type="text" id="message" class="form-control" th:field="*{message}">
-                                </div><span class="text-danger" th:errors="*{message}"></span>
+                                </div><span class="text-danger" th:errors="*{message}">test</span>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-sm">Send money</button>
+                            <button type="submit" class="btn btn-primary btn-sm" th:data-confirm="|You will be withdraw with an additional fee equals to ${feeRate} percent of the amount.|" onclick="if(!(confirm(this.getAttribute('data-confirm')))) return false">Send money</button>
                         </div>
                     </form>
                 </div>

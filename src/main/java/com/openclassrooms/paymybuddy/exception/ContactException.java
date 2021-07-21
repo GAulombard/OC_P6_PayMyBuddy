@@ -2,7 +2,6 @@ package com.openclassrooms.paymybuddy.exception;
 
 /**
  * The type Contact exception.
- *
  */
 public class ContactException extends Throwable {
     /**

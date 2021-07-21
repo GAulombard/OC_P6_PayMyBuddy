@@ -46,13 +46,13 @@
                         </thead>
                         <tbody>
                         <tr th:each="user: ${users}">
-                            <td th:text="${user.userID}"></td>
-                            <td th:text="${user.firstName+' '+user.lastName}"></td>
-                            <td th:text="${user.email}" width="150"></td>
-                            <td th:text="${user.userRole}"></td>
+                            <td th:style="${user.deleted == true} ? 'color:red;' : 'color:black;'" th:text="${user.userID}"></td>
+                            <td th:style="${user.deleted == true} ? 'color:red;' : 'color:black;'" th:text="${user.firstName+' '+user.lastName}"></td>
+                            <td th:style="${user.deleted == true} ? 'color:red;' : 'color:black;'" th:text="${user.email}" width="150"></td>
+                            <td th:style="${user.deleted == true} ? 'color:red;' : 'color:black;'" th:text="${user.userRole}"></td>
                             <td width="50">
                                 <th:block th:each="account: ${user.accountList}">
-                                    <div>
+                                    <div th:style="${account.deleted == true} ? 'color:red;' : 'color:black;'">
                                         <th:block th:text="${account.iban}"></th:block>
                                     </div>
                                 </th:block>
@@ -73,10 +73,11 @@
                             </td>
                             <td th:style="${user.deleted == true} ? 'color:red;' : 'color:green;'" th:text="${user.deleted}"></td>
                             <td>
-                                <a th:href="@{/admin/delete(id=${user.userID})}"
+                                <a th:href="${user.deleted == false} ? '/admin/delete?id='+${user.userID} : '/admin/user-recovery?id='+${user.userID}"
                                    class="btn btn-danger btn-sm"
-                                   onclick="if(!(confirm('Are you sure you want to delete this user ?'))) return false">
-                                    Delete
+                                   onclick="if(!(confirm('Are you sure you want that for this user ?'))) return false">
+                                    <th:block
+                                            th:text="${user.deleted == false} ? 'Delete' : 'Recover'"></th:block>
                                 </a>
                             </td>
                             <td>

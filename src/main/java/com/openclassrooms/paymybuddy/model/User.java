@@ -86,10 +86,20 @@ public class User {
 
     private boolean deleted = Boolean.FALSE;
 
+    /**
+     * Is deleted boolean.
+     *
+     * @return the boolean
+     */
     public boolean isDeleted() {
         return deleted;
     }
 
+    /**
+     * Sets deleted.
+     *
+     * @param deleted the deleted
+     */
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }

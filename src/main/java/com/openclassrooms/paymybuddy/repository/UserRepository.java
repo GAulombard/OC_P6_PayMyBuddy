@@ -42,4 +42,12 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     @Query("UPDATE User u SET u.userRole = :role WHERE u.userID = :id")
     public void updateRole(int id, String role);
 
+    /**
+     * Update deleted.
+     *
+     * @param id the id
+     */
+    @Modifying
+    @Query("UPDATE User u SET u.deleted = false WHERE u.userID = :id")
+    void updateDeleted(int id);
 }

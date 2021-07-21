@@ -3,6 +3,7 @@ package com.openclassrooms.paymybuddy.service;
 import com.openclassrooms.paymybuddy.exception.BankAccountAlreadyExistException;
 import com.openclassrooms.paymybuddy.exception.BankAccountNotFoundException;
 import com.openclassrooms.paymybuddy.exception.UserAlreadyExistException;
+import com.openclassrooms.paymybuddy.exception.UserNotFoundException;
 import com.openclassrooms.paymybuddy.model.BankAccount;
 import com.openclassrooms.paymybuddy.model.Contact;
 import com.openclassrooms.paymybuddy.model.User;
@@ -30,6 +31,9 @@ public class BankAccountService {
 
     @Autowired
     private ContactService contactService;
+
+    @Autowired
+    private UserService userService;
 
     /**
      * Gets accounts.
@@ -142,4 +146,26 @@ public class BankAccountService {
 
     }
 
+    /**
+     * Update deleted by id.
+     *
+     * @param iban the iban
+     * @throws BankAccountNotFoundException the bank account not found exception
+     */
+    public void updateDeletedById(String iban) throws BankAccountNotFoundException, UserNotFoundException {
+        LOGGER.info("Processing to bank account by iban");
+
+        BankAccount bankAccount = bankAccountRepository.getById(iban);
+        User owner = bankAccount.getAccountOwner();
+
+        if (userService.userIsRemovedById(owner.getUserID())) {
+            userService.updateDeletedById(owner.getUserID());
+        }
+
+        if (bankAccountRepository.existsById(iban)) {
+            bankAccountRepository.updateDeletedByIban(iban);
+        }else {
+            throw new BankAccountNotFoundException("Bank account not found");
+        }
+    }
 }

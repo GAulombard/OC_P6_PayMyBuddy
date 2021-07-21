@@ -34,4 +34,13 @@ public interface BankAccountRepository extends JpaRepository<BankAccount,String>
     @Modifying
     @Query("UPDATE BankAccount b SET b.balance = :amount WHERE b.iban = :iban")
     public void updateBalanceByIban(String iban, double amount);
+
+    /**
+     * Update deleted by iban.
+     *
+     * @param iban the iban
+     */
+    @Modifying
+    @Query("UPDATE BankAccount b SET b.deleted = false WHERE b.iban = :iban")
+    void updateDeletedByIban(String iban);
 }

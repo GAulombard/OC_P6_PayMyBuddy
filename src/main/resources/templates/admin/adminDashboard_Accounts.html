@@ -35,16 +35,25 @@
               <th class="text-left">bank</th>
               <th class="text-left">balance</th>
               <th class="text-left">deleted</th>
+              <th class="text-left"></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="account: ${accounts}">
-              <td th:text="${account.accountOwner.firstName+' '+account.accountOwner.lastName+' ('+account.accountOwner.userID+')'}"></td>
-              <td th:text="${account.iban}"></td>
-              <td th:text="${account.bic}"></td>
-              <td th:text="${account.bankEstablishment}"></td>
-              <td th:text="${account.balance}+ €"></td>
+              <td th:style="${account.accountOwner.deleted == true} ? 'color:red;' : 'color:black;'" th:text="${account.accountOwner.firstName+' '+account.accountOwner.lastName+' ('+account.accountOwner.userID+')'}"></td>
+              <td th:style="${account.deleted == true} ? 'color:red;' : 'color:black;'" th:text="${account.iban}"></td>
+              <td th:style="${account.deleted == true} ? 'color:red;' : 'color:black;'" th:text="${account.bic}"></td>
+              <td th:style="${account.deleted == true} ? 'color:red;' : 'color:black;'" th:text="${account.bankEstablishment}"></td>
+              <td th:style="${account.deleted == true} ? 'color:red;' : 'color:black;'" th:text="${account.balance}+ €"></td>
               <td th:style="${account.deleted == true} ? 'color:red;' : 'color:green;'" th:text="${account.deleted}"></td>
+              <td>
+                <a th:href="${account.deleted == false} ? '/admin/delete-account?id='+${account.iban} : '/admin/account-recovery?id='+${account.iban}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if(!(confirm('Are you sure you want that for this account ?'))) return false">
+                  <th:block
+                          th:text="${account.deleted == false} ? 'Delete' : 'Recover'"></th:block>
+                </a>
+              </td>
             </tr>
             </tbody>
           </table>

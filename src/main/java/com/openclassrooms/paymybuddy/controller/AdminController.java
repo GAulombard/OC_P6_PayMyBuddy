@@ -1,6 +1,7 @@
 package com.openclassrooms.paymybuddy.controller;
 
 import com.openclassrooms.paymybuddy.constants.Constants;
+import com.openclassrooms.paymybuddy.exception.BankAccountNotFoundException;
 import com.openclassrooms.paymybuddy.exception.UserNotFoundException;
 import com.openclassrooms.paymybuddy.model.*;
 import com.openclassrooms.paymybuddy.service.BankAccountService;
@@ -201,5 +202,63 @@ public class AdminController implements WebMvcConfigurer {
         userService.updateRoleById(id, Constants.ROLE_USER);
 
         return "redirect:/admin/users";
+    }
+
+    /**
+     * Recover user string.
+     *
+     * @param user the user
+     * @param id   the id
+     * @return the string
+     * @throws UserNotFoundException the user not found exception
+     */
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/user-recovery")
+    @Transactional
+    public String recoverUser(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") int id) throws UserNotFoundException {
+        LOGGER.info("HTTP GET request received at /admin/user-recovery?id={id} by: "+user.getEmail());
+
+        userService.updateDeletedById(id);
+
+        return "redirect:/admin/users";
+    }
+
+    /**
+     * Delete account string.
+     *
+     * @param user the user
+     * @param id   the id
+     * @return the string
+     * @throws BankAccountNotFoundException the bank account not found exception
+     */
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/delete-account")
+    @Transactional
+    public String deleteAccount(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") String id) throws BankAccountNotFoundException {
+        LOGGER.info("HTTP GET request received at /admin/delete-account?id={id} by: "+user.getEmail());
+
+        bankAccountService.removeBankAccountById(id);
+
+
+        return "redirect:/admin/accounts";
+    }
+
+    /**
+     * Recover account string.
+     *
+     * @param user the user
+     * @param id   the id
+     * @return the string
+     * @throws BankAccountNotFoundException the bank account not found exception
+     */
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/account-recovery")
+    @Transactional
+    public String recoverAccount(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") String id) throws BankAccountNotFoundException, UserNotFoundException {
+        LOGGER.info("HTTP GET request received at /admin/account-recovery?id={id} by: "+user.getEmail());
+
+        bankAccountService.updateDeletedById(id);
+
+        return "redirect:/admin/accounts";
     }
 }

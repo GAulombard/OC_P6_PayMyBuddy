@@ -35,20 +35,16 @@ public class PayMyBuddyApplication {
          TODO: ajouter les validations login
          TODO: jacoco
          TODO: surefire
-         TODO: probleme quand delete account -> transaction -> fee (voir soft delete)
          TODO: gérer le trie des tables
          TODO: test unitaire
          TODO: test integrations
-         TODO: add reaffect endpoint for deleted user and bankaccount
 
          ---FrontEnd
          TODO: make admin menu responsive
          TODO: ajouter page profile contact
-         TODO: ajouter bouton delete dans accounts pour admin
          TODO: ajouter total fees
          TODO: ajouter last transaction sur la page home et last message
          TODO: logo moins gros page d'acceuil
-         TODO: avertir l'usager du fee lors d'une transaction
 
    */
 

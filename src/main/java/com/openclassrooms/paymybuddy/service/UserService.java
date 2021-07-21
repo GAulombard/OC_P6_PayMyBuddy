@@ -136,7 +136,7 @@ public class UserService {
      * @throws UserNotFoundException the user not found exception
      */
     public void updateRoleById(int id, String role) throws UserNotFoundException {
-        LOGGER.info("Processing to role by Id");
+        LOGGER.info("Processing to update role by Id");
 
         if(userRepository.existsById(id)) {
             userRepository.updateRole(id, role);
@@ -145,4 +145,30 @@ public class UserService {
         }
     }
 
+    /**
+     * Update deleted by id.
+     *
+     * @param id the id
+     * @throws UserNotFoundException the user not found exception
+     */
+    public void updateDeletedById(int id) throws UserNotFoundException {
+        LOGGER.info("Processing to recover user by Id");
+        if(userRepository.existsById(id)) {
+            userRepository.updateDeleted(id);
+        } else {
+            throw new UserNotFoundException("User not found");
+        }
+    }
+
+    public boolean userIsRemovedById(int id) throws UserNotFoundException {
+        LOGGER.info("Processing to find if the user has been removed");
+
+        if(userRepository.existsById(id)) {
+            if (userRepository.getById((id)).isDeleted() == false) return false;
+        } else {
+            throw new UserNotFoundException("User not found");
+        }
+
+        return true;
+    }
 }

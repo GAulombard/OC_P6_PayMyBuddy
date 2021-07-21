@@ -121,6 +121,7 @@ public class UserController implements WebMvcConfigurer {
 
         List<Transaction> transactions = transactionService.findAllTransactionsByUserId(user.getUserID());
 
+        model.addAttribute("feeRate",Constants.RATE100);
         model.addAttribute("transaction", new Transaction());
         model.addAttribute("contactAccount", bankAccountService.getAllContactBankAccountById(user.getUserID()));
         model.addAttribute("myAccounts", bankAccountService.findAllBankAccountByOwnerId(user.getUserID()));
@@ -253,7 +254,6 @@ public class UserController implements WebMvcConfigurer {
      *
      * @param transaction   the transaction
      * @param user          the user
-     * @param model         the model
      * @param bindingResult the binding result
      * @return the string
      * @throws BankAccountNotFoundException the bank account not found exception
@@ -262,7 +262,7 @@ public class UserController implements WebMvcConfigurer {
     @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/new-transfer") //Bank Account
     @Transactional
-    public String saveTransaction(@Valid @ModelAttribute("transaction") Transaction transaction, @AuthenticationPrincipal MyUserDetails user, Model model, BindingResult bindingResult) throws BankAccountNotFoundException, InsufficientFoundException {
+    public String saveTransaction(@Valid @ModelAttribute("transaction") Transaction transaction, @AuthenticationPrincipal MyUserDetails user, BindingResult bindingResult) throws BankAccountNotFoundException, InsufficientFoundException {
         LOGGER.info("HTTP POST request received at /user/new-transfer by: " + user.getEmail());
 
         if (bindingResult.hasErrors()) {
