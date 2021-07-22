@@ -35,7 +35,6 @@ public class PayMyBuddyApplication {
          TODO: ajouter les validations login
          TODO: jacoco
          TODO: surefire
-         TODO: gérer le trie des tables
          TODO: test unitaire
          TODO: test integrations
 
@@ -45,6 +44,7 @@ public class PayMyBuddyApplication {
          TODO: ajouter total fees
          TODO: ajouter last transaction sur la page home et last message
          TODO: logo moins gros page d'acceuil
+         TODO: plus de détail pour admin transaction et fee
 
    */
 

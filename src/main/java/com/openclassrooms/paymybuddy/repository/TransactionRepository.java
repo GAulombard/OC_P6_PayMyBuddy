@@ -20,6 +20,6 @@ public interface TransactionRepository extends JpaRepository<Transaction,Integer
      * @param iban the iban
      * @return the list
      */
-    @Query("SELECT t FROM Transaction t WHERE t.creditor.iban =: iban OR t.debtor.iban = :iban")
+    @Query("SELECT t FROM Transaction t WHERE t.creditor.iban =: iban OR t.debtor.iban = :iban ORDER BY t.date DESC")
     List<Transaction> findAllTransactionsByBankAccountIban(String iban);
 }

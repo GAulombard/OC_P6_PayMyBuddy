@@ -11,13 +11,12 @@ import com.openclassrooms.paymybuddy.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * The type Transaction service.
@@ -43,7 +42,7 @@ public class TransactionService {
      */
     public Iterable<Transaction> getTransactions() {
         LOGGER.info("Process to get all transactions");
-        return transactionRepository.findAll();
+        return transactionRepository.findAll(Sort.by(Sort.Direction.DESC,"date"));
     }
 
     /**
@@ -81,6 +80,13 @@ public class TransactionService {
 
         ibans.iterator().forEachRemaining(iban -> {
             transactions.addAll(findAllTransactionsByBankAccountIban(iban));
+        });
+
+        Collections.sort(transactions, new Comparator<Transaction>() {
+            @Override
+            public int compare(Transaction o1, Transaction o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
         });
 
         return transactions;

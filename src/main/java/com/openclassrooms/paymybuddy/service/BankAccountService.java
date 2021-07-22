@@ -13,6 +13,7 @@ import com.openclassrooms.paymybuddy.util.BankAccountUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class BankAccountService {
     public Iterable<BankAccount> getAccounts() {
         LOGGER.info("Processing to get all accounts");
 
-        return bankAccountRepository.findAll();
+        return bankAccountRepository.findAll(Sort.by(Sort.Direction.ASC,"accountOwner.lastName"));
     }
 
     /**

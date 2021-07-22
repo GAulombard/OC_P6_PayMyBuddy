@@ -8,6 +8,7 @@ import com.openclassrooms.paymybuddy.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -30,7 +31,7 @@ public class FeeService {
      */
     public Iterable<Fee> getFees() {
         LOGGER.info("Processing to get all fees");
-        return feeRepository.findAll();
+        return feeRepository.findAll(Sort.by(Sort.Direction.DESC,"date"));
     }
 
     /**
