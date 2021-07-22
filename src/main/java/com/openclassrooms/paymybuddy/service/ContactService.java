@@ -44,7 +44,7 @@ public class ContactService {
         LOGGER.info("Processing to save a new relationship");
         Contact contact = new Contact();
 
-        if (userContact == null) {
+        if (userContact == null || userContact.isDeleted() == true) {
             throw new UserNotFoundException("User not found");
         }
         contact.setContactUserId(userContact);

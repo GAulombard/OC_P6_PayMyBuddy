@@ -62,8 +62,13 @@ public class UserService {
      * @param id the id
      * @return the optional
      */
-    public Optional<User> findUserById(int id) {
+    public Optional<User> findUserById(int id) throws UserNotFoundException {
         LOGGER.info("Processing to find a user by id");
+
+        if(!userRepository.existsById(id)) {
+            throw new UserNotFoundException("User not found");
+        }
+
         return userRepository.findById(id);
     }
 
@@ -104,7 +109,10 @@ public class UserService {
         if(bankAccounts == null) return result;
 
         bankAccounts.iterator().forEachRemaining(bankAccount -> {
-            result.updateAndGet(v -> new Double((double) (v + bankAccount.getBalance())));
+            if(bankAccount.isDeleted()==false) {
+                result.updateAndGet(v -> new Double((double) (v + bankAccount.getBalance())));
+            }
+
         });
 
         return result;

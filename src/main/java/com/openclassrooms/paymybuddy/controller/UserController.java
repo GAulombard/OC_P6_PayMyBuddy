@@ -262,11 +262,11 @@ public class UserController implements WebMvcConfigurer {
     @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/new-transfer") //Bank Account
     @Transactional
-    public String saveTransaction(@Valid @ModelAttribute("transaction") Transaction transaction, @AuthenticationPrincipal MyUserDetails user, BindingResult bindingResult) throws BankAccountNotFoundException, InsufficientFoundException {
+    public String saveTransaction(@Valid @ModelAttribute("transaction") Transaction transaction,BindingResult bindingResult, @AuthenticationPrincipal MyUserDetails user) throws BankAccountNotFoundException, InsufficientFoundException {
         LOGGER.info("HTTP POST request received at /user/new-transfer by: " + user.getEmail());
 
         if (bindingResult.hasErrors()) {
-            return "redirect:/user/transfer";
+            return "/user/transfer";
         }
 
 
