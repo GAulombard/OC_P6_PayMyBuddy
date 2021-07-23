@@ -40,18 +40,6 @@ public class Transaction {
     @JoinColumn(name = "creditor")
     private BankAccount creditor;
 
-    /*@OneToOne
-    @JoinColumn(name = "fee_id")
-    private Fee fee;
-
-    public Fee getFee() {
-        return fee;
-    }
-
-    public void setFee(Fee fee) {
-        this.fee = fee;
-    }*/
-
     /**
      * Gets debtor.
      *
