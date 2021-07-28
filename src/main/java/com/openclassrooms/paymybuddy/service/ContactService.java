@@ -93,7 +93,7 @@ public class ContactService {
      * @param id the id
      * @return the all my contact by id
      */
-    public List<User> getAllMyContactById(int id) {
+    public List<User> getAllMyContactById(int id) throws UserNotFoundException {
         LOGGER.info("Processing to get all my contact");
 
         List<User> result = new ArrayList<>();

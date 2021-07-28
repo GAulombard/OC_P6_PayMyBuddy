@@ -61,7 +61,7 @@ public class UserController implements WebMvcConfigurer {
      */
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/home")
-    public String getHome(@AuthenticationPrincipal MyUserDetails user, Model model) {
+    public String getHome(@AuthenticationPrincipal MyUserDetails user, Model model) throws UserNotFoundException {
         LOGGER.info("HTTP GET request received at /user/home by: " + user.getEmail());
 
         model.addAttribute("total", userService.getTotalAccountBalanceByUserId(user.getUserID()));
@@ -80,7 +80,7 @@ public class UserController implements WebMvcConfigurer {
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/contact")
     @Transactional
-    public String getContact(@AuthenticationPrincipal MyUserDetails user, Model model) {
+    public String getContact(@AuthenticationPrincipal MyUserDetails user, Model model) throws UserNotFoundException {
         LOGGER.info("HTTP GET request received at /user/contact by: " + user.getEmail());
 
         model.addAttribute("users", userService.getUsers());
@@ -116,7 +116,7 @@ public class UserController implements WebMvcConfigurer {
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/transfer")
     @Transactional
-    public String getTransfer(@AuthenticationPrincipal MyUserDetails user, Model model) throws BankAccountNotFoundException {
+    public String getTransfer(@AuthenticationPrincipal MyUserDetails user, Model model) throws BankAccountNotFoundException, UserNotFoundException {
         LOGGER.info("HTTP GET request received at /user/transfer by: " + user.getEmail());
 
         List<Transaction> transactions = transactionService.findAllTransactionsByUserId(user.getUserID());
@@ -140,7 +140,7 @@ public class UserController implements WebMvcConfigurer {
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/deletemypmb")
     @Transactional
-    public String deleteUserAccount(@AuthenticationPrincipal MyUserDetails user, Model model) {
+    public String deleteUserAccount(@AuthenticationPrincipal MyUserDetails user, Model model) throws UserNotFoundException {
         LOGGER.info("HTTP GET request received at /user/deletemypmb by: " + user.getEmail());
 
         userService.removeUserById(user.getUserID());
@@ -177,7 +177,7 @@ public class UserController implements WebMvcConfigurer {
     @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/createaccount") //Bank Account
     @Transactional
-    public String saveBankAccount(@Valid @ModelAttribute("account") BankAccount account,BindingResult bindingResult, @AuthenticationPrincipal MyUserDetails user) throws BankAccountAlreadyExistException {
+    public String saveBankAccount(@Valid @ModelAttribute("account") BankAccount account,BindingResult bindingResult, @AuthenticationPrincipal MyUserDetails user) throws BankAccountAlreadyExistException, UserNotFoundException {
         LOGGER.info("HTTP POST request received at /user/createaccount by: " + user.getEmail());
 
         if (bindingResult.hasErrors()) {

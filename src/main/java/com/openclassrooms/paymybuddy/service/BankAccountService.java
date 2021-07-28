@@ -109,7 +109,7 @@ public class BankAccountService {
      * @param id the id
      * @return the all contact bank account by id
      */
-    public List<BankAccount> getAllContactBankAccountById(int id) {
+    public List<BankAccount> getAllContactBankAccountById(int id) throws UserNotFoundException {
         LOGGER.info("Processing to get all contact bank account by Id");
 
         List<BankAccount> result = new ArrayList<>();

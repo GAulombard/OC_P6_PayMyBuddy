@@ -78,9 +78,14 @@ public class UserService {
      * @param id the id
      * @return the user by id
      */
-    public User getUserById(int id) {
+    public User getUserById(int id) throws UserNotFoundException {
 
         LOGGER.info("Processing to find a user by id");
+
+        if(!userRepository.existsById(id)) {
+            throw new UserNotFoundException("User not found");
+        }
+
         return userRepository.getById(id);
     }
 
@@ -89,8 +94,13 @@ public class UserService {
      *
      * @param id the id
      */
-    public void removeUserById(int id) {
+    public void removeUserById(int id) throws UserNotFoundException {
         LOGGER.info("Processing to remove user by id");
+
+        if(!userRepository.existsById(id)) {
+            throw new UserNotFoundException("User not found");
+        }
+
         userRepository.deleteById(id);
     }
 

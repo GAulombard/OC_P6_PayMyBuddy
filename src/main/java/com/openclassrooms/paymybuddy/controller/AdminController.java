@@ -157,7 +157,7 @@ public class AdminController implements WebMvcConfigurer {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/delete")
     @Transactional
-    public String deleteUser(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") int id) {
+    public String deleteUser(@AuthenticationPrincipal MyUserDetails user, @RequestParam("id") int id) throws UserNotFoundException {
         LOGGER.info("HTTP GET request received at /admin/delete?id={id} by: "+user.getEmail());
 
         userService.removeUserById(id);
