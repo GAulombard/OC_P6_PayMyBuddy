@@ -1,4 +1,4 @@
-package com.openclassrooms.paymybuddy;
+package com.openclassrooms.paymybuddy.service;
 
 import com.openclassrooms.paymybuddy.exception.UserAlreadyExistException;
 import com.openclassrooms.paymybuddy.exception.UserNotFoundException;

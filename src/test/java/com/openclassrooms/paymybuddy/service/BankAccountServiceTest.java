@@ -10,6 +10,7 @@ import com.openclassrooms.paymybuddy.repository.UserRepository;
 import com.openclassrooms.paymybuddy.service.BankAccountService;
 import com.openclassrooms.paymybuddy.service.ContactService;
 import org.junit.Test;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -45,6 +46,7 @@ public class BankAccountServiceTest {
     void setUpBeforeTest() {
         bankAccountService = new BankAccountService();
     }
+
 
     @Test
     public void test_getAccounts(){
