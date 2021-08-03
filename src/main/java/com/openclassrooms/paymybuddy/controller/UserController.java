@@ -202,7 +202,7 @@ public class UserController implements WebMvcConfigurer {
     @GetMapping("/user/deleteaccount{id}") //Bank Account
     @Transactional
     public String deleteBankAccount(@RequestParam("id") String id, @AuthenticationPrincipal MyUserDetails user) throws BankAccountNotFoundException {
-        LOGGER.info("HTTP GET request received at /user/deleteaccount{id} by: " + user.getEmail());
+        LOGGER.info("HTTP GET request received at /user/deleteaccount?id={id} by: " + user.getEmail());
 
         bankAccountService.removeBankAccountById(id);
 
@@ -223,7 +223,7 @@ public class UserController implements WebMvcConfigurer {
     @PostMapping("/user/addcontact")
     @Transactional
     public String addContact(@AuthenticationPrincipal MyUserDetails user, Model model, @RequestParam String email) throws UserNotFoundException, ContactException {
-        LOGGER.info("HTTP POST request received at /user/addcontact{email} by: " + user.getEmail());
+        LOGGER.info("HTTP POST request received at /user/addcontact by: " + user.getEmail());
 
         contactService.saveContactRelationship(user, userService.findUserByEmail(email));
 
