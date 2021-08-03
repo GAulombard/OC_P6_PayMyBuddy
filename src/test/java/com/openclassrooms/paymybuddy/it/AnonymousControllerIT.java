@@ -26,7 +26,7 @@ public class AnonymousControllerIT {
     protected MockMvc mockMvc;
 
     @Autowired
-    WebApplicationContext webApplicationContext;
+    private WebApplicationContext webApplicationContext;
 
     @BeforeEach
     public void setupBeforeEach() {
@@ -45,14 +45,14 @@ public class AnonymousControllerIT {
 
     @Test
     void test_getSignupForm_whenAdminRegistered() throws Exception {
-        mockMvc.perform(get("/signup").with(httpBasic("g.aulombard@jetmail.fr","1234")))
+        mockMvc.perform(get("/signup").with(httpBasic("g.aulombard@jetmail.fr","1234123456789")))
                 .andExpect(status().isUnauthorized());
 
     }
 
     @Test
     void test_getSignupForm_whenUserRegistered() throws Exception {
-        mockMvc.perform(get("/signup").with(httpBasic("j.bombeurre@jetmail.fr","1234")))
+        mockMvc.perform(get("/signup").with(httpBasic("j.bombeurre@jetmail.fr","1234123456789")))
                 .andExpect(status().isUnauthorized());
 
     }
@@ -69,12 +69,12 @@ public class AnonymousControllerIT {
     //@Transactional
     void test_addNewUser() throws Exception {
         User user = new User();
-        user.setUserID(1);
-        user.setFirstName("Jean");
+        user.setUserID(10);
+        user.setFirstName("Jeannot");
         user.setLastName("Michel");
-        user.setPassword("1234");
+        user.setPassword("12345");
         user.setUserRole("ROLE_USER");
-        user.setEmail("jean.michel@mail.fr");
+        user.setEmail("jean.michel13@mail.fr");
         user.setAddress("rue du test");
         user.setZip(45000);
         user.setCity("test");

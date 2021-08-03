@@ -20,7 +20,7 @@ public class LoginControllerIT {
     protected MockMvc mockMvc;
 
     @Autowired
-    WebApplicationContext webApplicationContext;
+    private WebApplicationContext webApplicationContext;
 
     @BeforeEach
     public void setupBeforeEach() {
