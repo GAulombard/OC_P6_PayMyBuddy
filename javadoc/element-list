@@ -3,6 +3,7 @@ com.openclassrooms.paymybuddy.config
 com.openclassrooms.paymybuddy.constants
 com.openclassrooms.paymybuddy.controller
 com.openclassrooms.paymybuddy.exception
+com.openclassrooms.paymybuddy.integration
 com.openclassrooms.paymybuddy.model
 com.openclassrooms.paymybuddy.repository
 com.openclassrooms.paymybuddy.security
