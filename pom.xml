@@ -196,6 +196,7 @@
                     <exclude>com/openclassrooms/paymybuddy/model/**</exclude>
                     <exclude>com/openclassrooms/paymybuddy/config/**</exclude>
                     <exclude>com/openclassrooms/paymybuddy/constants/**</exclude>
+                    <exclude>com/openclassrooms/paymybuddy/security/**</exclude>
                 </excludes>
             </configuration>
             <executions>
@@ -240,6 +241,7 @@
                         <exclude>com/openclassrooms/paymybuddy/model/**</exclude>
                         <exclude>com/openclassrooms/paymybuddy/config/**</exclude>
                         <exclude>com/openclassrooms/paymybuddy/constants/**</exclude>
+                        <exclude>com/openclassrooms/paymybuddy/security/**</exclude>
                     </excludes>
                 </configuration>
                 <reportSets>

@@ -60,7 +60,7 @@ public class LoginControllerIT {
     }
 
     @Test
-    void test_getLoginPage() throws Exception {
+    public void test_getLoginPage() throws Exception {
         mockMvc.perform(get("/login").with(anonymous()))
                 .andExpect(status().isOk());
     }

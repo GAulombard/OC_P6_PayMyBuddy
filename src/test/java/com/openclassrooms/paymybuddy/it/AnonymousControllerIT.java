@@ -90,7 +90,7 @@ public class AnonymousControllerIT {
         //@Transactional
     void test_addNewUser_withFieldError() throws Exception {
         User user1 = new User();
-        user1.setUserID(2);
+        user1.setUserID(12);
         user1.setFirstName("Jean");
         user1.setLastName("Michel2");
         user1.setPassword("1");
