@@ -1,12 +1,17 @@
-package com.openclassrooms.paymybuddy.it;
+package com.openclassrooms.paymybuddy.integration;
 
 import com.openclassrooms.paymybuddy.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.anonymous;
@@ -20,6 +25,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @SpringBootTest
 //@AutoConfigureMockMvc
+//@DataJpaTest
+//@RunWith(SpringRunner.class)
 public class AnonymousControllerIT {
 
     //@Autowired
@@ -65,11 +72,11 @@ public class AnonymousControllerIT {
     }
 
     @Test
-    //@Rollback
-    //@Transactional
+    @Rollback
+    @Transactional
     void test_addNewUser() throws Exception {
         User user = new User();
-        user.setUserID(10);
+        //user.setUserID(10);
         user.setFirstName("Jeannot");
         user.setLastName("Michel");
         user.setPassword("12345");
@@ -86,8 +93,8 @@ public class AnonymousControllerIT {
     }
 
     @Test
-        //@Rollback
-        //@Transactional
+    @Rollback
+    @Transactional
     void test_addNewUser_withFieldError() throws Exception {
         User user1 = new User();
         user1.setUserID(12);

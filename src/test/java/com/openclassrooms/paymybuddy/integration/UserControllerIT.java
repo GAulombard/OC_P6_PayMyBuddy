@@ -1,7 +1,6 @@
-package com.openclassrooms.paymybuddy.it;
+package com.openclassrooms.paymybuddy.integration;
 
 import com.openclassrooms.paymybuddy.model.BankAccount;
-import com.openclassrooms.paymybuddy.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.anonymous;
@@ -110,17 +110,23 @@ public class UserControllerIT {
     }
 
     @Test
+    @Rollback
+    @Transactional
     void test_deleteUserAccount_withAdmin() throws Exception {
         mockMvc.perform(get("/user/deletemypmb").with(httpBasic("g.aulomb@jetmail.fr","123456789")))
                 .andExpect(status().is3xxRedirection());
     }
 
     @Test
+    @Rollback
+    @Transactional
     void test_deleteUserAccount_withUser() throws Exception {
         mockMvc.perform(get("/user/deletemypmb").with(httpBasic("tram.long@takatoukite.fr","123456789")))
                 .andExpect(status().is3xxRedirection());
     }
     @Test
+    @Rollback
+    @Transactional
     void test_deleteUserAccount_withAnonymous() throws Exception {
         mockMvc.perform(get("/user/deletemypmb").with(anonymous()))
                 .andExpect(status().isUnauthorized());
@@ -146,7 +152,8 @@ public class UserControllerIT {
     }
 
     @Test
-    //@Rollback
+    @Rollback
+    @Transactional
     void test_saveBankAccount_withAdmin() throws Exception {
        BankAccount bankAccount = new BankAccount();
         bankAccount.setIban("FR0000000000000000000000001");
@@ -158,7 +165,8 @@ public class UserControllerIT {
     }
 
     @Test
-    //@Rollback
+    @Rollback
+    @Transactional
     void test_saveBankAccount_withUser() throws Exception {
         BankAccount bankAccount = new BankAccount();
         bankAccount.setIban("FR0000000000000000000000002");
@@ -169,7 +177,8 @@ public class UserControllerIT {
                 .andExpect(status().is3xxRedirection());
     }
     @Test
-    //@Rollback
+    @Rollback
+    @Transactional
     void test_saveBankAccount_withAnonymous() throws Exception {
         BankAccount bankAccount = new BankAccount();
         bankAccount.setIban("FR0000000000000000000000003");
@@ -181,17 +190,23 @@ public class UserControllerIT {
     }
 
     @Test
+    @Rollback
+    @Transactional
     void test_deleteBankAccount_withAdmin() throws Exception {
         mockMvc.perform(get("/user/deleteaccount?id=FR0000000000000000000000002").with(httpBasic("g.aulomb@jetmail.fr","123456789")))
                 .andExpect(status().is3xxRedirection());
     }
 
     @Test
+    @Rollback
+    @Transactional
     void test_deleteBankAccount_withUser() throws Exception {
         mockMvc.perform(get("/user/deleteaccount?id=FR0000000000000000000000003").with(httpBasic("tram.long@takatoukite.fr","123456789")))
                 .andExpect(status().is3xxRedirection());
     }
     @Test
+    @Rollback
+    @Transactional
     void test_deleteBankAccount_withAnonymous() throws Exception {
         mockMvc.perform(get("/user/deleteaccount?id=FR0000000000000000000000002").with(anonymous()))
                 .andExpect(status().isUnauthorized());

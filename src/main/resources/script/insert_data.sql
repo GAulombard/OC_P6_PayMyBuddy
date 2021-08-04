@@ -19,8 +19,8 @@ INSERT INTO bank_account (iban,bank_establishment,bic,balance,user_id)
     VALUES ('FR12345421V123456B789123456','POSTAL_BANK','APPBPPDLERD',400,2);
 INSERT INTO bank_account (iban,bank_establishment,bic,balance,user_id)
     VALUES ('FR1234B6789127856B789123456','POSTAL_BANK','AWXBPPDLERD',7000,5);
-INSERT INTO bank_account (iban,bank_establishment,bic,balance,user_id)
-    VALUES ('FR12345848912A456B789123456','POSTAL_BANK','AAGHJPDLERD',0,6);
+INSERT INTO bank_account (iban,bank_establishment,bic,balance,user_id,deleted)
+    VALUES ('FR12345848912A456B789123456','POSTAL_BANK','AAGHJPDLERD',0,6,true);
 
 INSERT INTO contact (user_id,contact_user_id)
     VALUES (1,5);
