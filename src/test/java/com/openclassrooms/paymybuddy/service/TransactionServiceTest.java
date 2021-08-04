@@ -8,6 +8,7 @@ import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.repository.TransactionRepository;
 import com.openclassrooms.paymybuddy.service.BankAccountService;
 import com.openclassrooms.paymybuddy.service.TransactionService;
+import org.hibernate.type.LocalDateTimeType;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
@@ -15,6 +16,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -77,7 +79,7 @@ public class TransactionServiceTest {
 
     }
 
-/*    @Test
+    @Test
     public void test_findAllTransactionsByUserId() throws BankAccountNotFoundException {
         User user = new User();
         BankAccount bankAccount = new BankAccount();
@@ -86,17 +88,21 @@ public class TransactionServiceTest {
         bankAccount.setIban("FR0000000000000000000000000");
         bankAccount.setAccountOwner(user);
         transaction1.setCreditor(bankAccount);
+        transaction1.setReference(1);
+        transaction1.setDate(LocalDateTime.parse("2021-12-15T15:14:21.629"));
         transaction2.setDebtor(bankAccount);
+        transaction2.setReference(2);
+        transaction2.setDate(LocalDateTime.parse("2020-12-15T15:14:21.629"));
 
         List<BankAccount> accountList = Arrays.asList(bankAccount);
         List<Transaction> transactionList = Arrays.asList(transaction1,transaction2);
         user.setAccountList(accountList);
 
         when(bankAccountService.findAllBankAccountByOwnerId(user.getUserID())).thenReturn(accountList);
-
+        when(transactionService.findAllTransactionsByBankAccountIban(anyString())).thenReturn(transactionList);
 
         assertEquals(2,transactionService.findAllTransactionsByUserId(user.getUserID()).size());
-    }*/
+    }
 
     @Test
     public void test_saveTransaction(){

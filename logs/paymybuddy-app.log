@@ -61,3 +61,6 @@
 2021-08-03 17:06:09.058  INFO 6008 --- [http-nio-80-exec-1] c.o.paymybuddy.service.UserService       : Processing to find a user by id
 2021-08-03 17:06:09.060  INFO 6008 --- [http-nio-80-exec-1] c.o.paymybuddy.service.UserService       : Processing to find a user by id
 2021-08-03 17:06:09.067  INFO 6008 --- [http-nio-80-exec-1] c.o.paymybuddy.model.MyUserDetails       : User authorities: [ROLE_ADMIN]
+2021-08-03 17:23:58.615  INFO 6008 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-08-03 17:23:58.618  INFO 6008 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-08-03 17:23:58.630  INFO 6008 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
