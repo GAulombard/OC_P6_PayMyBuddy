@@ -37,7 +37,7 @@ public class BankAccountUtil {
      * @return the random bank name from enum
      */
     public static String getRandomBankNameFromEnum() {
-        return Bank.bankName.getRandomBankName().toString();
+        return Bank.BankName.getRandomBankName().toString();
     }
 
     /**

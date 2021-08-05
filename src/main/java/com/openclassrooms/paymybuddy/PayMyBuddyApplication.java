@@ -32,10 +32,6 @@ public class PayMyBuddyApplication {
 
    /*    ----BackEnd/fonctionnement
 
-         TODO: jacoco
-         TODO: surefire
-         TODO: test unitaire
-         TODO: test integrations
          TODO: afficher transaction après validation transfer
 
 

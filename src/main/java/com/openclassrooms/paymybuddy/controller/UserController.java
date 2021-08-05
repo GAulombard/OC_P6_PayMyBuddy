@@ -270,13 +270,13 @@ public class UserController implements WebMvcConfigurer {
         }
 
 
-        if (BankAccountUtil.isSufficientFound(transaction.getDebtor().getBalance(), FeeUtil.FeeCalculator(Constants.RATE100, transaction.getAmount()))) {
+        if (BankAccountUtil.isSufficientFound(transaction.getDebtor().getBalance(), FeeUtil.feeCalculator(Constants.RATE100, transaction.getAmount()))) {
             transactionService.saveTransaction(transaction);
 
             Fee fee = new Fee();
             fee.setTransactionReference(transaction.getReference());
             fee.setAccount(transaction.getDebtor().getIban());
-            fee.setAmount(FeeUtil.FeeCalculator(Constants.RATE100, transaction.getAmount()));
+            fee.setAmount(FeeUtil.feeCalculator(Constants.RATE100, transaction.getAmount()));
 
             double debtorBalance = BankAccountUtil.balanceCalculator(transaction.getDebtor().getBalance(), fee.getAmount(), transaction.getAmount());
             double creditorBalance = BankAccountUtil.balanceCalculator(transaction.getCreditor().getBalance(), 0, -transaction.getAmount());

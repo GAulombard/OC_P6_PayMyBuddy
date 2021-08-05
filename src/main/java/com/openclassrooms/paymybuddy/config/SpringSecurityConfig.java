@@ -48,7 +48,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .successHandler(AuthenticationSuccessHandler()) // customise success authentication handler
+                .successHandler(authenticationSuccessHandler()) // customise success authentication handler
                 .and()
                 .httpBasic()
                 .and()
@@ -80,7 +80,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      * @return the authentication success handler
      */
     @Bean
-    public AuthenticationSuccessHandler AuthenticationSuccessHandler() {
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return new UserAuthenticationSuccessHandler();
     }
 

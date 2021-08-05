@@ -12,7 +12,7 @@ public class FeeUtil {
      * @param amount the amount
      * @return the double
      */
-    public static double FeeCalculator(double rate, double amount) {
+    public static double feeCalculator(double rate, double amount) {
 
         double result = (amount * rate) / 100;
 

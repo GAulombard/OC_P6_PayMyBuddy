@@ -95,7 +95,7 @@ public class BankAccountService {
     public List<BankAccount> findAllBankAccountByOwnerId(int id) throws BankAccountNotFoundException {
         LOGGER.info("Processing to get all bank account by owner Id");
 
-        List<BankAccount> result = new ArrayList<>();
+        List<BankAccount> result;
         result = bankAccountRepository.findAllBankAccountByOwnerId(id);
 
         if(result == null) throw new BankAccountNotFoundException("No bank account found");

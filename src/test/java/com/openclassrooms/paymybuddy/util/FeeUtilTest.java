@@ -23,7 +23,7 @@ public class FeeUtilTest {
         double rate = 2.0;
         double amount = 100.0;
 
-        double result = FeeUtil.FeeCalculator(rate,amount);
+        double result = FeeUtil.feeCalculator(rate,amount);
 
         assertEquals(2.0,result,0.0);
     }

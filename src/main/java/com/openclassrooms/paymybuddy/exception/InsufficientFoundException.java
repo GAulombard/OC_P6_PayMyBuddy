@@ -3,7 +3,7 @@ package com.openclassrooms.paymybuddy.exception;
 /**
  * The type Insufficient found exception.
  */
-public class InsufficientFoundException extends Throwable {
+public class InsufficientFoundException extends Exception {
     /**
      * Instantiates a new Insufficient found exception.
      *

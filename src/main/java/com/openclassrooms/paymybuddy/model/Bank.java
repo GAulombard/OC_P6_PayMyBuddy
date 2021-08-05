@@ -10,7 +10,7 @@ public class Bank {
     /**
      * The enum Bank name.
      */
-    public enum bankName {
+    public enum BankName {
         /**
          * Postal bank bank name.
          */
@@ -37,8 +37,8 @@ public class Bank {
          *
          * @return the random bank name
          */
-        public static bankName getRandomBankName() {
-            bankName[] value = bankName.values();
+        public static BankName getRandomBankName() {
+            BankName[] value = BankName.values();
             int length = value.length;
             int randIndex = new Random().nextInt(length);
             return value[randIndex];
