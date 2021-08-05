@@ -21,8 +21,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 //@ExtendWith(MockitoExtension.class)
@@ -262,7 +261,7 @@ public class UserServiceTest {
 
     }
 
-/*    @Test
+    @Test
     public void test_updateRoleById() throws UserNotFoundException {
         User user = new User();
         user.setUserRole("ROLE_USER");
@@ -271,11 +270,11 @@ public class UserServiceTest {
 
         userService.updateRoleById(user.getUserID(), "ROLE_ADMIN");
 
-        assertEquals("ROLE_ADMIN",user.getUserRole());
+        verify(userRepository).updateRole(user.getUserID(),"ROLE_ADMIN");
 
 
 
-    }*/
+    }
 
     @Test
     public void test_updateRoleById_shouldThrowUserNotFoundException() throws UserNotFoundException {
@@ -289,16 +288,18 @@ public class UserServiceTest {
 
     }
 
-/*    @Test
-    public void test_updateDeletedById(){
+    @Test
+    public void test_updateDeletedById() throws UserNotFoundException {
 
         user = new User();
 
         when(userRepository.existsById(user.getUserID())).thenReturn(true);
 
+        userService.updateDeletedById(user.getUserID());
 
+        verify(userRepository).updateDeleted(user.getUserID());
 
-    }*/
+    }
 
     @Test
     public void test_updateDeletedById_shouldThrowUserNotFoundException(){

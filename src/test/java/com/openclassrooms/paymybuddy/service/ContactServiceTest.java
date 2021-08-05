@@ -23,8 +23,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 //@ExtendWith(MockitoExtension.class)
@@ -146,7 +145,7 @@ public class ContactServiceTest {
 
     }
 
-    /*@Test
+    @Test
     public void test_deleteContactByUserIdAndContactUserId() throws UserNotFoundException {
         contact = new Contact();
         User user = new User();
@@ -167,7 +166,62 @@ public class ContactServiceTest {
         when(userRepository.existsById(anyInt())).thenReturn(true);
 
         contactService.deleteContactByUserIdAndContactUserId(user.getUserID(), contactFriend.getUserID());
+
+        verify(contactRepository).deleteContactByContactId(user.getUserID(),contactFriend.getUserID());
+
+    }
+
+/*    @Test
+    public void test_deleteContactByUserIdAndContactUserId_shouldThrowException() throws UserNotFoundException {
+        contact = new Contact();
+        User user = new User();
+        user.setEmail("mail1@mail.fr");
+        user.setDeleted(false);
+        user.setUserRole("ROLE_USER");
+        user.setFirstName("Jean");
+        user.setLastName("Michel");
+        user.setUserID(1);
+        user.setPassword("pass");
+        MyUserDetails userDetails = new MyUserDetails(user);
+        User contactFriend = new User();
+        contactFriend.setEmail("mail1@mail.fr");
+
+        contact.setContactUserId(contactFriend);
+        contact.setUserId(user);
+
+        when(userRepository.existsById(anyInt())).thenReturn(true);
+
+        doThrow(Exception.class).when(contactRepository).deleteContactByContactId(anyInt(),anyInt());
+
+        assertThrows(Exception.class,()->contactService.deleteContactByUserIdAndContactUserId(12, 5));
+
+
     }*/
+
+    @Test
+    public void test_deleteContactByUserIdAndContactUserId_shouldThrowUserNotFoundException() throws UserNotFoundException {
+        contact = new Contact();
+        User user = new User();
+        user.setEmail("mail1@mail.fr");
+        user.setDeleted(false);
+        user.setUserRole("ROLE_USER");
+        user.setFirstName("Jean");
+        user.setLastName("Michel");
+        user.setUserID(1);
+        user.setPassword("pass");
+        MyUserDetails userDetails = new MyUserDetails(user);
+        User contactFriend = new User();
+        contactFriend.setEmail("mail1@mail.fr");
+
+        contact.setContactUserId(contactFriend);
+        contact.setUserId(user);
+
+        when(userRepository.existsById(anyInt())).thenReturn(false);
+
+        assertThrows(UserNotFoundException.class,()->contactService.deleteContactByUserIdAndContactUserId(user.getUserID(), contactFriend.getUserID()));
+
+
+    }
 
     @Test
     public void test_getAllMyContactById() throws UserNotFoundException {

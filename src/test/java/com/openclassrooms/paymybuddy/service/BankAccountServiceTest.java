@@ -23,6 +23,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -33,6 +34,9 @@ public class BankAccountServiceTest {
 
     @Mock
     private BankAccountRepository bankAccountRepository;
+
+    @Mock
+    private UserService userService;
 
     @Mock
     private ContactService contactService;
@@ -204,15 +208,18 @@ public class BankAccountServiceTest {
 
     }
 
-/*    @Test
-    public void test_updateBalanceByIban(){
+    @Test
+    public void test_updateBalanceByIban() throws BankAccountNotFoundException {
         bankAccount = new BankAccount();
         bankAccount.setIban("FR0000000000000000000000000");
 
         when(bankAccountRepository.existsById(bankAccount.getIban())).thenReturn(true);
-        when(bankAccountRepository.updateBalanceByIban();)
 
-    }*/
+        bankAccountService.updateBalanceByIban(bankAccount.getIban(),200);
+
+        verify(bankAccountRepository).updateBalanceByIban(bankAccount.getIban(),200);
+
+    }
 
     @Test
     public void test_updateBalanceByIban_shouldThrowBankAccountNotfoundException(){
@@ -226,8 +233,66 @@ public class BankAccountServiceTest {
 
     }
 
-/*    @Test
-    public void updateDeletedById(){
+    @Test
+    public void updateDeletedById() throws UserNotFoundException, BankAccountNotFoundException {
+        User user = new User();
+        user.setUserID(1);
 
-    }*/
+        bankAccount = new BankAccount();
+        bankAccount.setIban("FR0000000000000000000000000");
+        bankAccount.setAccountOwner(user);
+
+        when(bankAccountRepository.getById(anyString())).thenReturn(bankAccount);
+
+        when(userService.userIsRemovedById(1)).thenReturn(false);
+
+        when(bankAccountRepository.existsById(bankAccount.getIban())).thenReturn(true);
+
+        bankAccountService.updateDeletedById(bankAccount.getIban());
+
+        verify(bankAccountRepository).updateDeletedByIban(bankAccount.getIban());
+
+    }
+
+    @Test
+    public void updateDeletedById_shouldUpdateDeleteById() throws UserNotFoundException, BankAccountNotFoundException {
+        User user = new User();
+        user.setUserID(1);
+
+        bankAccount = new BankAccount();
+        bankAccount.setIban("FR0000000000000000000000000");
+        bankAccount.setAccountOwner(user);
+
+        when(bankAccountRepository.getById(anyString())).thenReturn(bankAccount);
+
+        when(userService.userIsRemovedById(1)).thenReturn(true);
+
+        when(bankAccountRepository.existsById(bankAccount.getIban())).thenReturn(true);
+
+        bankAccountService.updateDeletedById(bankAccount.getIban());
+
+        verify(bankAccountRepository).updateDeletedByIban(bankAccount.getIban());
+
+    }
+
+    @Test
+    public void updateDeletedById_shouldThrowBankAccountNotFoundException() throws UserNotFoundException, BankAccountNotFoundException {
+        User user = new User();
+        user.setUserID(1);
+
+        bankAccount = new BankAccount();
+        bankAccount.setIban("FR0000000000000000000000000");
+        bankAccount.setAccountOwner(user);
+
+        when(bankAccountRepository.getById(anyString())).thenReturn(bankAccount);
+
+        when(userService.userIsRemovedById(1)).thenReturn(false);
+
+        when(bankAccountRepository.existsById(bankAccount.getIban())).thenReturn(false);
+
+        assertThrows(BankAccountNotFoundException.class,()->bankAccountService.updateDeletedById(bankAccount.getIban()));
+
+
+    }
+
 }
