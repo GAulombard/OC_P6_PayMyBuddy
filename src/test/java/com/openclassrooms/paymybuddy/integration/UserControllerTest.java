@@ -36,7 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-public class UserControllerIT {
+public class UserControllerTest {
 
     private MockMvc mockMvc;
 
@@ -202,6 +202,19 @@ public class UserControllerIT {
     @Test
     @Rollback
     @Transactional
+    void test_saveBankAccount_withAdmin_withFieldError() throws Exception {
+        BankAccount bankAccount = new BankAccount();
+        bankAccount.setIban("FR000000000000000000000001");
+        bankAccount.setBic("AAAAAAAAAB");
+        bankAccount.setDeleted(false);
+
+        mockMvc.perform(post("/user/createaccount").with(httpBasic("g.aulomb@jetmail.fr","123456789")).flashAttr("account",bankAccount))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @Rollback
+    @Transactional
     void test_saveBankAccount_withUser() throws Exception {
         BankAccount bankAccount = new BankAccount();
         bankAccount.setIban("FR0000000000000000000000002");
@@ -355,6 +368,22 @@ public class UserControllerIT {
     @Test
     @Rollback
     @Transactional
+    void test_saveTransaction_withAdmin_withFieldError() throws Exception {
+        Transaction transaction = new Transaction();
+        transaction.setDate(LocalDateTime.parse("2021-12-15T15:14:21.629"));
+        transaction.setDebtor(bankAccountRepository.getById("FR1234B6789127856B789123456"));
+        transaction.setCreditor(bankAccountRepository.getById("FR123456789123456B789123456"));
+        transaction.setAmount(-100);
+        transaction.setMessage("test");
+
+
+        mockMvc.perform(post("/user/new-transfer").with(httpBasic("g.aulomb@jetmail.fr","123456789")).flashAttr("transaction",transaction))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @Rollback
+    @Transactional
     void test_saveTransaction_withUser() throws Exception {
         Transaction transaction = new Transaction();
         transaction.setDate(LocalDateTime.parse("2021-12-15T15:14:21.629"));
@@ -397,7 +426,7 @@ public class UserControllerIT {
 
 
         mockMvc.perform(post("/user/new-transfer").with(httpBasic("g.aulomb@jetmail.fr","123456789")).flashAttr("transaction",transaction))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isOk());
     }*/
 
 }

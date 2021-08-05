@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 //@AutoConfigureMockMvc
 //@DataJpaTest
 //@RunWith(SpringRunner.class)
-public class AnonymousControllerIT {
+public class AnonymousControllerTest {
 
     //@Autowired
     protected MockMvc mockMvc;

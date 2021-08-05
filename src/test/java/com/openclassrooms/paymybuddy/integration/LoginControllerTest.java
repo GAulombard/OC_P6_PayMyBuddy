@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 //@RunWith(SpringRunner.class)
 //@WebMvcTest(LoginController.class)
-public class LoginControllerIT {
+public class LoginControllerTest {
 
     public MockMvc mockMvc;
 
