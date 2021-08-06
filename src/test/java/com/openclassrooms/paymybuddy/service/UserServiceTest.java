@@ -174,8 +174,8 @@ public class UserServiceTest {
 
        when(userRepository.getById(anyInt())).thenReturn(user);
 
-        AtomicReference<Double> balance = userService.getTotalAccountBalanceByUserId(user.getUserID());
-        double total = (double) balance.get();
+        Double balance = userService.getTotalAccountBalanceByUserId(user.getUserID());
+        double total = (double) balance;
 
         assertEquals( 300.0, total,0.0);
 
@@ -190,8 +190,8 @@ public class UserServiceTest {
 
         when(userRepository.getById(anyInt())).thenReturn(user);
 
-        AtomicReference<Double> balance = userService.getTotalAccountBalanceByUserId(user.getUserID());
-        double total = (double) balance.get();
+        Double balance = userService.getTotalAccountBalanceByUserId(user.getUserID());
+        double total = (double) balance;
 
         assertEquals( 0.0, total,0.0);
 
@@ -216,8 +216,8 @@ public class UserServiceTest {
 
         when(userRepository.getById(anyInt())).thenReturn(user);
 
-        AtomicReference<Double> balance = userService.getTotalAccountBalanceByUserId(user.getUserID());
-        double total = (double) balance.get();
+        Double balance = userService.getTotalAccountBalanceByUserId(user.getUserID());
+        double total = (double) balance;
 
         assertEquals( 100.0, total,0.0);
 

@@ -1,6 +1,7 @@
 package com.openclassrooms.paymybuddy.util;
 
 import com.openclassrooms.paymybuddy.model.Bank;
+import org.apache.commons.math3.util.Precision;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -53,7 +54,7 @@ public class BankAccountUtil {
 
         result = accountBalance - feeAmount - transferAmount;
 
-        return result;
+        return Precision.round(result,2);
     }
 
     /**

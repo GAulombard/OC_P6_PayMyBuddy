@@ -24,24 +24,6 @@ public class LoginControllerTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
 
-/*    @MockBean
-    private UserService userService;
-
-    @MockBean
-    private BankAccountService bankAccountService;
-
-    @MockBean
-    private TransactionService transactionService;
-
-    @MockBean
-    private FeeService feeService;
-
-    @MockBean
-    private ContactService contactService;
-
-    @MockBean
-    private MyUserDetailsService myUserDetailsService;
-    */
 
     @BeforeEach
     public void setupBeforeEach() {

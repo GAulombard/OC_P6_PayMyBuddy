@@ -106,6 +106,7 @@ public class Fee {
      * @return the amount
      */
     public double getAmount() {
+
         return amount;
     }
 

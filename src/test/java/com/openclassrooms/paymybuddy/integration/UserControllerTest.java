@@ -413,7 +413,7 @@ public class UserControllerTest {
                 .andExpect(status().isUnauthorized());
     }
 
-/*    @Test
+    @Test
     @Rollback
     @Transactional
     void test_saveTransaction_shouldThrowInsufficientFoundException() throws Exception, InsufficientFoundException {
@@ -426,7 +426,7 @@ public class UserControllerTest {
 
 
         mockMvc.perform(post("/user/new-transfer").with(httpBasic("g.aulomb@jetmail.fr","123456789")).flashAttr("transaction",transaction))
-                .andExpect(status().isOk());
-    }*/
+                .andExpect(status().isInternalServerError());
+    }
 
 }

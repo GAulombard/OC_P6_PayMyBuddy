@@ -1,5 +1,6 @@
 package com.openclassrooms.paymybuddy.model;
 
+import org.apache.commons.math3.util.Precision;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -53,18 +54,6 @@ public class BankAccount {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
-
-    /*@OneToMany
-    @JoinColumn(name = "reference")
-    private List<Transaction> transactionList;
-
-    public List<Transaction> getTransactionList() {
-        return transactionList;
-    }
-
-    public void setTransactionList(List<Transaction> transactionList) {
-        this.transactionList = transactionList;
-    }*/
 
     /**
      * Gets account owner.
@@ -144,7 +133,8 @@ public class BankAccount {
      * @return the balance
      */
     public double getBalance() {
-        return balance;
+
+        return Precision.round(balance,2);
     }
 
     /**
@@ -153,6 +143,6 @@ public class BankAccount {
      * @param balance the balance
      */
     public void setBalance(double balance) {
-        this.balance = balance;
+        this.balance = Precision.round(balance,2);
     }
 }

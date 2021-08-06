@@ -123,6 +123,7 @@ public class AdminController implements WebMvcConfigurer {
 
         Iterable<Transaction> result = transactionService.getTransactions();
 
+        model.addAttribute("total", transactionService.getTotalTransactionBalance());
         model.addAttribute("transactions",result);
 
         return "admin/adminDashboard_Transactions";
@@ -142,6 +143,7 @@ public class AdminController implements WebMvcConfigurer {
         LOGGER.info("HTTP GET request received at /admin/fees by: "+user.getEmail());
         Iterable<Fee> result = feeService.getFees();
 
+        model.addAttribute("total", feeService.getTotalFeeBalance());
         model.addAttribute("fees",result);
 
         return "admin/adminDashboard_Fees";

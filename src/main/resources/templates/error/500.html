@@ -3,6 +3,7 @@
 <html lang="en" xmlns:th="http://wwww.thymeleaf.org" class="h-100"
       xmlns:sec="http://thymeleaf.org/extras/spring-security">
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,44 +13,24 @@
     <title>Pay My Buddy</title>
 </head>
 
-
 <body>
 
 <div th:replace="fragments/nav"></div>
 
 
 <!-- SECTION -->
-<div class="d-flex p-2 container-fluid justify-content-center">
+<div class="container">
     <div class="row">
-        <div class=" col-12 col-lg-12">
+        <div class="col-12 col-lg-12">
             <div class="card my-3 shadow">
                 <div class="card-body">
-                    <div class="flex-row justify-content-between"><h2 class="mt-4">Transactions details</h2><h3 class="mt-4 text-right"><th:block th:text="${total}+' €'"></th:block></h3></div>
-                    <table class="table">
-                        <thead class="thead-light">
-                        <tr>
-                            <th class="text-left">reference</th>
-                            <th class="text-left">date</th>
-                            <th class="text-left">message</th>
-                            <th class="text-left">amount</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="transactions: ${transactions}">
-                            <td th:text="${transactions.reference}"></td>
-                            <td th:text="${transactions.date}"></td>
-                            <td th:text="${transactions.message}"></td>
-                            <td th:text="${transactions.amount+' €'}"></td>
-                        </tr>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <h5 class="card-title">500 - ERROR</h5>
+                    <p class="card-text">Insufficient found</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <!-- FOOTER -->
 <div class="bg-light">
     <div class="container">
@@ -64,7 +45,6 @@
         </div>
     </div>
 </div>
-
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

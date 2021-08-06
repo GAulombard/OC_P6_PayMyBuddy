@@ -5,6 +5,7 @@ import com.openclassrooms.paymybuddy.exception.UserNotFoundException;
 import com.openclassrooms.paymybuddy.model.BankAccount;
 import com.openclassrooms.paymybuddy.model.User;
 import com.openclassrooms.paymybuddy.repository.UserRepository;
+import org.apache.commons.math3.util.Precision;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,13 +111,13 @@ public class UserService {
      * @param id the id
      * @return the atomic reference
      */
-    public AtomicReference<Double> getTotalAccountBalanceByUserId(int id){
+    public Double getTotalAccountBalanceByUserId(int id){
         LOGGER.info("Processing to get total account balance by user Id");
 
         AtomicReference<Double> result= new AtomicReference<>((double) 0);
         List<BankAccount> bankAccounts = userRepository.getById(id).getAccountList();
 
-        if(bankAccounts == null) return result;
+        if(bankAccounts == null) return result.get();
 
         bankAccounts.iterator().forEachRemaining(bankAccount -> {
             if(bankAccount.isDeleted()==false) {
@@ -125,7 +126,7 @@ public class UserService {
 
         });
 
-        return result;
+        return Precision.round(result.get(),2);
     }
 
     /**

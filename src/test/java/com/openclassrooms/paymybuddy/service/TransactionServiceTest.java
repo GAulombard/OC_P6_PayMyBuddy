@@ -116,4 +116,27 @@ public class TransactionServiceTest {
 
     }
 
+    @Test
+    public void test_getTotalTransactionBalance(){
+        Transaction transaction1 = new Transaction();
+        Transaction transaction2 = new Transaction();
+        transaction1.setAmount(12);
+        transaction2.setAmount(8);
+
+        List<Transaction> transactions = Arrays.asList(transaction1,transaction2);
+
+        when(transactionRepository.findAll()).thenReturn(transactions);
+
+        assertEquals(20.0,transactionService.getTotalTransactionBalance(),0.0);
+    }
+
+    @Test
+    public void test_getTotalTransactionBalance_shouldReturnZero(){
+
+
+        when(transactionRepository.findAll()).thenReturn(null);
+
+        assertEquals(0.0,transactionService.getTotalTransactionBalance(),0.0);
+    }
+
 }

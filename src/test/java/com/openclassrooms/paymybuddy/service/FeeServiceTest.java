@@ -62,4 +62,27 @@ public class FeeServiceTest {
         verify(feeRepository).save(fee);
 
     }
+
+    @Test
+    public void test_getTotalFeeBalance(){
+        Fee fee1 = new Fee();
+        Fee fee2 = new Fee();
+        fee1.setAmount(12);
+        fee2.setAmount(8);
+
+        List<Fee> fees = Arrays.asList(fee1,fee2);
+
+        when(feeRepository.findAll()).thenReturn(fees);
+
+        assertEquals(20.0,feeService.getTotalFeeBalance(),0.0);
+    }
+
+    @Test
+    public void test_getTotalFeeBalance_shouldReturnZero(){
+
+
+        when(feeRepository.findAll()).thenReturn(null);
+
+        assertEquals(0.0,feeService.getTotalFeeBalance(),0.0);
+    }
 }

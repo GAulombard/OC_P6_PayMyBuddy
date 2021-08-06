@@ -1,5 +1,7 @@
 package com.openclassrooms.paymybuddy.model;
 
+import org.apache.commons.math3.util.Precision;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
@@ -100,7 +102,7 @@ public class Transaction {
      * @return the amount
      */
     public double getAmount() {
-        return amount;
+        return Precision.round(amount,2);
     }
 
     /**
@@ -109,7 +111,7 @@ public class Transaction {
      * @param amount the amount
      */
     public void setAmount(double amount) {
-        this.amount = amount;
+        this.amount = Precision.round(amount,2);
     }
 
     /**

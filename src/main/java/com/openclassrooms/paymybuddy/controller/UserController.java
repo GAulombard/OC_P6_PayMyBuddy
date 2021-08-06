@@ -241,7 +241,7 @@ public class UserController implements WebMvcConfigurer {
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/delete-contact{id}") //Bank Account
     @Transactional
-    public String deleteContact(@RequestParam("id") int id, @AuthenticationPrincipal MyUserDetails user) throws UserNotFoundException {
+    public String deleteContact(@RequestParam("id") int id, @AuthenticationPrincipal MyUserDetails user) throws Exception {
         LOGGER.info("HTTP GET request received at /user/delete-contact{id} by: " + user.getEmail());
 
         contactService.deleteContactByUserIdAndContactUserId(user.getUserID(), id);

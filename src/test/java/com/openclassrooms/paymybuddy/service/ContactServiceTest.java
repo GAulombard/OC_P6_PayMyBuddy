@@ -23,6 +23,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -146,7 +147,7 @@ public class ContactServiceTest {
     }
 
     @Test
-    public void test_deleteContactByUserIdAndContactUserId() throws UserNotFoundException {
+    public void test_deleteContactByUserIdAndContactUserId() throws Exception {
         contact = new Contact();
         User user = new User();
         user.setEmail("mail1@mail.fr");
@@ -171,7 +172,7 @@ public class ContactServiceTest {
 
     }
 
-/*    @Test
+    @Test(expected = Exception.class)
     public void test_deleteContactByUserIdAndContactUserId_shouldThrowException() throws UserNotFoundException {
         contact = new Contact();
         User user = new User();
@@ -189,14 +190,12 @@ public class ContactServiceTest {
         contact.setContactUserId(contactFriend);
         contact.setUserId(user);
 
-        when(userRepository.existsById(anyInt())).thenReturn(true);
-
-        doThrow(Exception.class).when(contactRepository).deleteContactByContactId(anyInt(),anyInt());
+        doThrow().when(contactRepository).deleteContactByContactId(anyInt(),anyInt());
 
         assertThrows(Exception.class,()->contactService.deleteContactByUserIdAndContactUserId(12, 5));
 
 
-    }*/
+    }
 
     @Test
     public void test_deleteContactByUserIdAndContactUserId_shouldThrowUserNotFoundException() throws UserNotFoundException {

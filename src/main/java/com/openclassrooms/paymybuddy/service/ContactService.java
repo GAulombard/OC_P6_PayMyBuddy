@@ -64,7 +64,7 @@ public class ContactService {
      * @param contactUserId the contact user id
      * @throws UserNotFoundException the user not found exception
      */
-    public void deleteContactByUserIdAndContactUserId(int userId, int contactUserId) throws UserNotFoundException {
+    public void deleteContactByUserIdAndContactUserId(int userId, int contactUserId) throws UserNotFoundException, Exception {
         LOGGER.info("Processing to delete contact");
 
         if (!userRepository.existsById(userId) || !userRepository.existsById(contactUserId)) {

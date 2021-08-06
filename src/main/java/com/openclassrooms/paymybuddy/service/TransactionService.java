@@ -2,12 +2,10 @@ package com.openclassrooms.paymybuddy.service;
 
 import com.openclassrooms.paymybuddy.exception.BankAccountNotFoundException;
 import com.openclassrooms.paymybuddy.exception.TransactionNotFoundException;
-import com.openclassrooms.paymybuddy.model.BankAccount;
-import com.openclassrooms.paymybuddy.model.MyUserDetails;
-import com.openclassrooms.paymybuddy.model.Transaction;
-import com.openclassrooms.paymybuddy.model.User;
+import com.openclassrooms.paymybuddy.model.*;
 import com.openclassrooms.paymybuddy.repository.TransactionRepository;
 import com.openclassrooms.paymybuddy.repository.UserRepository;
+import org.apache.commons.math3.util.Precision;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * The type Transaction service.
@@ -103,5 +102,19 @@ public class TransactionService {
             transaction.setDate(LocalDateTime.now());
             transactionRepository.save(transaction);
 
+    }
+
+    public double getTotalTransactionBalance() {
+        AtomicReference<Double> result = new AtomicReference<>((double) 0);
+
+        List<Transaction> transactions = transactionRepository.findAll();
+
+        if (transactions == null) return result.get();
+
+        transactions.iterator().forEachRemaining(transaction -> {
+            result.updateAndGet(v -> new Double((double) (v + transaction.getAmount())));
+        });
+
+        return Precision.round(result.get(),2);
     }
 }

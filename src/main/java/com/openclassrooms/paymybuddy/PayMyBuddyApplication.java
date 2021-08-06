@@ -30,21 +30,5 @@ public class PayMyBuddyApplication {
 
     }
 
-   /*    ----BackEnd/fonctionnement
-
-         TODO: afficher transaction après validation transfer
-
-
-         ---FrontEnd
-         TODO: make admin menu responsive
-         TODO: ajouter page profile contact
-         TODO: ajouter total fees
-         TODO: ajouter last transaction sur la page home et last message
-         TODO: logo moins gros page d'acceuil
-         TODO: plus de détail pour admin transaction et fee
-         TODO: arrondir à 2 chiffres après la virgule
-
-   */
-
 
 }
