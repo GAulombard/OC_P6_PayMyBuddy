@@ -166,6 +166,8 @@
                 <excludes>
                     <exclude>**/*IT.java</exclude>
                 </excludes>
+                <forkedProcessExitTimeoutInSeconds>60</forkedProcessExitTimeoutInSeconds>
+                <forkCount>1</forkCount>
             </configuration>
             <executions>
                 <execution>
@@ -214,7 +216,7 @@
                 </execution>
                 <execution>
                     <id>report</id>
-                    <phase>prepare-package</phase>
+                    <phase>test</phase>
                     <goals>
                         <goal>report</goal>
                     </goals>

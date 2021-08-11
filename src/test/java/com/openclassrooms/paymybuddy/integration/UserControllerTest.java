@@ -260,55 +260,36 @@ public class UserControllerTest {
                 .andExpect(status().isUnauthorized());
     }
 
-    /*
+
     @Test
     @Rollback
     @Transactional
     void test_addContact_withAdmin() throws Exception {
-        User user = new User();
-        user.setFirstName("Jeannot");
-        user.setLastName("Michel");
-        user.setPassword("12345");
-        user.setUserRole("ROLE_USER");
-        user.setEmail("jean.michel15@mail.fr");
-        user.setAddress("rue du test");
-        user.setZip(45000);
-        user.setCity("test");
-        user.setPhone(0000000000);
-        user.setDeleted(false);
 
+        String email = "laura.jamais@jetmail.fr";
 
-        userRepository.save(user);
-
-        mockMvc.perform(post("/user/addcontact").with(httpBasic("g.aulomb@jetmail.fr","123456789")).flashAttr("email",user.getEmail()))
+        mockMvc.perform(post("/user/addcontact?email=laura.jamais@jetmail.fr").with(httpBasic("g.aulomb@jetmail.fr","123456789")).flashAttr("email",email))
                 .andExpect(status().is3xxRedirection());
     }
-
 
     @Test
     @Rollback
     @Transactional
     void test_addContact_withUser() throws Exception {
-        BankAccount bankAccount = new BankAccount();
-        bankAccount.setIban("FR0000000000000000000000002");
-        bankAccount.setBic("AAAAAAAAAAC");
-        bankAccount.setDeleted(false);
+        String email = "laura.jamais@jetmail.fr";
 
-        mockMvc.perform(post("/user/createaccount").with(httpBasic("tram.long@takatoukite.fr","123456789")).flashAttr("account",bankAccount))
+        mockMvc.perform(post("/user/addcontact?email=laura.jamais@jetmail.fr").with(httpBasic("tram.long@takatoukite.fr","123456789")).flashAttr("email",email))
                 .andExpect(status().is3xxRedirection());
     }
     @Test
     @Rollback
     @Transactional
     void test_addContact_withAnonymous() throws Exception {
-        BankAccount bankAccount = new BankAccount();
-        bankAccount.setIban("FR0000000000000000000000003");
-        bankAccount.setBic("AAAAAAAAAAD");
-        bankAccount.setDeleted(false);
+        String email = "laura.jamais@jetmail.fr";
 
-        mockMvc.perform(post("/user/createaccount").with(anonymous()).flashAttr("account",bankAccount))
+        mockMvc.perform(post("/user/addcontact?email=laura.jamais@jetmail.fr").with(anonymous()).flashAttr("email",email))
                 .andExpect(status().isUnauthorized());
-    }*/
+    }
 
     @Test
     @Rollback

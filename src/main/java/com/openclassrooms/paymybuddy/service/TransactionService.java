@@ -1,10 +1,8 @@
 package com.openclassrooms.paymybuddy.service;
 
 import com.openclassrooms.paymybuddy.exception.BankAccountNotFoundException;
-import com.openclassrooms.paymybuddy.exception.TransactionNotFoundException;
 import com.openclassrooms.paymybuddy.model.*;
 import com.openclassrooms.paymybuddy.repository.TransactionRepository;
-import com.openclassrooms.paymybuddy.repository.UserRepository;
 import org.apache.commons.math3.util.Precision;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;

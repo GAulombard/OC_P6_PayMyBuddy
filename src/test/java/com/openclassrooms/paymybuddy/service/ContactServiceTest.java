@@ -192,7 +192,7 @@ public class ContactServiceTest {
 
         doThrow().when(contactRepository).deleteContactByContactId(anyInt(),anyInt());
 
-        assertThrows(Exception.class,()->contactService.deleteContactByUserIdAndContactUserId(12, 5));
+        assertThrows(Exception.class,()->contactService.deleteContactByUserIdAndContactUserId(anyInt(),anyInt()));
 
 
     }
