@@ -43,4 +43,3 @@ This is a Spring Boot Application, working with:
 
 ![MPD Diagram](src/main/resources/static/P6_03_MPD_diagram.png)
 
-### Endpoints
