@@ -17,6 +17,7 @@
 - first, run the script creat_db.sql located in src/main/resources/script
 - second, run the script insert_data.sql located in src/main/resources/script
 - more information in the application.properties file located in src/main/resources
+- for tests: run the script creat_db_test.sql and insert_data.sql
 
 ## How it works
 ### Technologies
