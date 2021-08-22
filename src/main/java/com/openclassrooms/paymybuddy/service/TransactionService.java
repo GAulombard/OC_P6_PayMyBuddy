@@ -101,6 +101,11 @@ public class TransactionService {
 
     }
 
+    /**
+     * Gets total transaction balance.
+     *
+     * @return the total transaction balance
+     */
     public double getTotalTransactionBalance() {
         AtomicReference<Double> result = new AtomicReference<>((double) 0);
 

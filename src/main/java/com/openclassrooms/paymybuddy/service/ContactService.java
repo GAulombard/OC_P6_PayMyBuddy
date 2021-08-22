@@ -63,6 +63,7 @@ public class ContactService {
      * @param userId        the user id
      * @param contactUserId the contact user id
      * @throws UserNotFoundException the user not found exception
+     * @throws Exception             the exception
      */
     public void deleteContactByUserIdAndContactUserId(int userId, int contactUserId) throws UserNotFoundException, Exception {
         LOGGER.info("Processing to delete contact");
@@ -92,6 +93,7 @@ public class ContactService {
      *
      * @param id the id
      * @return the all my contact by id
+     * @throws UserNotFoundException the user not found exception
      */
     public List<User> getAllMyContactById(int id) throws UserNotFoundException {
         LOGGER.info("Processing to get all my contact");

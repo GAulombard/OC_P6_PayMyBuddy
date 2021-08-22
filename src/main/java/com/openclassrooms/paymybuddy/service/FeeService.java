@@ -49,6 +49,11 @@ public class FeeService {
         feeRepository.save(fee);
     }
 
+    /**
+     * Gets total fee balance.
+     *
+     * @return the total fee balance
+     */
     public double getTotalFeeBalance() {
         AtomicReference<Double> result = new AtomicReference<>((double) 0);
 

@@ -62,6 +62,7 @@ public class UserService {
      *
      * @param id the id
      * @return the optional
+     * @throws UserNotFoundException the user not found exception
      */
     public Optional<User> findUserById(int id) throws UserNotFoundException {
         LOGGER.info("Processing to find a user by id");
@@ -78,6 +79,7 @@ public class UserService {
      *
      * @param id the id
      * @return the user by id
+     * @throws UserNotFoundException the user not found exception
      */
     public User getUserById(int id) throws UserNotFoundException {
 
@@ -94,6 +96,7 @@ public class UserService {
      * Remove user by id.
      *
      * @param id the id
+     * @throws UserNotFoundException the user not found exception
      */
     public void removeUserById(int id) throws UserNotFoundException {
         LOGGER.info("Processing to remove user by id");
@@ -180,6 +183,13 @@ public class UserService {
         }
     }
 
+    /**
+     * User is removed by id boolean.
+     *
+     * @param id the id
+     * @return the boolean
+     * @throws UserNotFoundException the user not found exception
+     */
     public boolean userIsRemovedById(int id) throws UserNotFoundException {
         LOGGER.info("Processing to find if the user has been removed");
 

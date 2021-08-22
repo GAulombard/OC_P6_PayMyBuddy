@@ -108,6 +108,7 @@ public class BankAccountService {
      *
      * @param id the id
      * @return the all contact bank account by id
+     * @throws UserNotFoundException the user not found exception
      */
     public List<BankAccount> getAllContactBankAccountById(int id) throws UserNotFoundException {
         LOGGER.info("Processing to get all contact bank account by Id");
@@ -152,6 +153,7 @@ public class BankAccountService {
      *
      * @param iban the iban
      * @throws BankAccountNotFoundException the bank account not found exception
+     * @throws UserNotFoundException        the user not found exception
      */
     public void updateDeletedById(String iban) throws BankAccountNotFoundException, UserNotFoundException {
         LOGGER.info("Processing to bank account by iban");

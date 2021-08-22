@@ -155,6 +155,7 @@ public class AdminController implements WebMvcConfigurer {
      * @param user the user
      * @param id   the id
      * @return the string
+     * @throws UserNotFoundException the user not found exception
      */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/delete")
@@ -252,6 +253,7 @@ public class AdminController implements WebMvcConfigurer {
      * @param id   the id
      * @return the string
      * @throws BankAccountNotFoundException the bank account not found exception
+     * @throws UserNotFoundException        the user not found exception
      */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/account-recovery")

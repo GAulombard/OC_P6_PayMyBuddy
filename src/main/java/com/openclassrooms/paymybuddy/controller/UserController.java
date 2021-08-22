@@ -58,6 +58,7 @@ public class UserController implements WebMvcConfigurer {
      * @param user  the user
      * @param model the model
      * @return the home
+     * @throws UserNotFoundException the user not found exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/home")
@@ -76,6 +77,7 @@ public class UserController implements WebMvcConfigurer {
      * @param user  the user
      * @param model the model
      * @return the contact
+     * @throws UserNotFoundException the user not found exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/contact")
@@ -112,6 +114,7 @@ public class UserController implements WebMvcConfigurer {
      * @param model the model
      * @return the transfer
      * @throws BankAccountNotFoundException the bank account not found exception
+     * @throws UserNotFoundException        the user not found exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/transfer")
@@ -136,6 +139,7 @@ public class UserController implements WebMvcConfigurer {
      * @param user  the user
      * @param model the model
      * @return the string
+     * @throws UserNotFoundException the user not found exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/deletemypmb")
@@ -173,6 +177,7 @@ public class UserController implements WebMvcConfigurer {
      * @param user          the user
      * @return the string
      * @throws BankAccountAlreadyExistException the bank account already exist exception
+     * @throws UserNotFoundException            the user not found exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @PostMapping("/user/createaccount") //Bank Account
@@ -236,7 +241,7 @@ public class UserController implements WebMvcConfigurer {
      * @param id   the id
      * @param user the user
      * @return the string
-     * @throws UserNotFoundException the user not found exception
+     * @throws Exception the exception
      */
     @RolesAllowed({"USER", "ADMIN"})
     @GetMapping("/user/delete-contact{id}") //Bank Account
@@ -253,8 +258,8 @@ public class UserController implements WebMvcConfigurer {
      * Save transaction string.
      *
      * @param transaction   the transaction
-     * @param user          the user
      * @param bindingResult the binding result
+     * @param user          the user
      * @return the string
      * @throws BankAccountNotFoundException the bank account not found exception
      * @throws InsufficientFoundException   the insufficient found exception
