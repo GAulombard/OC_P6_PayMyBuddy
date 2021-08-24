@@ -25,6 +25,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -120,11 +121,18 @@ public class UserController implements WebMvcConfigurer {
         LOGGER.info("HTTP GET request received at /user/transfer by: " + user.getEmail());
 
         List<Transaction> transactions = transactionService.findAllTransactionsByUserId(user.getUserID());
+        List<BankAccount> contactAccount = bankAccountService.getAllContactBankAccountById(user.getUserID());
+        List<BankAccount> myAccounts = bankAccountService.findAllBankAccountByOwnerId(user.getUserID());
+        List<BankAccount> creditorAccounts = new ArrayList<>();
+
+        creditorAccounts.addAll(contactAccount);
+        creditorAccounts.addAll(myAccounts);
 
         model.addAttribute("feeRate",Constants.RATE100);
         model.addAttribute("transaction", new Transaction());
-        model.addAttribute("contactAccount", bankAccountService.getAllContactBankAccountById(user.getUserID()));
-        model.addAttribute("myAccounts", bankAccountService.findAllBankAccountByOwnerId(user.getUserID()));
+        model.addAttribute("contactAccount", contactAccount);
+        model.addAttribute("myAccounts", myAccounts);
+        model.addAttribute("creditorAccounts", creditorAccounts);
         model.addAttribute("transactions", transactions);
         model.addAttribute("user", user);
         return "user/transfer";
@@ -269,6 +277,10 @@ public class UserController implements WebMvcConfigurer {
             return "/user/transfer";
         }
 
+        if (transaction.getDebtor().equals(transaction.getCreditor())) {
+            LOGGER.info("Bad request");
+            return "/error/400";
+        }
 
         if (BankAccountUtil.isSufficientFound(transaction.getDebtor().getBalance(), FeeUtil.feeCalculator(Constants.RATE100, transaction.getAmount()))) {
             transactionService.saveTransaction(transaction);

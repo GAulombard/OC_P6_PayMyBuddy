@@ -45,7 +45,7 @@
                                 <label for="creditor">Creditor</label>
                                 <select id="creditor" class="form-control" th:field="*{creditor}">
                                     <option th:value="${'null'}" selected>Choose contact account...</option>
-                                    <th:block th:each="account: ${contactAccount}">
+                                    <th:block th:each="account: ${creditorAccounts}">
                                         <th:block th:if="${account.deleted == false}">
                                         <option th:value="${account.iban}"
                                                 th:text="${account.accountOwner.firstName+' '+account.accountOwner.lastName+' ('+account.iban+')'}">

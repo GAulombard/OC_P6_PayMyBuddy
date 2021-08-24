@@ -8,7 +8,7 @@ public class Constants {
     /**
      * The constant RATE100.
      */
-    public final static double RATE100 = 2.0;
+    public final static double RATE100 = 0.5;
     /**
      * The constant ROLE_ADMIN.
      */
