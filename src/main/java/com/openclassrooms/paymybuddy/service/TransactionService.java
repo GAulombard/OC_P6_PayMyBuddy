@@ -78,6 +78,10 @@ public class TransactionService {
             transactions.addAll(findAllTransactionsByBankAccountIban(iban));
         });
 
+        Set setItems = new LinkedHashSet(transactions);
+        transactions.clear();
+        transactions.addAll(setItems);
+
         Collections.sort(transactions, new Comparator<Transaction>() {
             @Override
             public int compare(Transaction o1, Transaction o2) {
